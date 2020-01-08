@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
-import com.p.alphabetforkids.Activity.PropertisActivity;
+import com.p.alphabetforkids.Activity.ActivityAllAlphabet;
 
 public class WellcomActivity extends AppCompatActivity {
     GifImageView gifImageView;
@@ -43,7 +43,7 @@ public class WellcomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaPlayer.stop();
-                Intent intent = new Intent(WellcomActivity.this, PropertisActivity.class);
+                Intent intent = new Intent(WellcomActivity.this, ActivityAllAlphabet.class);
                 startActivity(intent);
                 finish();
 

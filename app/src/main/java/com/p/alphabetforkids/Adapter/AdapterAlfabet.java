@@ -1,6 +1,7 @@
 package com.p.alphabetforkids.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.p.alphabetforkids.Activity.ActivityDetails;
 import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
 import com.squareup.picasso.Picasso;
@@ -21,8 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHolder> {
     Context context;
-    private List<ItemModel>itemModelList;
-    public AdapterAlfabet(Context context,List<ItemModel>itemModelList) {
+    private List<ItemModel> itemModelList;
+
+    public AdapterAlfabet(Context context, List<ItemModel> itemModelList) {
         this.context = context;
         this.itemModelList = itemModelList;
 
@@ -32,7 +35,7 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.item_for_recyclerview,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_for_recyclerview, parent, false);
         return new viewHolder(view);
     }
 
@@ -40,12 +43,10 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         ItemModel model = itemModelList.get(position);
         holder.txtItem.setText(model.getTitle());
-        /*Picasso
+        Picasso
                 .with(context)
                 .load(model.getImage())
-                .into(holder.imgItem);*/
-
-
+                .into(holder.imgItem);
 
 
     }
@@ -69,6 +70,7 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(context, " کلیک شد ", Toast.LENGTH_SHORT).show();
+
                 }
             });
 

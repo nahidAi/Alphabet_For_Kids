@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.p.alphabetforkids">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.PropertisActivity"></activity>
+        <activity android:name=".Activity.ActivityDetails"></activity>
+        <activity android:name=".Activity.ActivityAllAlphabet" />
         <activity
             android:name=".WellcomActivity"
             android:screenOrientation="portrait">
