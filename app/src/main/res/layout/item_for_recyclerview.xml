@@ -6,32 +6,40 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:id="@+id/card"
     app:ycCardCornerRadius="5dp"
     app:ycCardElevation="10dp"
     app:ycCardMaxElevation="15dp"
     app:ycCardPreventCornerOverlap="true"
     app:ycStartShadowColor="@color/Orange_dark">
 
-    <ImageView
-        android:id="@+id/imageItem"
+    <RelativeLayout
+        android:id="@+id/rl_item_for_recycler"
         android:layout_width="match_parent"
-        android:background="@drawable/backgounditem"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/apple" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtItem"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:text="Hello World!"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:textSize="30dp" />
+        <ImageView
+            android:id="@+id/imageItem"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:padding="16dp"
+            android:src="@drawable/apple" />
+
+        <TextView
+            android:id="@+id/txtItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageItem"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="3dp"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Hello World!"
+            android:textColor="@color/blue"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
 
 </com.zyp.cardview.YcCardView>

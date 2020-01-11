@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,10 +44,26 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         ItemModel model = itemModelList.get(position);
         holder.txtItem.setText(model.getTitle());
-        Picasso
-                .with(context)
-                .load(model.getImage())
-                .into(holder.imgItem);
+        //گرفتن عکس از دیتابیس
+        String imgAddress = model.getImage();
+        int id = context.getResources().getIdentifier(imgAddress, "drawable", context.getPackageName());
+        holder.imgItem.setImageResource(id);
+        //رویدا کلیک برای کارد ویو
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                int position = model.getId();
+                Intent intent = new Intent(context, ActivityDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("id", position + "");
+                context.startActivity(intent);
+            }
+
+
+        });
+
 
 
     }
@@ -59,21 +76,16 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
     public class viewHolder extends RecyclerView.ViewHolder {
         private ImageView imgItem;
         private TextView txtItem;
-        private YcCardView ycCardView;
+        private RelativeLayout relativeLayout;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             imgItem = itemView.findViewById(R.id.imageItem);
             txtItem = itemView.findViewById(R.id.txtItem);
-            ycCardView = itemView.findViewById(R.id.card);
-            ycCardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, " کلیک شد ", Toast.LENGTH_SHORT).show();
+            relativeLayout = itemView.findViewById(R.id.rl_item_for_recycler);
 
-                }
-            });
 
         }
     }
+
 }
