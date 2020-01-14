@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.p.alphabetforkids.Activity.ActivityDetails;
 import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
-import com.squareup.picasso.Picasso;
 import com.zyp.cardview.YcCardView;
 
 import java.util.List;
