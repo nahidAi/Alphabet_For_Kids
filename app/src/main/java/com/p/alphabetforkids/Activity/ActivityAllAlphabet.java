@@ -25,7 +25,6 @@ public class ActivityAllAlphabet extends AppCompatActivity {
     List<ItemModel> itemModelList = new ArrayList<>();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +44,13 @@ public class ActivityAllAlphabet extends AppCompatActivity {
         recyclerView.setAdapter(adapterAlfabet);
 
 
-
     }
 
-
-    @Override
+    // برای اینکه دکمه بک گوشی کار نکنه
+   /* @Override
     public void onBackPressed() {
 
-    }
+    }*/
 
     // داده های فیک برای تست
     private List<ItemModel> generateItem() {

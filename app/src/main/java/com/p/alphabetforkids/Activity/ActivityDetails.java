@@ -1,45 +1,438 @@
 package com.p.alphabetforkids.Activity;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
 import com.p.alphabetforkids.R;
+import com.p.alphabetforkids.WellcomActivity;
+import com.p.alphabetforkids.database.MyDatabase;
+import com.squareup.picasso.Picasso;
 
 public class ActivityDetails extends AppCompatActivity {
-    ImageView imgbackRight, imagbackLeft, imgMusic, imgHome, imgEdit;
-    TextView txtTop,txt_small_alphabet,txt_larg_alphabet;
+    MediaPlayer mediaPlayer;
 
+    ImageView imgbackRight, imagbackLeft, imgMusic, imgHome, imgEdit, img_one_example, img_two_example,
+            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd,imgReNew,imgMute;
+    TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecound_word, txtThird_word;
+    private int myId;
+    private int id_word_count;
+    private String title;
+    private String first_alphabet_word;
+    private String end_alphabet_words;
+    private String second_alphabet_words;
+    private String third_alphabet_words;
+    private String one_example;
+    private String two_example;
+    private String three_example;
+    private String end_example;
+    private String img_one;
+    private String img_two;
+    private String img_three;
+    private String img_end;
+    boolean isMute = false;
+
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_for_four_word);
+
+        getIntentMethod();
         findView();
         onClick();
+        setTextMethod();
+        switchMethod();
+
+
+
+
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
+
+
+    }
+
+    private void switchMethod() {
+        switch (myId) {
+            case 1:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.a);
+                mediaPlayer.start();
+                break;
+            case 2:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.b);
+                mediaPlayer.start();
+                break;
+            case 3:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.p);
+                mediaPlayer.start();
+                break;
+            case 4:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.t);
+                mediaPlayer.start();
+                break;
+            case 5:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ccc);
+                mediaPlayer.start();
+                break;
+            case 6:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.j);
+                mediaPlayer.start();
+                break;
+            case 7:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ch);
+                mediaPlayer.start();
+                break;
+            case 8:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.h);
+                mediaPlayer.start();
+                break;
+            case 9:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kh);
+                mediaPlayer.start();
+                break;
+            case 10:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.d);
+                mediaPlayer.start();
+                break;
+            case 11:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zal);
+                mediaPlayer.start();
+                break;
+            case 12:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.r);
+                mediaPlayer.start();
+                break;
+            case 13:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.z);
+                mediaPlayer.start();
+                break;
+            case 14:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zh);
+                mediaPlayer.start();
+                break;
+            case 15:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sin);
+                mediaPlayer.start();
+                break;
+            case 16:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sh);
+                mediaPlayer.start();
+                break;
+            case 17:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sad);
+                mediaPlayer.start();
+                break;
+            case 18:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zad);
+                mediaPlayer.start();
+                break;
+            case 19:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ta);
+                mediaPlayer.start();
+                break;
+            case 20:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.za);
+                mediaPlayer.start();
+                break;
+            case 21:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ain);
+                mediaPlayer.start();
+                break;
+            case 22:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghain);
+                mediaPlayer.start();
+                break;
+            case 23:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.f);
+                mediaPlayer.start();
+                break;
+            case 67:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.gh);
+                mediaPlayer.start();
+                break;
+            case 68:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.k);
+                mediaPlayer.start();
+                break;
+            case 69:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghaf);
+                mediaPlayer.start();
+                break;
+            case 70:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.lam);
+                mediaPlayer.start();
+                break;
+            case 71:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.m);
+                mediaPlayer.start();
+                break;
+            case 72:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.non);
+                mediaPlayer.start();
+                break;
+            case 73:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.v);
+                mediaPlayer.start();
+                break;
+            case 74:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.he4);
+                mediaPlayer.start();
+                break;
+            case 75:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.i);
+                mediaPlayer.start();
+                break;
+            case 76:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ei);
+                mediaPlayer.start();
+                break;
+            case 77:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.aa);
+                mediaPlayer.start();
+                break;
+            case 78:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ea);
+                mediaPlayer.start();
+                break;
+            case 79:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.o);
+                mediaPlayer.start();
+                break;
+            case 80:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.tashdid);
+                mediaPlayer.start();
+                break;
+
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+    private void setTextMethod() {
+        txtTop.setText(title);
         //  دادن انیمیشن به تکست
-       /* YoYo.with(Techniques.Shake).duration(1200)
+        YoYo.with(Techniques.Shake).duration(1200)
                 .playOn(txtTop);
 
-        YoYo.with(Techniques.Shake).duration(1200)
-                .playOn(txt_small_alphabet);
+        if (id_word_count == 4) {
+            txtFirstAlphabet.setText(first_alphabet_word);
+            txtEndAlphabetWords.setText(end_alphabet_words);
+            txtSecound_word.setText(second_alphabet_words);
+            txtThird_word.setText(third_alphabet_words);
 
-        YoYo.with(Techniques.Shake).duration(1200)
-                .playOn(txt_larg_alphabet);*/
+
+            //  دادن انیمیشن به تکست
+
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtFirstAlphabet);
+
+                }
+            },6000);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtSecound_word);
+
+                }
+            },10000);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtThird_word);
+
+                }
+            },15000);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtEndAlphabetWords);
+
+                }
+            },21000);
 
 
 
+            int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
+            int id_2 = getResources().getIdentifier(two_example, "drawable", getPackageName());
+            int id_3 = getResources().getIdentifier(three_example, "drawable", getPackageName());
+            int id_4 = getResources().getIdentifier(end_example, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_2)
+                    .into(img_two_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_3)
+                    .into(img_three_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_4)
+                    .into(img_end_example);
+
+
+            int img_1 = getResources().getIdentifier(img_one, "drawable", getPackageName());
+            int img_2 = getResources().getIdentifier(img_two, "drawable", getPackageName());
+            int img_3 = getResources().getIdentifier(img_three, "drawable", getPackageName());
+            int img_4 = getResources().getIdentifier(img_end, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_2)
+                    .into(imgTwo);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_3)
+                    .into(imgThree);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_4)
+                    .into(imgEnd);
+
+
+        } else if (id_word_count == 2) {
+            txtFirstAlphabet.setText(first_alphabet_word);
+            txtEndAlphabetWords.setText(end_alphabet_words);
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtFirstAlphabet);
+
+                }
+            },6000);
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtEndAlphabetWords);
+
+                }
+            },10000);
+
+
+
+
+
+            int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
+            int id_4 = getResources().getIdentifier(end_example, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_4)
+                    .into(img_end_example);
+
+            int img_1 = getResources().getIdentifier(img_one, "drawable", getPackageName());
+            int img_4 = getResources().getIdentifier(img_end, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_4)
+                    .into(imgEnd);
+
+
+        } else {
+            txtFirstAlphabet.setText(first_alphabet_word);
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    YoYo.with(Techniques.Shake).duration(1200)
+                            .playOn(txtFirstAlphabet);
+
+                }
+            },5000);
+
+            int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+
+            int img_1 = getResources().getIdentifier(img_one, "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+        }
+
+    }
+
+    private void getIntentMethod() {
+        Bundle bundle = getIntent().getExtras();
+        myId = Integer.parseInt(bundle.getString("id"));
+        id_word_count = Integer.parseInt(bundle.getString("id_word_count"));
+        title = bundle.getString("title");
+        first_alphabet_word = bundle.getString("first_alphabet_word");
+        end_alphabet_words = bundle.getString("end_alphabet_words");
+        second_alphabet_words = bundle.getString("second_alphabet_words");
+        third_alphabet_words = bundle.getString("third_alphabet_words");
+
+
+        one_example = bundle.getString("one_example");
+        two_example = bundle.getString("two_example");
+        three_example = bundle.getString("three_example");
+        end_example = bundle.getString("four_example");
+
+        img_one = bundle.getString("img_one");
+        img_two = bundle.getString("img_two");
+        img_three = bundle.getString("img_three");
+        img_end = bundle.getString("img_end");
+
+
+        if (id_word_count == 1)
+            setContentView(R.layout.activity_details_for_one_word);
+
+        if (id_word_count == 2)
+            setContentView(R.layout.activity_details_for_two_word);
+        else if (id_word_count == 4)
+            setContentView(R.layout.activity_details_for_four_word);
 
     }
 
@@ -50,8 +443,23 @@ public class ActivityDetails extends AppCompatActivity {
         imgHome = findViewById(R.id.home);
         imgEdit = findViewById(R.id.edit);
         txtTop = findViewById(R.id.txt_top);
-        txt_small_alphabet = findViewById(R.id.txt_First_small_alphabet);
-        txt_larg_alphabet = findViewById(R.id.txt_First_larg_alphabet);
+        txtFirstAlphabet = findViewById(R.id.txt_wordForFirstAlphabet);
+        txtEndAlphabetWords = findViewById(R.id.txt_wordForEndAlphabet);
+        txtSecound_word = findViewById(R.id.txt_secound_word);
+        txtThird_word = findViewById(R.id.txt_third_word);
+        img_one_example = findViewById(R.id.img_example_one);
+        img_two_example = findViewById(R.id.img_example_two);
+        img_three_example = findViewById(R.id.img_example_three);
+        img_end_example = findViewById(R.id.img_example_end);
+
+        imgOne = findViewById(R.id.img_one);
+        imgTwo = findViewById(R.id.img_two);
+        imgThree = findViewById(R.id.img_three);
+        imgEnd = findViewById(R.id.img_end);
+
+        imgReNew = findViewById(R.id.renew);
+        imgMute = findViewById(R.id.mute);
+
     }
 
     public void onClick() {
@@ -76,7 +484,8 @@ public class ActivityDetails extends AppCompatActivity {
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ActivityDetails.this,ActivityAllAlphabet.class);
+                startActivity(intent);
             }
         });
         imgMusic.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +494,68 @@ public class ActivityDetails extends AppCompatActivity {
                 Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        imgMute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isMute==false){
+                    int myImgMute = getResources().getIdentifier("smile", "drawable", getPackageName());
+                    imgMute.setImageResource(myImgMute);
+                    isMute=true;
+                }else if (isMute==true){
+                    int myImgMuteZip = getResources().getIdentifier("muted", "drawable", getPackageName());
+                    imgMute.setImageResource(myImgMuteZip);
+                    isMute=false;
+
+
+
+                }
+
+
+
+
+            }
+        });
+        imgReNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ActivityDetails.this, " renew clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+           // System.exit(0);
+        } else
+            return;
+    }
+
+    // برای اینکه دکمه بک گوشی کار نکنه
+   /* @Override
+    public void onBackPressed() {
+
+    }*/
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+           // System.exit(0);
+        } else
+            return;
+    }
+
+    // دادن انیمیشن در رفتن از یک اکتیویتی به اکتیویتی دیگر
+    @Override
+    public void finish() {
+        super.finish();
+       // overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 
 

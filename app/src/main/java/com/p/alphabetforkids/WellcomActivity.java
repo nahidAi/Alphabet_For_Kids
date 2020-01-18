@@ -66,7 +66,7 @@ public class WellcomActivity extends AppCompatActivity {
         super.onPause();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-            System.exit(0);
+           // System.exit(0);
         } else
             return;
     }
@@ -76,7 +76,7 @@ public class WellcomActivity extends AppCompatActivity {
         super.onStop();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-            System.exit(0);
+          //  System.exit(0);
         } else
             return;
     }

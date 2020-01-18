@@ -17,11 +17,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Activity.ActivityDetails"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".Activity.ActivityAllAlphabet"
@@ -29,6 +25,11 @@
         <activity
             android:name=".WellcomActivity"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>

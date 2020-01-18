@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.p.alphabetforkids.Activity.ActivityDetails;
 import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
+import com.squareup.picasso.Picasso;
 import com.zyp.cardview.YcCardView;
 
 import java.util.List;
@@ -46,7 +47,12 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
         //گرفتن عکس از دیتابیس
         String imgAddress = model.getImage();
         int id = context.getResources().getIdentifier(imgAddress, "drawable", context.getPackageName());
-        holder.imgItem.setImageResource(id);
+        Picasso
+                .with(context)
+                .load(id)
+                .into(holder.imgItem);
+
+
         //رویدا کلیک برای کارد ویو
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
 
@@ -57,12 +63,25 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
                 Intent intent = new Intent(context, ActivityDetails.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id", position + "");
+                intent.putExtra("id_word_count", model.getId_word_count() + "");
+                intent.putExtra("title", model.getTitle());
+                intent.putExtra("first_alphabet_word", model.getFirst_alphabet_word());
+                intent.putExtra("end_alphabet_words", model.getEnd_alphabet_word());
+                intent.putExtra("second_alphabet_words", model.getSecond_alphabet_words());
+                intent.putExtra("third_alphabet_words", model.getThird_alphabet_words());
+                intent.putExtra("one_example",model.getExampleOne());
+                intent.putExtra("two_example",model.getExampleTwo());
+                intent.putExtra("three_example",model.getExampleThree());
+                intent.putExtra("four_example",model.getExampleEnd());
+                intent.putExtra("img_one",model.getImg_one());
+                intent.putExtra("img_two",model.getImg_two());
+                intent.putExtra("img_three",model.getImg_three());
+                intent.putExtra("img_end",model.getImg_four());
                 context.startActivity(intent);
             }
 
 
         });
-
 
 
     }
