@@ -1,49 +1,40 @@
 package com.p.alphabetforkids.Activity;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
 import com.p.alphabetforkids.R;
-import com.p.alphabetforkids.WellcomActivity;
-import com.p.alphabetforkids.database.MyDatabase;
 import com.squareup.picasso.Picasso;
 
 public class ActivityDetails extends AppCompatActivity {
     MediaPlayer mediaPlayer;
+    SharedPreferences sharedPreferences;
 
-    ImageView imgbackRight, imagbackLeft, imgMusic, imgHome, imgEdit, img_one_example, img_two_example,
-            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd,imgReNew,imgMute;
-    TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecound_word, txtThird_word;
-    private int myId;
-    private int id_word_count;
-    private String title;
-    private String first_alphabet_word;
-    private String end_alphabet_words;
-    private String second_alphabet_words;
-    private String third_alphabet_words;
-    private String one_example;
-    private String two_example;
-    private String three_example;
-    private String end_example;
-    private String img_one;
-    private String img_two;
-    private String img_three;
-    private String img_end;
+    ImageView imgBackRight, imgBackLeft, imgMusic, imgHome, imgPractice, img_one_example, img_two_example,
+            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd, imgReNew, imgMute;
+
+    TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecond_word, txtThird_word;
+
+    private int myId, id_word_count,myRow;
+
+    private String title, first_alphabet_word, end_alphabet_words, second_alphabet_words, third_alphabet_words, one_example,
+            two_example, three_example, end_example, img_one, img_two, img_three, img_end;
+
     boolean isMute = false;
-
+    boolean isRenew = false;
+    boolean soundTF;
     Handler handler;
 
     @Override
@@ -56,16 +47,20 @@ public class ActivityDetails extends AppCompatActivity {
         setTextMethod();
         switchMethod();
 
-
-
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        // چک کردن شیرد پرفرنسز برای قطع صدا
+        soundTF = sharedPreferences.getBoolean("isMuteSound", false);
+        isMute = soundTF;
+        if (soundTF == true) {
+            mediaPlayer.stop();
+            int myImgMuteZip = getResources().getIdentifier("muted", "drawable", getPackageName());
+            imgMute.setImageResource(myImgMuteZip);
+        }
 
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-
 
 
     }
@@ -224,13 +219,6 @@ public class ActivityDetails extends AppCompatActivity {
         }
 
 
-
-
-
-
-
-
-
     }
 
     private void setTextMethod() {
@@ -242,46 +230,76 @@ public class ActivityDetails extends AppCompatActivity {
         if (id_word_count == 4) {
             txtFirstAlphabet.setText(first_alphabet_word);
             txtEndAlphabetWords.setText(end_alphabet_words);
-            txtSecound_word.setText(second_alphabet_words);
+            txtSecond_word.setText(second_alphabet_words);
             txtThird_word.setText(third_alphabet_words);
 
 
             //  دادن انیمیشن به تکست
-
             handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtFirstAlphabet);
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
+
 
                 }
-            },6000);
+            }, 6000);
+
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtSecound_word);
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtSecond_word)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtSecond_word);
+                    }
+
 
                 }
-            },10000);
+            }, 10000);
+
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtThird_word);
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtThird_word)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtThird_word);
+                    }
 
                 }
-            },15000);
+            }, 15000);
+
+
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtEndAlphabetWords);
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords);
+                    }
 
                 }
-            },21000);
-
+            }, 21000);
 
 
             int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
@@ -332,26 +350,44 @@ public class ActivityDetails extends AppCompatActivity {
             txtFirstAlphabet.setText(first_alphabet_word);
             txtEndAlphabetWords.setText(end_alphabet_words);
             handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtFirstAlphabet);
-
-                }
-            },6000);
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtEndAlphabetWords);
+
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+
+
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
 
                 }
-            },10000);
+            }, 6000);
 
 
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords)
+                                .stop(true);
 
+
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords);
+
+                    }
+
+
+                }
+            }, 10000);
 
 
             int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
@@ -383,11 +419,18 @@ public class ActivityDetails extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    YoYo.with(Techniques.Shake).duration(1200)
-                            .playOn(txtFirstAlphabet);
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
+
 
                 }
-            },5000);
+            }, 5000);
 
             int id = getResources().getIdentifier(one_example, "drawable", getPackageName());
             Picasso
@@ -408,6 +451,7 @@ public class ActivityDetails extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         myId = Integer.parseInt(bundle.getString("id"));
         id_word_count = Integer.parseInt(bundle.getString("id_word_count"));
+        myRow = Integer.parseInt(bundle.getString("row"));
         title = bundle.getString("title");
         first_alphabet_word = bundle.getString("first_alphabet_word");
         end_alphabet_words = bundle.getString("end_alphabet_words");
@@ -426,26 +470,35 @@ public class ActivityDetails extends AppCompatActivity {
         img_end = bundle.getString("img_end");
 
 
-        if (id_word_count == 1)
+        if (id_word_count == 1) {
             setContentView(R.layout.activity_details_for_one_word);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
 
-        if (id_word_count == 2)
+
+        if (id_word_count == 2) {
             setContentView(R.layout.activity_details_for_two_word);
-        else if (id_word_count == 4)
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        } else if (id_word_count == 4) {
             setContentView(R.layout.activity_details_for_four_word);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        }
+
 
     }
 
     public void findView() {
-        imagbackLeft = findViewById(R.id.back_left);
-        imgbackRight = findViewById(R.id.back_right);
+        imgBackLeft = findViewById(R.id.back_left);
+        imgBackRight = findViewById(R.id.back_rightt);
         imgMusic = findViewById(R.id.music);
         imgHome = findViewById(R.id.home);
-        imgEdit = findViewById(R.id.edit);
+        imgPractice = findViewById(R.id.img_practice);
         txtTop = findViewById(R.id.txt_top);
         txtFirstAlphabet = findViewById(R.id.txt_wordForFirstAlphabet);
         txtEndAlphabetWords = findViewById(R.id.txt_wordForEndAlphabet);
-        txtSecound_word = findViewById(R.id.txt_secound_word);
+        txtSecond_word = findViewById(R.id.txt_secound_word);
         txtThird_word = findViewById(R.id.txt_third_word);
         img_one_example = findViewById(R.id.img_example_one);
         img_two_example = findViewById(R.id.img_example_two);
@@ -460,38 +513,49 @@ public class ActivityDetails extends AppCompatActivity {
         imgReNew = findViewById(R.id.renew);
         imgMute = findViewById(R.id.mute);
 
+
     }
 
     public void onClick() {
-        imagbackLeft.setOnClickListener(new View.OnClickListener() {
+        imgBackLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            int nextRow = myRow+1;
+            if (nextRow==2){
+                txtTop.setText("ّبـ ب");
+            }
+
+
+
+
+
+            }
+        });
+        imgBackRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        imgbackRight.setOnClickListener(new View.OnClickListener() {
+        imgPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-        imgEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ActivityDetails.this, ActivityPractice.class);
+                startActivity(intent);
             }
         });
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityDetails.this,ActivityAllAlphabet.class);
+                Intent intent = new Intent(ActivityDetails.this, ActivityAllAlphabet.class);
                 startActivity(intent);
             }
         });
         imgMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityDetails.this, "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ActivityDetails.this, ActivityMusic.class);
+                startActivity(intent);
             }
         });
 
@@ -499,20 +563,30 @@ public class ActivityDetails extends AppCompatActivity {
         imgMute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isMute==false){
-                    int myImgMute = getResources().getIdentifier("smile", "drawable", getPackageName());
-                    imgMute.setImageResource(myImgMute);
-                    isMute=true;
-                }else if (isMute==true){
+                if (isMute == false) {
                     int myImgMuteZip = getResources().getIdentifier("muted", "drawable", getPackageName());
                     imgMute.setImageResource(myImgMuteZip);
-                    isMute=false;
+                    mediaPlayer.stop();
+                    isMute = true;
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isMuteSound", isMute);
+                    editor.apply();
+                    Toast.makeText(ActivityDetails.this, "صدا قطع شد", Toast.LENGTH_SHORT).show();
 
+
+                } else if (isMute == true) {
+                    int myImgMute = getResources().getIdentifier("smile", "drawable", getPackageName());
+                    imgMute.setImageResource(myImgMute);
+                    isMute = false;
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isMuteSound", isMute);
+                    editor.apply();
+                    switchMethod();
+                    setTextMethod();
+                    Toast.makeText(ActivityDetails.this, "در حال اجرا", Toast.LENGTH_SHORT).show();
 
 
                 }
-
-
 
 
             }
@@ -520,9 +594,29 @@ public class ActivityDetails extends AppCompatActivity {
         imgReNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityDetails.this, " renew clicked", Toast.LENGTH_SHORT).show();
+                isRenew = true;
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isRenew = false;
+
+                    }
+                }, 5000);
+
+
+                if (isMute == false) {
+                    setTextMethod();
+                    switchMethod();
+                }
+
+
             }
         });
+
     }
 
     @Override
@@ -530,7 +624,7 @@ public class ActivityDetails extends AppCompatActivity {
         super.onPause();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-           // System.exit(0);
+            // System.exit(0);
         } else
             return;
     }
@@ -546,7 +640,7 @@ public class ActivityDetails extends AppCompatActivity {
         super.onStop();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-           // System.exit(0);
+            // System.exit(0);
         } else
             return;
     }
@@ -555,7 +649,7 @@ public class ActivityDetails extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-       // overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
+        // overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 
 

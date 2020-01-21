@@ -118,6 +118,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 String image = cursor.getString(cursor.getColumnIndex("image"));
                 int id = cursor.getInt(cursor.getColumnIndex("Id"));
                 int id_word_count = cursor.getInt(cursor.getColumnIndex("id_word_count"));
+                int row = cursor.getInt(cursor.getColumnIndex("row"));
                 String first_alphabet_word = cursor.getString(cursor.getColumnIndex("first_alphabet_word"));
                 String end_alphabet_word = cursor.getString(cursor.getColumnIndex("end_alphabet_words"));
                 String second_alphabet_words = cursor.getString(cursor.getColumnIndex("second_alphabet_words"));
@@ -137,6 +138,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 model.setImage(image);
                 model.setId(id);
                 model.setId_word_count(id_word_count);
+                model.setRow(row);
                 model.setFirst_alphabet_word(first_alphabet_word);
                 model.setEnd_alphabet_word(end_alphabet_word);
                 model.setSecond_alphabet_words(second_alphabet_words);

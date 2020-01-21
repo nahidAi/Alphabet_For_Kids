@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:layoutDirection="ltr"
+    android:background="#f39166"
     tools:context=".Activity.ActivityDetails">
-
 
 
     <FrameLayout
@@ -128,12 +128,17 @@
                 android:padding="4dp"
                 android:layout_alignParentRight="true"
                 android:layout_height="50dp"/>
+
             <ImageView
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
                 android:id="@+id/renew"
-                android:src="@drawable/renew"
                 android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_height="50dp"/>
+                android:layout_marginLeft="-2dp"
+                android:src="@drawable/renew" />
 
         </RelativeLayout>
 
@@ -151,15 +156,21 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/back_right"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/back_left"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="6dp"
-            android:src="@drawable/back_right" />
+            android:src="@drawable/back_leftt" />
 
         <ImageView
-            android:id="@+id/edit"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/img_practice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -167,6 +178,9 @@
             android:src="@drawable/edit" />
 
         <ImageView
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:id="@+id/music"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -175,6 +189,9 @@
             android:src="@drawable/music" />
 
         <ImageView
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:id="@+id/home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -183,12 +200,15 @@
             android:src="@drawable/home" />
 
         <ImageView
-            android:id="@+id/back_left"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/back_rightt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="6dp"
-            android:src="@drawable/back_left" />
+            android:src="@drawable/back_right" />
 
 
     </LinearLayout>

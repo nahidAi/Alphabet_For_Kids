@@ -6,22 +6,23 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.ActivityDetails"
-            android:screenOrientation="portrait">
-
-
-        </activity>
-        <activity android:name=".Activity.ActivityAllAlphabet"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ActivityMusic"></activity>
+        <activity android:name=".Activity.ActivityPractice" />
+        <activity
+            android:name=".Activity.ActivityDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ActivityAllAlphabet"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".WellcomActivity"
             android:screenOrientation="portrait">
@@ -30,8 +31,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
     </application>
 

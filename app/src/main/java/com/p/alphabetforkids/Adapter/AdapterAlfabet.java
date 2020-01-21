@@ -64,6 +64,7 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id", position + "");
                 intent.putExtra("id_word_count", model.getId_word_count() + "");
+                intent.putExtra("row",model.getRow()+"");
                 intent.putExtra("title", model.getTitle());
                 intent.putExtra("first_alphabet_word", model.getFirst_alphabet_word());
                 intent.putExtra("end_alphabet_words", model.getEnd_alphabet_word());

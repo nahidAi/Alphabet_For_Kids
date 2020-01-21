@@ -47,10 +47,10 @@ public class ActivityAllAlphabet extends AppCompatActivity {
     }
 
     // برای اینکه دکمه بک گوشی کار نکنه
-   /* @Override
+    @Override
     public void onBackPressed() {
 
-    }*/
+    }
 
     // داده های فیک برای تست
     private List<ItemModel> generateItem() {

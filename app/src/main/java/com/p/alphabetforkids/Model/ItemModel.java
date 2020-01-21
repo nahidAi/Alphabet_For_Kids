@@ -3,6 +3,7 @@ package com.p.alphabetforkids.Model;
 public class ItemModel {
     int id;
     int id_word_count;
+    int row;
     String image;
     String title;
     String first_alphabet_word;
@@ -24,10 +25,13 @@ public class ItemModel {
     }
 
 
-    public ItemModel(int id, int id_word_count, String image, String title, String first_alphabet_word, String end_alphabet_word, String second_alphabet_words, String third_alphabet_words, String exampleOne, String exampleTwo, String exampleThree,
+    public ItemModel(int id, int id_word_count, int row, String image, String title,
+                     String first_alphabet_word, String end_alphabet_word, String second_alphabet_words,
+                     String third_alphabet_words, String exampleOne, String exampleTwo, String exampleThree,
                      String exampleEnd, String img_one, String img_two, String img_three, String img_four) {
         this.id = id;
         this.id_word_count = id_word_count;
+        this.row = row;
         this.image = image;
         this.title = title;
         this.first_alphabet_word = first_alphabet_word;
@@ -42,6 +46,14 @@ public class ItemModel {
         this.img_two = img_two;
         this.img_three = img_three;
         this.img_four = img_four;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
     }
 
     public String getImg_one() {
