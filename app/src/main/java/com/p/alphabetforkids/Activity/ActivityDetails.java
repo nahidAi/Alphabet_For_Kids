@@ -521,9 +521,7 @@ public class ActivityDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             int nextRow = myRow+1;
-            if (nextRow==2){
-                txtTop.setText("ّبـ ب");
-            }
+
 
 
 
