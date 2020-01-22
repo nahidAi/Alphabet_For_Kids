@@ -204,12 +204,13 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/paint_2"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="8"
                         android:background="@color/red_light"
                         android:padding="20dp"
-                        android:src="@drawable/paint" />
+                        android:src="@drawable/paint_2" />
 
                     <TextView
                         android:layout_width="match_parent"

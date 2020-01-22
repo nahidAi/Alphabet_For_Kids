@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.p.alphabetforkids">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.ActivityMusic"></activity>
+        <activity android:name=".Activity.ActivityPaint"/>
+        <activity android:name=".Activity.ActivityMusic" />
         <activity android:name=".Activity.ActivityPractice" />
         <activity
             android:name=".Activity.ActivityDetails"

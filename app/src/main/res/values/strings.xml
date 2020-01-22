@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Alphabet For Kids</string>
     <string name="wellcome">سلام بچه ها حالتون خوبه؟ به جمع دانشجوهای کوچولوی قصه ی ما خوش اومدین  بریم که به همراه هم الفبای فارسی رو یاد بگیریم و باسواد بشیم. حاضرید؟</string>
+    <string name="start_new">New</string>
+    <string name="brush">New</string>
+    <string name="erase">New</string>
+    <string name="save">New</string>
+    <string name="paint">New</string>
+
+    <string name="sml">Small</string>
+    <string name="med">Medium</string>
+    <string name="lrg">Large</string>
 </resources>
