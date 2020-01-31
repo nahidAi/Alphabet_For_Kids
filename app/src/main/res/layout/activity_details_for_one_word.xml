@@ -9,6 +9,7 @@
     tools:context=".Activity.ActivityDetails">
 
 
+
     <FrameLayout
 
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="-100dp">
+
 
         <com.zyp.cardview.YcCardView
             android:layout_width="match_parent"

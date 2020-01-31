@@ -21,7 +21,7 @@
         android:tint="@android:color/white" />-->
     <ImageView
         android:layout_alignParentLeft="true"
-        android:id="@+id/imageSetting"
+        android:id="@+id/imgBack"
         android:layout_centerHorizontal="true"
         android:layout_width="56dp"
         android:padding="8dp"

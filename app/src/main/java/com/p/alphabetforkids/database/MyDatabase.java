@@ -131,6 +131,7 @@ public class MyDatabase extends SQLiteOpenHelper {
                 String img_two = cursor.getString(cursor.getColumnIndex("img_two"));
                 String img_three = cursor.getString(cursor.getColumnIndex("img_three"));
                 String img_end = cursor.getString(cursor.getColumnIndex("img_end"));
+                String poetry = cursor.getString(cursor.getColumnIndex("protry"));
 
                 Log.i("sdfdsf", id + "");
                 ItemModel model = new ItemModel();
@@ -151,6 +152,8 @@ public class MyDatabase extends SQLiteOpenHelper {
                 model.setImg_two(img_two);
                 model.setImg_three(img_three);
                 model.setImg_four(img_end);
+                model.setPoetry(poetry);
+
 
 
                 alphabet.add(model);
@@ -162,4 +165,55 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
 
 
+    public ItemModel selectAlphabetByRow(int mRow) {
+        ArrayList<ItemModel> models = new ArrayList<>();
+
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM alfabet WHERE row = '" + mRow + "'", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String title = cursor.getString(cursor.getColumnIndex("title"));
+                String image = cursor.getString(cursor.getColumnIndex("image"));
+                int id = cursor.getInt(cursor.getColumnIndex("Id"));
+                int id_word_count = cursor.getInt(cursor.getColumnIndex("id_word_count"));
+                int row = cursor.getInt(cursor.getColumnIndex("row"));
+                String first_alphabet_word = cursor.getString(cursor.getColumnIndex("first_alphabet_word"));
+                String end_alphabet_word = cursor.getString(cursor.getColumnIndex("end_alphabet_words"));
+                String second_alphabet_words = cursor.getString(cursor.getColumnIndex("second_alphabet_words"));
+                String third_alphabet_words = cursor.getString(cursor.getColumnIndex("Third_alphabet_words"));
+                String imgExampleOne = cursor.getString(cursor.getColumnIndex("one_example"));
+                String imgExampleTwo = cursor.getString(cursor.getColumnIndex("two_example"));
+                String imgExampleThree = cursor.getString(cursor.getColumnIndex("three_example"));
+                String imgExampleEnd = cursor.getString(cursor.getColumnIndex("four_example"));
+                String img_one = cursor.getString(cursor.getColumnIndex("img_one"));
+                String img_two = cursor.getString(cursor.getColumnIndex("img_two"));
+                String img_three = cursor.getString(cursor.getColumnIndex("img_three"));
+                String img_end = cursor.getString(cursor.getColumnIndex("img_end"));
+
+                ItemModel model = new ItemModel();
+                model.setTitle(title);
+                model.setImage(image);
+                model.setId(id);
+                model.setId_word_count(id_word_count);
+                model.setRow(row);
+                model.setFirst_alphabet_word(first_alphabet_word);
+                model.setEnd_alphabet_word(end_alphabet_word);
+                model.setSecond_alphabet_words(second_alphabet_words);
+                model.setThird_alphabet_words(third_alphabet_words);
+                model.setExampleOne(imgExampleOne);
+                model.setExampleTwo(imgExampleTwo);
+                model.setExampleThree(imgExampleThree);
+                model.setExampleEnd(imgExampleEnd);
+                model.setImg_one(img_one);
+                model.setImg_two(img_two);
+                model.setImg_three(img_three);
+                model.setImg_four(img_end);
+                models.add(model);
+
+
+            }
+            while (cursor.moveToNext());
+
+        }
+        return models.get(0);
+    }
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     android:background="@color/green_light"
+    android:layoutDirection="ltr"
     tools:context=".Activity.ActivityDetails">
 
 
@@ -264,13 +264,13 @@
                 android:src="@drawable/smile" />
 
             <ImageView
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/renew"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/renew" />
 
         </RelativeLayout>
@@ -345,6 +345,5 @@
 
 
     </LinearLayout>
-
 
 </RelativeLayout>

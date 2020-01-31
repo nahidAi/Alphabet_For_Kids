@@ -4,23 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/music_background"
+
     tools:context=".Activity.ActivityMusic">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:padding="4dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="120dp"
-        android:src="@drawable/p_wellcome" />
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:padding="8dp"
-        android:src="@drawable/sonne_16" />
+    <include layout="@layout/toolbar_4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/music_background"
+        android:padding="8dp">
 
 
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="110dp"
+            android:padding="4dp"
+            android:src="@drawable/p_wellcome" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:padding="8dp"
+            android:src="@drawable/sonne_16" />
+
+
+
+        <TextView
+            android:id="@+id/txtMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/click_music_text"
+            android:padding="20dp"
+            android:text="@string/wellcome"
+            android:textColor="#0A548F"
+            android:textSize="30dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 </RelativeLayout>

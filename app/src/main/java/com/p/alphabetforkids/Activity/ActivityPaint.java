@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -22,11 +23,20 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     private DrawingView drawView;
     private ImageButton currPaint, drawBtn,eraseBtn,newBtn,saveBtn;
     private float smallBrush, mediumBrush, largeBrush;
+    private ImageView imgback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint);
+
+        imgback = findViewById(R.id.imgBack);
+        imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         drawView = (DrawingView) findViewById(R.id.drawing);
         LinearLayout paintlayout = (LinearLayout) findViewById(R.id.paint_colors);
@@ -73,7 +83,7 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.draw_btn) {
             final Dialog brushDialog = new Dialog(this);
-            brushDialog.setTitle("Brush size");
+            brushDialog.setTitle("سایز قلم");
             brushDialog.setContentView(R.layout.brush_chooser);
 
             ImageButton smallBtn = brushDialog.findViewById(R.id.small_brush);

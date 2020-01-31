@@ -15,7 +15,9 @@ import android.widget.Toast;
 
 import com.github.hujiaweibujidao.wava.Techniques;
 import com.github.hujiaweibujidao.wava.YoYo;
+import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
+import com.p.alphabetforkids.database.MyDatabase;
 import com.squareup.picasso.Picasso;
 
 public class ActivityDetails extends AppCompatActivity {
@@ -27,15 +29,19 @@ public class ActivityDetails extends AppCompatActivity {
 
     TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecond_word, txtThird_word;
 
-    private int myId, id_word_count,myRow;
+    private int myId, id_word_count, myRow;
+
 
     private String title, first_alphabet_word, end_alphabet_words, second_alphabet_words, third_alphabet_words, one_example,
-            two_example, three_example, end_example, img_one, img_two, img_three, img_end;
+            two_example, three_example, end_example, img_one, img_two, img_three, img_end, Poetry;
 
     boolean isMute = false;
     boolean isRenew = false;
     boolean soundTF;
     Handler handler;
+    MyDatabase myDatabase;
+    ItemModel itemModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +50,10 @@ public class ActivityDetails extends AppCompatActivity {
         getIntentMethod();
         findView();
         onClick();
+
         setTextMethod();
         switchMethod();
+
 
         sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
         // چک کردن شیرد پرفرنسز برای قطع صدا
@@ -64,6 +72,7 @@ public class ActivityDetails extends AppCompatActivity {
 
 
     }
+
 
     private void switchMethod() {
         switch (myId) {
@@ -448,7 +457,10 @@ public class ActivityDetails extends AppCompatActivity {
     }
 
     private void getIntentMethod() {
+
         Bundle bundle = getIntent().getExtras();
+
+
         myId = Integer.parseInt(bundle.getString("id"));
         id_word_count = Integer.parseInt(bundle.getString("id_word_count"));
         myRow = Integer.parseInt(bundle.getString("row"));
@@ -468,13 +480,13 @@ public class ActivityDetails extends AppCompatActivity {
         img_two = bundle.getString("img_two");
         img_three = bundle.getString("img_three");
         img_end = bundle.getString("img_end");
+        Poetry = bundle.getString("Poetry");
 
 
         if (id_word_count == 1) {
             setContentView(R.layout.activity_details_for_one_word);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
-
 
         if (id_word_count == 2) {
             setContentView(R.layout.activity_details_for_two_word);
@@ -485,6 +497,10 @@ public class ActivityDetails extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         }
+
+
+
+//////////////////////////////////////////////////////////////////////
 
 
     }
@@ -520,11 +536,20 @@ public class ActivityDetails extends AppCompatActivity {
         imgBackLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int nextRow = myRow+1;
+                mediaPlayer.stop();
+                myDatabase = new MyDatabase(getApplicationContext());
+                int nextRow = myRow++;
+                itemModel = myDatabase.selectAlphabetByRow(nextRow + 1);
+
+                // اطلاعات سطر جدید که با کلیک روی  فلش سمت چپ دریافت کردم
+                int newMyId = itemModel.getId();
+                int newWordCount = itemModel.getId_word_count();
 
 
+                //setTextForRowId();
 
 
+                Toast.makeText(ActivityDetails.this, "my id is " + itemModel.getId() + "my row is " + itemModel.getRow(), Toast.LENGTH_SHORT).show();
 
 
             }
@@ -539,6 +564,7 @@ public class ActivityDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityDetails.this, ActivityPractice.class);
+                intent.putExtra("id",myId+"");
                 startActivity(intent);
             }
         });
@@ -553,11 +579,11 @@ public class ActivityDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityDetails.this, ActivityMusic.class);
+                intent.putExtra("id", myId + "");
                 startActivity(intent);
+
             }
         });
-
-
         imgMute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -649,6 +675,244 @@ public class ActivityDetails extends AppCompatActivity {
         super.finish();
         // overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
+
+
+    public void setTextForRowId() {
+
+        txtTop.setText(itemModel.getTitle());
+        //  دادن انیمیشن به تکست
+        YoYo.with(Techniques.Shake).duration(1200)
+                .playOn(txtTop);
+
+        if (itemModel.getId_word_count() == 4) {
+            txtFirstAlphabet.setText(itemModel.getFirst_alphabet_word());
+            txtEndAlphabetWords.setText(itemModel.getEnd_alphabet_word());
+            txtSecond_word.setText(itemModel.getSecond_alphabet_words());
+            txtThird_word.setText(itemModel.getThird_alphabet_words());
+
+
+            //  دادن انیمیشن به تکست
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
+
+
+                }
+            }, 6000);
+
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtSecond_word)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtSecond_word);
+                    }
+
+
+                }
+            }, 10000);
+
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtThird_word)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtThird_word);
+                    }
+
+                }
+            }, 15000);
+
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords);
+                    }
+
+                }
+            }, 21000);
+
+
+            int id = getResources().getIdentifier(itemModel.getExampleOne(), "drawable", getPackageName());
+            int id_2 = getResources().getIdentifier(itemModel.getExampleTwo(), "drawable", getPackageName());
+            int id_3 = getResources().getIdentifier(itemModel.getExampleThree(), "drawable", getPackageName());
+            int id_4 = getResources().getIdentifier(itemModel.getExampleEnd(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_2)
+                    .into(img_two_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_3)
+                    .into(img_three_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_4)
+                    .into(img_end_example);
+
+
+            int img_1 = getResources().getIdentifier(itemModel.getImg_one(), "drawable", getPackageName());
+            int img_2 = getResources().getIdentifier(itemModel.getImg_two(), "drawable", getPackageName());
+            int img_3 = getResources().getIdentifier(itemModel.getImg_three(), "drawable", getPackageName());
+            int img_4 = getResources().getIdentifier(itemModel.getImg_four(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_2)
+                    .into(imgTwo);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_3)
+                    .into(imgThree);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_4)
+                    .into(imgEnd);
+
+
+        } else if (itemModel.getId_word_count() == 2) {
+            txtFirstAlphabet.setText(itemModel.getFirst_alphabet_word());
+            txtEndAlphabetWords.setText(itemModel.getEnd_alphabet_word());
+            handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+
+
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
+
+                }
+            }, 6000);
+
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords)
+                                .stop(true);
+
+
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtEndAlphabetWords);
+
+                    }
+
+
+                }
+            }, 10000);
+
+
+            int id = getResources().getIdentifier(itemModel.getExampleOne(), "drawable", getPackageName());
+            int id_4 = getResources().getIdentifier(itemModel.getExampleEnd(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id_4)
+                    .into(img_end_example);
+
+            int img_1 = getResources().getIdentifier(itemModel.getImg_one(), "drawable", getPackageName());
+            int img_4 = getResources().getIdentifier(itemModel.getImg_four(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_4)
+                    .into(imgEnd);
+
+
+        } else {
+            txtFirstAlphabet.setText(itemModel.getFirst_alphabet_word());
+            handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRenew == true) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet)
+                                .stop(true);
+                    } else if (isRenew == false) {
+                        YoYo.with(Techniques.Shake).duration(1200)
+                                .playOn(txtFirstAlphabet);
+                    }
+
+
+                }
+            }, 5000);
+
+            int id = getResources().getIdentifier(itemModel.getExampleOne(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(id)
+                    .into(img_one_example);
+
+            int img_1 = getResources().getIdentifier(itemModel.getImg_one(), "drawable", getPackageName());
+            Picasso
+                    .with(getApplicationContext())
+                    .load(img_1)
+                    .into(imgOne);
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
    /* public void showAlfaAnimation() {

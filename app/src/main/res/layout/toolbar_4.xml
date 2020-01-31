@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#32A8E9">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--<ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:tint="@android:color/white"
+                android:src="@drawable/back_leftt"/>-->
+            <ImageView
+                android:id="@+id/imageToolbarBack"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/back" />
+
+            <Button
+                android:padding="8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:id="@+id/btnMusicText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/click_music_button"
+                android:text="متن شعر رو ببین"
+                android:textColor="#0A548F"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+</LinearLayout>

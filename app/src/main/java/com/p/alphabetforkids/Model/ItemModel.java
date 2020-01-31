@@ -18,6 +18,7 @@ public class ItemModel {
     String img_two;
     String img_three;
     String img_four;
+    String Poetry;
 
 
     public ItemModel() {
@@ -25,10 +26,7 @@ public class ItemModel {
     }
 
 
-    public ItemModel(int id, int id_word_count, int row, String image, String title,
-                     String first_alphabet_word, String end_alphabet_word, String second_alphabet_words,
-                     String third_alphabet_words, String exampleOne, String exampleTwo, String exampleThree,
-                     String exampleEnd, String img_one, String img_two, String img_three, String img_four) {
+    public ItemModel(int id, int id_word_count, int row, String image, String title, String first_alphabet_word, String end_alphabet_word, String second_alphabet_words, String third_alphabet_words, String exampleOne, String exampleTwo, String exampleThree, String exampleEnd, String img_one, String img_two, String img_three, String img_four, String poetry) {
         this.id = id;
         this.id_word_count = id_word_count;
         this.row = row;
@@ -46,6 +44,15 @@ public class ItemModel {
         this.img_two = img_two;
         this.img_three = img_three;
         this.img_four = img_four;
+        Poetry = poetry;
+    }
+
+    public String getPoetry() {
+        return Poetry;
+    }
+
+    public void setPoetry(String poetry) {
+        Poetry = poetry;
     }
 
     public int getRow() {

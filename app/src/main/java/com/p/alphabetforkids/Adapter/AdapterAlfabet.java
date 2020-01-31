@@ -56,7 +56,6 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
         //رویدا کلیک برای کارد ویو
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
                 int position = model.getId();
@@ -78,6 +77,7 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
                 intent.putExtra("img_two",model.getImg_two());
                 intent.putExtra("img_three",model.getImg_three());
                 intent.putExtra("img_end",model.getImg_four());
+                intent.putExtra("Poetry",model.getPoetry());
                 context.startActivity(intent);
             }
 
