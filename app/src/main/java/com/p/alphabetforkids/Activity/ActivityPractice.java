@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.p.alphabetforkids.ActivityFindIntoSentence;
 import com.p.alphabetforkids.R;
 
 public class ActivityPractice extends AppCompatActivity {
-    ImageView imgPaint_2,homeWork, imgback;
+    ImageView imgPaint_2,homeWork, imgback,findInSentence;
     private  int myId;
 
     @Override
@@ -49,11 +50,21 @@ public class ActivityPractice extends AppCompatActivity {
                 finish();
             }
         });
+        findInSentence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityPractice.this, ActivityFindIntoSentence.class);
+                intent.putExtra("newId", myId+"");
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViewMethod() {
         imgPaint_2 = findViewById(R.id.paint_2);
         homeWork = findViewById(R.id.homeWork);
         imgback = findViewById(R.id.imgBack);
+        findInSentence = findViewById(R.id.find_into_sentence);
+
     }
 }
