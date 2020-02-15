@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.p.alphabetforkids.ActivityFindIntoSentence;
 import com.p.alphabetforkids.R;
 
 public class ActivityPractice extends AppCompatActivity {
-    ImageView imgPaint_2,homeWork, imgback,findInSentence;
+    ImageView imgPaint_2,homeWork, imgback,findInSentence,buildWord;
     private  int myId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
+
+        //فول اسکرین کردن صفحه
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //   گرفتن ایدی
         Bundle bundle = getIntent().getExtras();
@@ -29,6 +33,13 @@ public class ActivityPractice extends AppCompatActivity {
     }
 
     private void onClickMeThod() {
+        buildWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityPractice.this,ActivityBuildWord.class);
+                startActivity(intent);
+            }
+        });
         imgPaint_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +76,7 @@ public class ActivityPractice extends AppCompatActivity {
         homeWork = findViewById(R.id.homeWork);
         imgback = findViewById(R.id.imgBack);
         findInSentence = findViewById(R.id.find_into_sentence);
+        buildWord = findViewById(R.id.build_word);
 
     }
 }

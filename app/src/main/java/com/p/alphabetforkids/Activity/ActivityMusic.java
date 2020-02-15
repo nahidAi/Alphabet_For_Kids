@@ -3,6 +3,7 @@ package com.p.alphabetforkids.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ import com.p.alphabetforkids.R;
 public class ActivityMusic extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     private int Id;
-    ImageView imgToolbarBack;
+    ImageView imgToolbarBack,imgMyHome;
     private Button btnMusicText;
     private TextView txtMusic;
     private Boolean isVisible = true;
@@ -263,10 +264,37 @@ public class ActivityMusic extends AppCompatActivity {
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
+            case 81:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_kha);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 82:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_oo_estesva);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 83:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ooo);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
         }
     }
 
     public void findView_onClick() {
+        imgMyHome = findViewById(R.id.imgMyHome);
+        imgMyHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.stop();
+                Intent intent = new Intent(ActivityMusic.this, ActivityAllAlphabet.class);
+                startActivity(intent);
+            }
+        });
         txtMusic = findViewById(R.id.txtMusic);
 
         imgToolbarBack = findViewById(R.id.imageToolbarBack);
@@ -648,13 +676,35 @@ public class ActivityMusic extends AppCompatActivity {
               txtMusic.setText("من (اُ) اول هستم   قد بلندی دارم\n" +
                       "شکل قشنگی دارم  در اولم در اول\n" +
                       "در اولم بچه ها با یک نشان زیبا\n" +
-                      "دوستم (–ُ) غیر اول  هیچوقت نمیاد اول\n" +
+                      "دوستم ( –ُ) غیر اول  هیچوقت نمیاد اول\n" +
                       "چون که کمی ناقلاست  همش سوار حرفاست\n");
                 break;
             case 80:
                txtMusic.setText("ــّـ (تشدید)   وقتی دو حرف با هم باشه  اولی بی صدا باشه دومی با صدا باشه\n" +
                        "\n" +
                        "اولی رو بر می داریم   به جاش یه تشدید میزاریم\n");
+                break;
+            case 81:
+                txtMusic.setText("با هم هستیم  سه نفر صدا داریم ،دو نفر\n" +
+                        "من که این شکلی \"و\" هستم در وسط ها نشستم\n" +
+                        "نوشته می شوم من خوانده نمیشوم من\n" +
+                        "در خواهر و خواب هستم در تخت خواب نشستم\n" +
+                        "در هر جایی که هستم من بی صدا نشستم\n");
+                break;
+            case 82:
+                txtMusic.setText("آهای آهای بچه ها  از جای خود زود پاشید\n" +
+                        "هر جا که من رو دیدید خیلی مواظب باشید\n" +
+                        "گول نخورید به شکلم شبیه واو یا اویم\n" +
+                        "درباره ی صدام هم  می خوام برات بگویم\n" +
+                        "من صدای اُ هستم از هر اُیی  جدایم\n" +
+                        "در خود و نوک  یا خورشید  این شکلی من می آیم\n");
+                break;
+            case 83:
+                txtMusic.setText("او اولّم  او اوّل   اوّل فقط می آیم\n" +
+                        "خوب میدونی شبیه  گرگ می مونه صدایم\n" +
+                        "امّا  و  غیر اوّل   صداش شبیه من هست\n" +
+                        "مثل من او عصایی ندارد هرگز به دست\n" +
+                        "او مثل توت و آلو  او آخر زردآلو\n");
                 break;
         }
     }

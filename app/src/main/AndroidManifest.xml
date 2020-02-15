@@ -15,12 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ActivityFindIntoSentence">
-
-
-
-
-        </activity>
+        <activity android:name=".Activity.ActivityBuildWord"></activity>
+        <activity android:name=".Activity.ActivityFindIntoSentence"></activity>
         <activity android:name=".Activity.ActivityHomeWork" />
         <activity
             android:name=".Activity.ActivityPaint"
@@ -40,14 +36,11 @@
         <activity
             android:name=".WellcomActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
     </application>
 

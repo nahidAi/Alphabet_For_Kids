@@ -224,6 +224,18 @@ public class ActivityDetails extends AppCompatActivity {
                 mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.tashdid);
                 mediaPlayer.start();
                 break;
+            case 81:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kha);
+                mediaPlayer.start();
+                break;
+            case 82:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.oo);
+                mediaPlayer.start();
+                break;
+            case 83:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ooo);
+                mediaPlayer.start();
+                break;
 
         }
 

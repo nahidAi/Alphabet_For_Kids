@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,12 +21,16 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
     private ImageButton currPaint, drawBtn, eraseBtn, undoBtn;
     private float smallBrush, mediumBrush;
     private int id;
-    ImageView imgback;
+    ImageView imgback,imgMyHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_work);
+
+        //فول اسکرین کردن صفحه
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //   گرفتن ایدی
         Bundle bundle = getIntent().getExtras();
@@ -35,6 +41,14 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        imgMyHome = findViewById(R.id.imgMyHome);
+        imgMyHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityHomeWork.this, ActivityAllAlphabet.class);
+                startActivity(intent);
             }
         });
 
@@ -263,6 +277,15 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
                 break;
             case 80:
                 drawView.setBackgroundResource(R.drawable.h_tashdid);
+                break;
+            case 81:
+                drawView.setBackgroundResource(R.drawable.h_kha);
+                break;
+            case 82:
+                drawView.setBackgroundResource(R.drawable.h_oo);
+                break;
+            case 83:
+                drawView.setBackgroundResource(R.drawable.h_ooo);
                 break;
         }
     }
