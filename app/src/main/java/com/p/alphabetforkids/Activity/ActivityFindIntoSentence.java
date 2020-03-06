@@ -142,118 +142,118 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 changeWordsFor_b();
                 break;
             case 3:
-                changeWordsFor_p();
-                break;
-            case 4:
-                changeWordsFor_t();
-                break;
-            case 5:
-                changeWordsFor_ccc();
-                break;
-            case 6:
-                changeWordsFor_j();
-                break;
-            case 7:
-                changeWordsFor_ch();
-                break;
-            case 8:
-                changeWordsFor_h();
-                break;
-            case 9:
-                changeWordsFor_kh();
-                break;
-            case 10:
-                changeWordsFor_d();
-                break;
-            case 11:
-                changeWordsFor_zal();
-                break;
-            case 12:
-                changeWordsFor_r();
-                break;
-            case 13:
-                changeWordsFor_z();
-                break;
-            case 14:
-                changeWordsFor_zh();
-                break;
-            case 15:
-                changeWordsFor_sin();
-                break;
-            case 16:
-                changeWordsFor_shin();
-                break;
-            case 17:
-                changeWordsFor_sad();
-                break;
-            case 18:
-                changeWordsFor_zad();
-                break;
-            case 19:
-                changeWordsFor_ta();
-                break;
-            case 20:
-                changeWordsFor_za();
-                break;
-            case 21:
-                changeWordsFor_ein();
-                break;
-            case 22:
-                changeWordsFor_ghein();
-                break;
-            case 23:
-                changeWordsFor_f();
-                break;
-            case 67:
-                changeWordsFor_gh();
-                break;
-            case 68:
-                changeWordsFor_k();
-                break;
-            case 69:
-                changeWordsFor_ghaf();
-                break;
-            case 70:
-                changeWordsFor_lam();
-                break;
-            case 71:
-                changeWordsFor_m();
-                break;
-            case 72:
-                changeWordsFor_n();
-                break;
-            case 73:
-                changeWordsFor_v();
-                break;
-            case 74:
-                changeWordsFor_ha();
-                break;
-            case 75:
-                changeWordsFor_i();
-                break;
-            case 76:
-                changeWordsFor_ei();
-                break;
-            case 77:
                 changeWordsFor_aa();
                 break;
-            case 78:
+            case 4:
+                changeWordsFor_d();
+                break;
+            case 5:
+                changeWordsFor_m();
+                break;
+            case 6:
+                changeWordsFor_sin();
+                break;
+            case 7:
+                //changeWordsFor_ooo();
+                break;
+            case 8:
+                changeWordsFor_t();
+                break;
+            case 9:
+                changeWordsFor_r();
+                break;
+            case 10:
+                changeWordsFor_n();
+                break;
+            case 11:
+                changeWordsFor_ei();
+                break;
+            case 12:
+                changeWordsFor_z();
+                break;
+            case 13:
                 changeWordsFor_ea();
                 break;
-            case 79:
+            case 14:
+                changeWordsFor_shin();
+                break;
+            case 15:
+                changeWordsFor_i();
+                break;
+            case 16:
                 changeWordsFor_o();
                 break;
-            case 80:
-                changeWordsFor_tashdid();
+            case 17:
+                changeWordsFor_k();
                 break;
-            case 81:
-                changeWordsFor_kha();
+            case 18:
+                changeWordsFor_v();
                 break;
-            case 82:
+            case 19:
+                changeWordsFor_p();
+                break;
+            case 20:
+                changeWordsFor_ghaf();
+                break;
+            case 21:
+                changeWordsFor_f();
+                break;
+            case 22:
+                changeWordsFor_kh();
+                break;
+            case 23:
+                changeWordsFor_gh();
+                break;
+            case 67:
+                changeWordsFor_lam();
+                break;
+            case 68:
+                changeWordsFor_j();
+                break;
+            case 69:
                 //changeWordsFor_oo();
                 break;
+            case 70:
+                changeWordsFor_ha();
+                break;
+            case 71:
+                changeWordsFor_ch();
+                break;
+            case 72:
+                changeWordsFor_zh();
+                break;
+            case 73:
+                changeWordsFor_kha();
+                break;
+            case 74:
+                changeWordsFor_tashdid();
+                break;
+            case 75:
+                changeWordsFor_sad();
+                break;
+            case 76:
+                changeWordsFor_zal();
+                break;
+            case 77:
+                changeWordsFor_ein();
+                break;
+            case 78:
+                changeWordsFor_ccc();
+                break;
+            case 79:
+                changeWordsFor_h();
+                break;
+            case 80:
+                changeWordsFor_za();
+                break;
+            case 81:
+                changeWordsFor_ta();
+                break;
+            case 82:
+                changeWordsFor_ghein();
+                break;
             case 83:
-               // changeWordsFor_ooo();
+               changeWordsFor_za();
                 break;
 
 

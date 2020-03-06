@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    tools:context=".Activity.ActivitySoundAndSign">
+    <include layout="@layout/toolbar_5" />
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:id="@+id/lnr_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_ei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/click2"
+                android:padding="2dp"
+                android:text="ایـ ی ی ای ‍"
+                android:textStyle="bold"
+                android:textSize="19dp" />
+
+            <Button
+                android:id="@+id/btn_ooo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/click2"
+                android:text="او  و‍‍"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btn_aa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/click2"
+                android:text="اَ   َ"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btn_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/click2"
+                android:text="آ  ا"
+                android:textSize="30dp" />
+
+
+            <ImageView
+                android:id="@+id/imgWords"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:src="@drawable/ww" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lnr_result4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="1dp"
+                android:background="#D684E4"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_result4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/click4"
+                    android:text="" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnr_result3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#D684E4"
+                android:layout_marginLeft="1dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_result3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/click4"
+                    android:text="" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnr_result2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#D684E4"
+                android:layout_marginLeft="1dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_result2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/click4"
+                    android:text="" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnr_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#D684E4"
+                android:layout_marginLeft="1dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/click4"
+                    android:text="" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/click2"
+                android:text="بـ  ب "
+                android:textSize="30dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:id="@+id/lnr_all_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnr_top"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_option4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/click4"
+            android:text="بیـ بی"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btn_option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/click4"
+            android:text="بو"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btn_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/click4"
+            android:text="با"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btn_option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/click4"
+            android:text="بـَ"
+            android:textSize="30dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/click4"
+            android:text="با"
+            android:textSize="30dp"
+            android:visibility="invisible"
+            />
+
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/lnr_renew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+
+            >
+
+            <ImageView
+                android:id="@+id/go_left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/back_leftt" />
+            <ImageView
+                android:id="@+id/go_right"
+                android:layout_alignParentRight="true"
+                android:layout_width="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="50dp"
+                android:src="@drawable/back_right" />
+
+            <Button
+                android:id="@+id/btnReNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/click_music_button"
+                android:padding="10dp"
+                android:layout_centerHorizontal="true"
+                android:text="دوباره تمرین کن "
+                android:textColor="@color/White"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

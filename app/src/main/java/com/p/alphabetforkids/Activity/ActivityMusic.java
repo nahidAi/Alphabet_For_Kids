@@ -55,229 +55,229 @@ public class ActivityMusic extends AppCompatActivity {
                 mediaPlayer.start();
                 break;
             case 3:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_p);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 4:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_t);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 5:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ccc);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 6:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_j);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 7:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ch);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 8:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_h);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 9:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_kh);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 10:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_d);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 11:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zal);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 12:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_r);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 13:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_z);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 14:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zh);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 15:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_c);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 16:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_sh);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 17:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_sad);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 18:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zad);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 19:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_t);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 20:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_za);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 21:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ain);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 22:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ghein);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 23:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_f);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 67:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_gh);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 68:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_k);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 69:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ghaf);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 70:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_l);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 71:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_m);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 72:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_n);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 73:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_v);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 74:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ha);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 75:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_i);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 76:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ei);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.setVolume(100,100);
-                mediaPlayer.start();
-                break;
-            case 77:
                 mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_aa);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
-            case 78:
+            case 4:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_d);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 5:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_m);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 6:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_c);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 7:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ooo);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 8:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_t);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 9:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_r);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 10:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_n);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 11:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ei);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 12:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_z);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 13:
                 mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ea);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
-            case 79:
+            case 14:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_sh);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 15:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_i);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 16:
                 mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_o);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
-            case 80:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_tashdid);
+            case 17:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_k);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
-            case 81:
+            case 18:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_v);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 19:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_p);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 20:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ghaf);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 21:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_f);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 22:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_kh);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 23:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_gh);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 67:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_l);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 68:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_j);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 69:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.oo);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 70:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ha);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 71:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ch);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 72:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zh);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 73:
                 mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_kha);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
+            case 74:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_tashdid);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 75:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_sad);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 76:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zal);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 77:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ain);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 78:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ccc);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 79:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_h);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 80:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_zad);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
+            case 81:
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ta);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.setVolume(100,100);
+                mediaPlayer.start();
+                break;
             case 82:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_oo_estesva);
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ghein);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
                 break;
             case 83:
-                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_ooo);
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.m_za);
                 mediaPlayer.setLooping(true);
                 mediaPlayer.setVolume(100,100);
                 mediaPlayer.start();
@@ -352,7 +352,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "دوستَم \" بـ \" غیر آخر\n" +
                        "هیچ وقت نمیاد آخر\n");
                 break;
-            case 3:
+            case 19:
                txtMusic.setText("(پ) که می گن من هستم درست شکل (ب) هستم\n" +
                        "\n" +
                        "سه نقطه گرد و کوچک پایین پام گذاشتم\n" +
@@ -363,13 +363,13 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "پدر بزرگ سوپ می پزه پروانه ها رو دوست داره\n");
                 break;
-            case 4:
+            case 8:
                txtMusic.setText("اسمت چیه (ب) هستی؟ نه نه من (ت) هستم\n" +
                        "من (ت) آخر هستم  بر روی خط نشستم\n" +
                        "با دوتا شکل زیبا  شبیه قایق هستم\n" +
                        "با (تـ ) غیرآخرم اول و وسط هستم\n");
                 break;
-            case 5:
+            case 78:
                txtMusic.setText("ما هستيم دو برادر غيرآخر و آخر\n" +
                        "\n" +
                        "با (س،ص) همصدا هستيم از آنها جدا هستيم\n" +
@@ -380,7 +380,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آخر باعث هستيم در مثلّث نشستيم\n");
                 break;
-            case 6:
+            case 68:
                txtMusic.setText("اسمت چیه ؟( خ ) هستی نه نه من ( ج ) هستم\n" +
                        "\n" +
                        " یه نقطه ی خیلی کوچک پایین پام گذاشتم\n" +
@@ -391,7 +391,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "با ( جـ ) غیر آخرم دو شکل زیبا هستم\n");
                 break;
-            case 7:
+            case 71:
                txtMusic.setText("چ اول چراغه دست نزنی چون داغه\n" +
                        "\n" +
                        "چراغ  رو سقف خونه  با سیمش آویزونه\n" +
@@ -402,7 +402,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "چراغ که روشن میشه ماه شب من میشه\n");
                 break;
-            case 8:
+            case 79:
                txtMusic.setText("ما دو نفر برادر غير آخر و آخر\n" +
                        "\n" +
                        "باهـ ـهـ ـه ه همصدا هستيم از آن ها جدا هستيم\n" +
@@ -413,7 +413,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "در آخر صبح هستيم در آخر صلح هستيم\n");
                 break;
-            case 9:
+            case 22:
                txtMusic.setText("ما دونفر برادر غیر آخر و آخر\n" +
                        "\n" +
                        "شکلی داریم خمیده صدا داریم کشیده\n" +
@@ -424,13 +424,13 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آمدیم آخر نخ نشستیم آخر یخ\n");
                 break;
-            case 10:
+            case 4:
                txtMusic.setText("(د) کمرش شکسته تنها رو خط نشسته\n" +
                        "کمری دولا داره اخلاقی زیبا داره\n" +
                        "آمده در همه جا کشیده نیست این صدا\n" +
                        "هر جا صدایش کنید فقط یه شکلی هستش\n");
                 break;
-            case 11:
+            case 76:
               txtMusic.setText("چه شکل خوبی دارم چه رنگ و رویی دارم\n" +
                       "\n" +
                       "با ز هم صدا هستم   کمری دولا دارم\n" +
@@ -441,7 +441,7 @@ public class ActivityMusic extends AppCompatActivity {
                       "\n" +
                       "آمده ایم در لذّت در لذیذ و در ذرّت\n");
                 break;
-            case 12:
+            case 9:
               txtMusic.setText("کودک خوب و نازم من سرسره می سازم\n" +
                       "\n" +
                       "شکل سرسره دارم در سر نقطه ندارم\n" +
@@ -450,7 +450,7 @@ public class ActivityMusic extends AppCompatActivity {
                       "\n" +
                       "در اول رام هستم در آخر ابر هستم\n");
                 break;
-            case 13:
+            case 12:
                txtMusic.setText("ز شیرین زَبونم یه شکل دارم مثل کَمونم\n" +
                        "\n" +
                        "شکل سُرسُره دارم در سَر یک نُقطه دارم\n" +
@@ -459,7 +459,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "هستم با  \" ر\" برابر ولی یک نقطه بر سَر\n");
                 break;
-            case 14:
+            case 72:
                txtMusic.setText("در ژاله و مَنيژه در ژاكت ژوليده\n" +
                        "\n" +
                        "در ژِله خوشمزه در گُل ها ی پژمرده\n" +
@@ -468,18 +468,18 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "در جدول الفبا داره ، يك شِكل تنها\n");
                 break;
-            case 15:
+            case 6:
                txtMusic.setText("(س) سه تا دندونه داره  آمده توی خونه \n" +
                        "سبد رو برمیداره  سیب توی اون میزاره\n" +
                        "من (س) آخر هستم همیشه آخر هستم\n" +
                        "دوستم (سـ) غیر آخر  هیچوقت نمیاد آخر\n");
                 break;
-            case 16:
+            case 14:
                 txtMusic.setText("(ش) سه تا دندونه داره  بالاش سه تا نقطه داره\n" +
                         "(شـ) غیرآخر (ش) آخر   هستن دوتا برادر\n" +
                         "(شـ)غیرآخر در شکلات  (ش) آخر در کاسه آش  \n");
                 break;
-            case 17:
+            case 75:
                 txtMusic.setText("صبح که از خواب پا میشم مثل یه گل وا میشم\n" +
                         "\n" +
                         "صورتم را می شویم تا که تمیز و ناز بشم\n" +
@@ -492,7 +492,7 @@ public class ActivityMusic extends AppCompatActivity {
                         "\n" +
                         "در صابون و قرص هستیم  دو جای مخصوص هستیم\n");
                 break;
-            case 18:
+            case 80:
                txtMusic.setText("ما هستيم دو برادر غير آخر و آخر\n" +
                        "\n" +
                        "با(ز-ذ)همصدا هستيم ازآن ها جدا هستيم\n" +
@@ -501,7 +501,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "نشسته ايم در قاضي  آمده ايم در رياضي\n");
                 break;
-            case 19:
+            case 81:
               txtMusic.setText("\n" +
                       "بچّه ها من (طا) هستم  با(تـ ت)همصدا هستم\n" +
                       "\n" +
@@ -513,7 +513,7 @@ public class ActivityMusic extends AppCompatActivity {
                       "\n" +
                       "من هستم وسط سطل  در خط و طوطي و طبل\n");
                 break;
-            case 20:
+            case 83:
                txtMusic.setText("بچّه ها من ظا هستم  با ز همصدا هستم\n" +
                        "\n" +
                        "يك شكل دارم بچّه ها در همه جا مي آيم\n" +
@@ -522,7 +522,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آخر خداحافظ\n");
                 break;
-            case 21:
+            case 77:
                txtMusic.setText("(عـ) عين غير آخرم من  اوّل و وسط ،نشستم\n" +
                        "\n" +
                        "مرا ببين در عاقل در مزرعه و عادل\n" +
@@ -539,7 +539,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آمده ام،در شروع نشسته ام در طلوع\n");
                 break;
-            case 22:
+            case 82:
                txtMusic.setText("ما چهار تا غين هستيم كنار هم نشستيم\n" +
                        "\n" +
                        "هم تنهاييم ،هم چسبان مهربانيم و خندان\n" +
@@ -552,14 +552,14 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آمده ايم آخر باغ نشسته ایم  آخر داغ\n");
                 break;
-            case 23:
+            case 21:
                txtMusic.setText("فهمیدم و فهمیدم معلّم عزیزم\n" +
                        "بگو برام بدونم فکر کنم و بخونم\n" +
                        "این یکی غیر آخر با فکر میاد همیشه\n" +
                        "آهای آهای نگاه کن یه نقطه هم که روشه\n" +
                        "ف آخرشده خسته ببین آخر نشسته\n");
                 break;
-            case 67:
+            case 23:
                txtMusic.setText("ما دو نفر برادر غـیر آخـر و آخـر\n" +
                        "\n" +
                        "قد خمیده داریم درسر دو نقطه داریم\n" +
@@ -568,7 +568,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "ق آخر چه خسته توی اُتاق نشسته\n");
                 break;
-            case 68:
+            case 17:
                txtMusic.setText("من ک آخر هستم\n" +
                        "\n" +
                        "همیشه آخر هستم\n" +
@@ -585,12 +585,12 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "نشسته ام آخر ساک\n");
                 break;
-            case 69:
+            case 20:
                txtMusic.setText("من (گ) آخر هستم همیشه آخر هستم\n" +
                        "دوستم (گـ) غیرآخر هیچوقت نمیاد آخر\n" +
                        "در اول گوش هستم  آخر برگ نشستم \n");
                 break;
-            case 70:
+            case 67:
                txtMusic.setText("ل ل ل، ل هستم ،من ل آخرِ هستم\n" +
                        "\n" +
                        "آخر سال،آخر شال،آخر مال نشستم\n" +
@@ -599,19 +599,19 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "آخر گل،آخر كل،آخر سنبل نشستم\n");
                 break;
-            case 71:
+            case 5:
                txtMusic.setText("م م م هستم  من (م) آخر هستم\n" +
                        "آخر حرف پرچم  آخر امام هستم\n" +
                        "ما (مـ) غیرآخرم اول و وسط هستم\n" +
                        "به حرف بعد از خودم حتما باید بچسبم\n");
                 break;
-            case 72:
+            case 10:
                txtMusic.setText("ن ن ن هستم   مثل یه کاسه هستم\n" +
                        "نقطه ای گرد و کوچک بالای سر گذاشتم\n" +
                        "اول و آخرنان آمده ام نشسته ام\n" +
                        "با (نـ) غیر آخرم  اول و وسط هستم\n");
                 break;
-            case 73:
+            case 18:
                txtMusic.setText("یک شکل دارم, تنهایم\n" +
                        "\n" +
                        "کشیده است,صدایم\n" +
@@ -624,7 +624,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "درسرو نشستم آخر\n");
                 break;
-            case 74:
+            case 70:
                txtMusic.setText("ما،چهار تابرادَر\n" +
                        "\n" +
                        "وسط و غیر آخر\n" +
@@ -639,7 +639,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "کشیده است این صدا\n");
                 break;
-            case 75:
+            case 15:
                txtMusic.setText("من ی آخر هستم همیشه آخر هستم\n" +
                        "\n" +
                        "دوستم یـ غیر آخر هیچ وقت نمیاد آخر\n" +
@@ -648,7 +648,7 @@ public class ActivityMusic extends AppCompatActivity {
                        "\n" +
                        "دو نقطه دارم در پایین شکل من را خوب ببین\n");
                 break;
-            case 76:
+            case 11:
               txtMusic.setText("\n" +
                       "ما همگی (ایـ یـ ای ای) هستیم\n" +
                       "(ایـ) اولم (ایـ) اول اول ایران هستم\n" +
@@ -657,14 +657,14 @@ public class ActivityMusic extends AppCompatActivity {
                       "(ای) آخرم تنها و بی درد سرم\n" +
                       "آخر میام همیشه در آخر قهوه ای  چسبیده هم نمیشه\n");
                 break;
-            case 77:
+            case 3:
                txtMusic.setText("(اَ) در اولم همیشه جایم عوض نمیشه\n" +
                        "قد درازی دارم کلاه رو کج میزارم\n" +
                        "آمده ام در اَنبار  اول اَبر و اَنار\n" +
                        "سواری می خورد او  -َ دوم کوچولو\n" +
                        "آمده در برادَر  نشسته در بَرابَر\n");
                 break;
-            case 78:
+            case 13:
                txtMusic.setText("ما همگی ( اِ –ِ  ـه ه) هستیم\n" +
                        "(اِ ) اولم  (اِ)  اول    همیشه در اولم\n" +
                        "(-ِ )غیر اولم من اما کمی ناقلام همیشه زیر حرفام\n" +
@@ -672,26 +672,26 @@ public class ActivityMusic extends AppCompatActivity {
                        "(ه )آخرم تنها و بی دردسرم\n" +
                        "آخر میام همیشه  چسبیده هم نمیشه \n");
                 break;
-            case 79:
+            case 16:
               txtMusic.setText("من (اُ) اول هستم   قد بلندی دارم\n" +
                       "شکل قشنگی دارم  در اولم در اول\n" +
                       "در اولم بچه ها با یک نشان زیبا\n" +
                       "دوستم ( –ُ) غیر اول  هیچوقت نمیاد اول\n" +
                       "چون که کمی ناقلاست  همش سوار حرفاست\n");
                 break;
-            case 80:
+            case 74:
                txtMusic.setText("ــّـ (تشدید)   وقتی دو حرف با هم باشه  اولی بی صدا باشه دومی با صدا باشه\n" +
                        "\n" +
                        "اولی رو بر می داریم   به جاش یه تشدید میزاریم\n");
                 break;
-            case 81:
+            case 73:
                 txtMusic.setText("با هم هستیم  سه نفر صدا داریم ،دو نفر\n" +
                         "من که این شکلی \"و\" هستم در وسط ها نشستم\n" +
                         "نوشته می شوم من خوانده نمیشوم من\n" +
                         "در خواهر و خواب هستم در تخت خواب نشستم\n" +
                         "در هر جایی که هستم من بی صدا نشستم\n");
                 break;
-            case 82:
+            case 69:
                 txtMusic.setText("آهای آهای بچه ها  از جای خود زود پاشید\n" +
                         "هر جا که من رو دیدید خیلی مواظب باشید\n" +
                         "گول نخورید به شکلم شبیه واو یا اویم\n" +
@@ -699,7 +699,7 @@ public class ActivityMusic extends AppCompatActivity {
                         "من صدای اُ هستم از هر اُیی  جدایم\n" +
                         "در خود و نوک  یا خورشید  این شکلی من می آیم\n");
                 break;
-            case 83:
+            case 7:
                 txtMusic.setText("او اولّم  او اوّل   اوّل فقط می آیم\n" +
                         "خوب میدونی شبیه  گرگ می مونه صدایم\n" +
                         "امّا  و  غیر اوّل   صداش شبیه من هست\n" +

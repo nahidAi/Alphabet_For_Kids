@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2979FF"
+    android:layoutDirection="ltr"
     tools:context=".Activity.ActivityFindIntoSentence">
 
 
@@ -83,6 +84,7 @@
                 android:padding="20dp"
                 android:scrollbarSize="4dp"
                 android:scrollbarStyle="outsideOverlay"
+                android:fadeScrollbars="false"
                 android:scrollbarThumbVertical="@color/light_red"
                 android:scrollbars="vertical"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -102,16 +104,16 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/txtReNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/click_music_button"
-        android:padding="12dp"
-        android:text="دوباره تمرین کن "
-        android:textColor="@color/White"
-        android:textSize="20dp" />
+    android:id="@+id/txtReNew"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/click_music_button"
+    android:padding="12dp"
+    android:text="دوباره تمرین کن "
+    android:textColor="@color/White"
+    android:textSize="20dp" />
 
 </RelativeLayout>

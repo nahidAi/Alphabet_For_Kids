@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFCCCCCC"
+    android:layoutDirection="ltr"
     tools:context=".Activity.ActivityPaint">
     <include layout="@layout/toolbar_3"/>
 <LinearLayout

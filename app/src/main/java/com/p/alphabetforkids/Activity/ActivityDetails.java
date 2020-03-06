@@ -85,155 +85,155 @@ public class ActivityDetails extends AppCompatActivity {
                 mediaPlayer.start();
                 break;
             case 3:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.p);
-                mediaPlayer.start();
-                break;
-            case 4:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.t);
-                mediaPlayer.start();
-                break;
-            case 5:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ccc);
-                mediaPlayer.start();
-                break;
-            case 6:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.j);
-                mediaPlayer.start();
-                break;
-            case 7:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ch);
-                mediaPlayer.start();
-                break;
-            case 8:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.h);
-                mediaPlayer.start();
-                break;
-            case 9:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kh);
-                mediaPlayer.start();
-                break;
-            case 10:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.d);
-                mediaPlayer.start();
-                break;
-            case 11:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zal);
-                mediaPlayer.start();
-                break;
-            case 12:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.r);
-                mediaPlayer.start();
-                break;
-            case 13:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.z);
-                mediaPlayer.start();
-                break;
-            case 14:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zh);
-                mediaPlayer.start();
-                break;
-            case 15:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sin);
-                mediaPlayer.start();
-                break;
-            case 16:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sh);
-                mediaPlayer.start();
-                break;
-            case 17:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sad);
-                mediaPlayer.start();
-                break;
-            case 18:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zad);
-                mediaPlayer.start();
-                break;
-            case 19:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ta);
-                mediaPlayer.start();
-                break;
-            case 20:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.za);
-                mediaPlayer.start();
-                break;
-            case 21:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ain);
-                mediaPlayer.start();
-                break;
-            case 22:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghain);
-                mediaPlayer.start();
-                break;
-            case 23:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.f);
-                mediaPlayer.start();
-                break;
-            case 67:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.gh);
-                mediaPlayer.start();
-                break;
-            case 68:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.k);
-                mediaPlayer.start();
-                break;
-            case 69:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghaf);
-                mediaPlayer.start();
-                break;
-            case 70:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.lam);
-                mediaPlayer.start();
-                break;
-            case 71:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.m);
-                mediaPlayer.start();
-                break;
-            case 72:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.non);
-                mediaPlayer.start();
-                break;
-            case 73:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.v);
-                mediaPlayer.start();
-                break;
-            case 74:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.he4);
-                mediaPlayer.start();
-                break;
-            case 75:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.i);
-                mediaPlayer.start();
-                break;
-            case 76:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ei);
-                mediaPlayer.start();
-                break;
-            case 77:
                 mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.aa);
                 mediaPlayer.start();
                 break;
-            case 78:
+            case 4:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.d);
+                mediaPlayer.start();
+                break;
+            case 5:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.m);
+                mediaPlayer.start();
+                break;
+            case 6:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sin);
+                mediaPlayer.start();
+                break;
+            case 7:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ooo);
+                mediaPlayer.start();
+                break;
+            case 8:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.t);
+                mediaPlayer.start();
+                break;
+            case 9:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.r);
+                mediaPlayer.start();
+                break;
+            case 10:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.non);
+                mediaPlayer.start();
+                break;
+            case 11:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ei);
+                mediaPlayer.start();
+                break;
+            case 12:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.z);
+                mediaPlayer.start();
+                break;
+            case 13:
                 mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ea);
                 mediaPlayer.start();
                 break;
-            case 79:
+            case 14:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sh);
+                mediaPlayer.start();
+                break;
+            case 15:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.i);
+                mediaPlayer.start();
+                break;
+            case 16:
                 mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.o);
                 mediaPlayer.start();
                 break;
-            case 80:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.tashdid);
+            case 17:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.k);
                 mediaPlayer.start();
                 break;
-            case 81:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kha);
+            case 18:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.v);
                 mediaPlayer.start();
                 break;
-            case 82:
+            case 19:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.p);
+                mediaPlayer.start();
+                break;
+            case 20:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghaf);
+                mediaPlayer.start();
+                break;
+            case 21:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.f);
+                mediaPlayer.start();
+                break;
+            case 22:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kh);
+                mediaPlayer.start();
+                break;
+            case 23:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.gh);
+                mediaPlayer.start();
+                break;
+            case 67:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.lam);
+                mediaPlayer.start();
+                break;
+            case 68:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.j);
+                mediaPlayer.start();
+                break;
+            case 69:
                 mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.oo);
                 mediaPlayer.start();
                 break;
+            case 70:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.he4);
+                mediaPlayer.start();
+                break;
+            case 71:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ch);
+                mediaPlayer.start();
+                break;
+            case 72:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zh);
+                mediaPlayer.start();
+                break;
+            case 73:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.kha);
+                mediaPlayer.start();
+                break;
+            case 74:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.tashdid);
+                mediaPlayer.start();
+                break;
+            case 75:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.sad);
+                mediaPlayer.start();
+                break;
+            case 76:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zal);
+                mediaPlayer.start();
+                break;
+            case 77:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ain);
+                mediaPlayer.start();
+                break;
+            case 78:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ccc);
+                mediaPlayer.start();
+                break;
+            case 79:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.h);
+                mediaPlayer.start();
+                break;
+            case 80:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.zad);
+                mediaPlayer.start();
+                break;
+            case 81:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ta);
+                mediaPlayer.start();
+                break;
+            case 82:
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ghain);
+                mediaPlayer.start();
+                break;
             case 83:
-                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.ooo);
+                mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.za);
                 mediaPlayer.start();
                 break;
 
@@ -577,6 +577,7 @@ public class ActivityDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityDetails.this, ActivityPractice.class);
                 intent.putExtra("id",myId+"");
+                intent.putExtra("row",myRow+"");
                 startActivity(intent);
             }
         });

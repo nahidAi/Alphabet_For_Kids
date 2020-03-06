@@ -15,8 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.ActivityBuildWord"></activity>
-        <activity android:name=".Activity.ActivityFindIntoSentence"></activity>
+        <activity android:name=".Activity.ActivitySoundAndSign"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activity.ActivityFindIntoSentence" />
         <activity android:name=".Activity.ActivityHomeWork" />
         <activity
             android:name=".Activity.ActivityPaint"

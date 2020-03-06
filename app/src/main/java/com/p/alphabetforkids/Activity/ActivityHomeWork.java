@@ -174,118 +174,118 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
                 drawView.setBackgroundResource(R.drawable.h_b);
                 break;
             case 3:
-                drawView.setBackgroundResource(R.drawable.h_p);
-                break;
-            case 4:
-                drawView.setBackgroundResource(R.drawable.h_t);
-                break;
-            case 5:
-                drawView.setBackgroundResource(R.drawable.h_ccc);
-                break;
-            case 6:
-                drawView.setBackgroundResource(R.drawable.h_j);
-                break;
-            case 7:
-                drawView.setBackgroundResource(R.drawable.h_ch);
-                break;
-            case 8:
-                drawView.setBackgroundResource(R.drawable.h_h);
-                break;
-            case 9:
-                drawView.setBackgroundResource(R.drawable.h_kh);
-                break;
-            case 10:
-                drawView.setBackgroundResource(R.drawable.h_d);
-                break;
-            case 11:
-                drawView.setBackgroundResource(R.drawable.h_zal);
-                break;
-            case 12:
-                drawView.setBackgroundResource(R.drawable.h_r);
-                break;
-            case 13:
-                drawView.setBackgroundResource(R.drawable.h_z);
-                break;
-            case 14:
-                drawView.setBackgroundResource(R.drawable.h_zh);
-                break;
-            case 15:
-                drawView.setBackgroundResource(R.drawable.h_cin);
-                break;
-            case 16:
-                drawView.setBackgroundResource(R.drawable.h_shin);
-                break;
-            case 17:
-                drawView.setBackgroundResource(R.drawable.h_sad);
-                break;
-            case 18:
-                drawView.setBackgroundResource(R.drawable.h_zad);
-                break;
-            case 19:
-                drawView.setBackgroundResource(R.drawable.h_ta);
-                break;
-            case 20:
-                drawView.setBackgroundResource(R.drawable.h_za);
-                break;
-            case 21:
-                drawView.setBackgroundResource(R.drawable.h_ain);
-                break;
-            case 22:
-                drawView.setBackgroundResource(R.drawable.h_ghein);
-                break;
-            case 23:
-                drawView.setBackgroundResource(R.drawable.h_f);
-                break;
-            case 67:
-                drawView.setBackgroundResource(R.drawable.h_gh);
-                break;
-            case 68:
-                drawView.setBackgroundResource(R.drawable.h_kaf);
-                break;
-            case 69:
-                drawView.setBackgroundResource(R.drawable.h_ghaf);
-                break;
-            case 70:
-                drawView.setBackgroundResource(R.drawable.h_lam);
-                break;
-            case 71:
-                drawView.setBackgroundResource(R.drawable.h_m);
-                break;
-            case 72:
-                drawView.setBackgroundResource(R.drawable.h_non);
-                break;
-            case 73:
-                drawView.setBackgroundResource(R.drawable.h_v);
-                break;
-            case 74:
-                drawView.setBackgroundResource(R.drawable.h_ha);
-                break;
-            case 75:
-                drawView.setBackgroundResource(R.drawable.h_i);
-                break;
-            case 76:
-                drawView.setBackgroundResource(R.drawable.h_ei);
-                break;
-            case 77:
                 drawView.setBackgroundResource(R.drawable.h_aa);
                 break;
-            case 78:
+            case 4:
+                drawView.setBackgroundResource(R.drawable.h_d);
+                break;
+            case 5:
+                drawView.setBackgroundResource(R.drawable.h_m);
+                break;
+            case 6:
+                drawView.setBackgroundResource(R.drawable.h_cin);
+                break;
+            case 7:
+                drawView.setBackgroundResource(R.drawable.h_ooo);
+                break;
+            case 8:
+                drawView.setBackgroundResource(R.drawable.h_t);
+                break;
+            case 9:
+                drawView.setBackgroundResource(R.drawable.h_r);
+                break;
+            case 10:
+                drawView.setBackgroundResource(R.drawable.h_non);
+                break;
+            case 11:
+                drawView.setBackgroundResource(R.drawable.h_ei);
+                break;
+            case 12:
+                drawView.setBackgroundResource(R.drawable.h_z);
+                break;
+            case 13:
                 drawView.setBackgroundResource(R.drawable.h_ea);
                 break;
-            case 79:
+            case 14:
+                drawView.setBackgroundResource(R.drawable.h_shin);
+                break;
+            case 15:
+                drawView.setBackgroundResource(R.drawable.h_i);
+                break;
+            case 16:
                 drawView.setBackgroundResource(R.drawable.h_o);
                 break;
-            case 80:
-                drawView.setBackgroundResource(R.drawable.h_tashdid);
+            case 17:
+                drawView.setBackgroundResource(R.drawable.h_kaf);
                 break;
-            case 81:
-                drawView.setBackgroundResource(R.drawable.h_kha);
+            case 18:
+                drawView.setBackgroundResource(R.drawable.h_v);
                 break;
-            case 82:
+            case 19:
+                drawView.setBackgroundResource(R.drawable.h_p);
+                break;
+            case 20:
+                drawView.setBackgroundResource(R.drawable.h_ghaf);
+                break;
+            case 21:
+                drawView.setBackgroundResource(R.drawable.h_f);
+                break;
+            case 22:
+                drawView.setBackgroundResource(R.drawable.h_kh);
+                break;
+            case 23:
+                drawView.setBackgroundResource(R.drawable.h_gh);
+                break;
+            case 67:
+                drawView.setBackgroundResource(R.drawable.h_lam);
+                break;
+            case 68:
+                drawView.setBackgroundResource(R.drawable.h_j);
+                break;
+            case 69:
                 drawView.setBackgroundResource(R.drawable.h_oo);
                 break;
+            case 70:
+                drawView.setBackgroundResource(R.drawable.h_ha);
+                break;
+            case 71:
+                drawView.setBackgroundResource(R.drawable.h_ch);
+                break;
+            case 72:
+                drawView.setBackgroundResource(R.drawable.h_zh);
+                break;
+            case 73:
+                drawView.setBackgroundResource(R.drawable.h_kha);
+                break;
+            case 74:
+                drawView.setBackgroundResource(R.drawable.h_tashdid);
+                break;
+            case 75:
+                drawView.setBackgroundResource(R.drawable.h_sad);
+                break;
+            case 76:
+                drawView.setBackgroundResource(R.drawable.h_zal);
+                break;
+            case 77:
+                drawView.setBackgroundResource(R.drawable.h_ain);
+                break;
+            case 78:
+                drawView.setBackgroundResource(R.drawable.h_ccc);
+                break;
+            case 79:
+                drawView.setBackgroundResource(R.drawable.h_h);
+                break;
+            case 80:
+                drawView.setBackgroundResource(R.drawable.h_za);
+                break;
+            case 81:
+                drawView.setBackgroundResource(R.drawable.h_ta);
+                break;
+            case 82:
+                drawView.setBackgroundResource(R.drawable.h_ghein);
+                break;
             case 83:
-                drawView.setBackgroundResource(R.drawable.h_ooo);
+                drawView.setBackgroundResource(R.drawable.h_za);
                 break;
         }
     }
