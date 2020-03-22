@@ -6,6 +6,8 @@ import androidx.core.content.ContextCompat;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -24,7 +26,8 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     private DrawingView drawView;
     private ImageButton currPaint, drawBtn,eraseBtn,newBtn,saveBtn;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageView imgback;
+    private ImageView imgback,imgMyHome;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,32 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPaint.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 finish();
+            }
+        });
+
+        imgMyHome = findViewById(R.id.imgMyHome);
+        imgMyHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPaint.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPaint.this, ActivityAllAlphabet.class);
+                startActivity(intent);
             }
         });
 

@@ -21,7 +21,7 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
     private ImageButton currPaint, drawBtn, eraseBtn, undoBtn;
     private float smallBrush, mediumBrush;
     private int id;
-    ImageView imgback,imgMyHome;
+    ImageView imgback, imgMyHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,14 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityHomeWork.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 finish();
             }
         });
@@ -47,12 +55,18 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
         imgMyHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityHomeWork.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(ActivityHomeWork.this, ActivityAllAlphabet.class);
                 startActivity(intent);
             }
         });
-
-
 
 
         drawView = (DrawingView) findViewById(R.id.drawing);
@@ -164,10 +178,11 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
 
 
     }
+
     public void switchMethodForHomeWork() {
         switch (id) {
             case 1:
-               drawView.setBackgroundResource(R.drawable.h_a);
+                drawView.setBackgroundResource(R.drawable.h_a);
 
                 break;
             case 2:

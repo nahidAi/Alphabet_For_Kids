@@ -291,6 +291,14 @@ public class ActivityMusic extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaPlayer.stop();
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(ActivityMusic.this, ActivityAllAlphabet.class);
                 startActivity(intent);
             }
@@ -303,6 +311,15 @@ public class ActivityMusic extends AppCompatActivity {
             public void onClick(View v) {
                 mediaPlayer.stop();
                 finish();
+                mediaPlayer = MediaPlayer.create(ActivityMusic.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
             }
         });
         btnMusicText = findViewById(R.id.btnMusicText);

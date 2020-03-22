@@ -6,4 +6,6 @@
     <integer name="medium_size">20</integer>
     <dimen name="large_brush">30dp</dimen>
     <integer name="large_size">30</integer>
+    <dimen name="large_size">30dp</dimen>
+    <dimen name="medium_size">20dp</dimen>
 </resources>

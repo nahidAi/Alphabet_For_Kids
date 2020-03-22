@@ -3,21 +3,21 @@ package com.p.alphabetforkids.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.p.alphabetforkids.R;
 
 public class ActivityPractice extends AppCompatActivity {
-    ImageView imgPaint_2,homeWork, imgback,findInSentence, soundAndSign;
-    private  int myId;
-    private  int myRow;
+    ImageView imgPaint_2, homeWork, imgback, findInSentence, soundAndSign,readHistory,buildWord;
+    private int myId;
+    private int myRow;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +39,67 @@ public class ActivityPractice extends AppCompatActivity {
     }
 
     private void onClickMeThod() {
+        readHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPractice.this, ActivityReadHistory.class);
+                startActivity(intent);
+
+            }
+        });
+        buildWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPractice.this, ActivityBuildWord.class);
+                intent.putExtra("id", myId + "");
+                startActivity(intent);
+
+            }
+        });
         soundAndSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(ActivityPractice.this, ActivitySoundAndSign.class);
-                if (myId==1|myId==69|myId==73|myId==74){
+                if (myId == 1 | myId == 69 | myId == 73 | myId == 74) {
                     final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityPractice.this);
                     builder.setMessage("عزیزم این تمرین برای این حرف فعال نیست ");
                     builder.setCancelable(true);
                     builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                           builder.setCancelable(true);
+                            builder.setCancelable(true);
                         }
                     });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                   // Toast.makeText(ActivityPractice.this, "این تمرین برای سایر حروف طراحی شده است", Toast.LENGTH_SHORT).show();
-                }else {
-                    intent.putExtra("id",myId+"");
-                    intent.putExtra("row",myRow+"");
+                    // Toast.makeText(ActivityPractice.this, "این تمرین برای سایر حروف طراحی شده است", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent.putExtra("id", myId + "");
+                    intent.putExtra("row", myRow + "");
                     startActivity(intent);
                 }
 
@@ -67,29 +108,61 @@ public class ActivityPractice extends AppCompatActivity {
         imgPaint_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityPractice.this,ActivityPaint.class);
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPractice.this, ActivityPaint.class);
                 startActivity(intent);
             }
         });
         homeWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityPractice.this,ActivityHomeWork.class);
-                intent.putExtra("newId", myId+"");
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPractice.this, ActivityHomeWork.class);
+                intent.putExtra("newId", myId + "");
                 startActivity(intent);
             }
         });
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 finish();
             }
         });
         findInSentence.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(ActivityPractice.this, ActivityFindIntoSentence.class);
-                intent.putExtra("newId", myId+"");
+                intent.putExtra("newId", myId + "");
                 startActivity(intent);
             }
         });
@@ -101,6 +174,8 @@ public class ActivityPractice extends AppCompatActivity {
         imgback = findViewById(R.id.imgBack);
         findInSentence = findViewById(R.id.find_into_sentence);
         soundAndSign = findViewById(R.id.build_word);
+        buildWord = findViewById(R.id.biuldWord);
+        readHistory = findViewById(R.id.historyRead);
 
     }
 }

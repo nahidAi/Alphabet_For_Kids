@@ -92,12 +92,29 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
                 changeWordsFor_a();
 
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this,R.raw.practic);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
 
             }
         });
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 finish();
             }
         });
@@ -115,6 +132,15 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                     Intent intent = new Intent(ActivityFindIntoSentence.this, ActivityAllAlphabet.class);
                     startActivity(intent);
                 }
+
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
 
 
             }
@@ -154,7 +180,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 changeWordsFor_sin();
                 break;
             case 7:
-                //changeWordsFor_ooo();
+                changeWordsFor_ooo();
                 break;
             case 8:
                 changeWordsFor_t();
@@ -211,7 +237,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 changeWordsFor_j();
                 break;
             case 69:
-                //changeWordsFor_oo();
+                changeWordsFor_oo();
                 break;
             case 70:
                 changeWordsFor_ha();
@@ -244,7 +270,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 changeWordsFor_h();
                 break;
             case 80:
-                changeWordsFor_za();
+                changeWordsFor_zad();
                 break;
             case 81:
                 changeWordsFor_ta();
@@ -23003,7 +23029,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
     }
     public void changeWordsFor_ea() {
-        headerText.setText("اِ  ِ");
+        headerText.setText("اِ  ِ ه ـه");
         text ="اِمسال مَن کِتاب های زیادی هِدیه گِرِفتَم.\n" +
                 "سَمانه ژِله وَ میوه دوست دارَد.\n" ;
         spannableString = new SpannableString(text);
@@ -25179,7 +25205,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 23, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 34, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25241,7 +25267,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 31, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 58, 60, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25302,7 +25328,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 41, 42, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 74, 76, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25363,7 +25389,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 49, 50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 96, 98, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
         ////////////////////////////////////////////////////////////////////////////
@@ -25430,7 +25456,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 64, 66, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 120, 122, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25490,7 +25516,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 78, 79, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 133, 135, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25550,7 +25576,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 87, 88, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 155, 157, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
@@ -25609,7 +25635,1319 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 if (this.clicked) ds.setColor(Color.RED);
             }
         };
-        spannableString.setSpan(clickableSpan, 108, 109, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 181, 183, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+
+
+
+
+
+
+    }
+    public void changeWordsFor_ooo() {
+        headerText.setText(" او و");
+        text ="مَن آلو وَ زردآلو وَ گِردو،توت وَ چوب شور دوست دارَم.\n" +
+                "آهو زیبا اَست.\n" +
+                "او توپ بازی می کند.\n" ;
+
+        spannableString = new SpannableString(text);
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+
+                clicked = true;
+                view.invalidate();
+
+
+                if (a == false) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    a = true;
+
+
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.barikala);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    if (progressValue == 9) {
+                        mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                mp.release();
+                            }
+                        });
+
+                        gifImageView.setVisibility(View.VISIBLE);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                gifImageView.setVisibility(View.GONE);
+                            }
+                        }, 5000);
+
+
+                    }
+
+
+                }
+            }
+
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+
+        spannableString.setSpan(clickableSpan, 6, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+        //------------------------------------------------------------------------------------------
+
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (b == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    b = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 16, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.afarin);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                if (c == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    c = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 25, 26, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
+                if (d == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    d = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 28, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (f == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    f = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 35, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                if (j == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    j = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 39, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.aali);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (h == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    h = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 43, 44, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (k == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    k = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 56, 57, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (g == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    g = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 69, 71, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (l == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    l = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 73, 74, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+
+
+
+
+
+
+    }
+    public void changeWordsFor_oo() {
+        headerText.setText("و -->  ُ");
+        text ="خورشید در آسمان می درخشد.\n" +
+                "من جشن عید نوروز را دوست دارم.\n" +
+                "خودکار من آبی است.\n" +
+                "من هر روز صبحانه می خورم.\n" +
+                "مانتو،موج،خورشید،خودکار،نوزاد   صدای \"و\" دارند.\n" ;
+
+        spannableString = new SpannableString(text);
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+
+                clicked = true;
+                view.invalidate();
+
+
+                if (a == false) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    a = true;
+
+
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.barikala);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    if (progressValue == 9) {
+                        mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                        mediaPlayer.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                mp.release();
+                            }
+                        });
+
+                        gifImageView.setVisibility(View.VISIBLE);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                gifImageView.setVisibility(View.GONE);
+                            }
+                        }, 5000);
+
+
+                    }
+
+
+                }
+            }
+
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+
+        spannableString.setSpan(clickableSpan, 1, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+        //------------------------------------------------------------------------------------------
+
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (b == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    b = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 38, 39, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.afarin);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                if (c == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    c = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 58, 59, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
+                if (d == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    d = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 97, 98, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (f == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    f = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 106, 107, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                if (j == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    j = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 109, 110, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.aali);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (h == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    h = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 113, 114, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (k == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    k = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 120, 121, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (g == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    g = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 127, 128, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        textview.setText(spannableString);
+        textview.setMovementMethod(LinkMovementMethod.getInstance());
+        ////////////////////////////////////////////////////////////////////////////
+        clickableSpan = new ClickableSpan() {
+            boolean clicked = false;
+
+            @Override
+            public void onClick(@NonNull View view) {
+                clicked = true;
+                view.invalidate();
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.lip);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                if (l == false) {
+                    progressValue = sharedPreferences.getInt("progress_value", 0);
+                    seekBar.setProgress(progressValue + 1);
+
+                    sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("progress_value", progressValue + 1);
+                    editor.apply();
+                    l = true;
+
+                }
+                if (progressValue == 9) {
+                    mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.horaa);
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.release();
+                        }
+                    });
+                    gifImageView.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            gifImageView.setVisibility(View.GONE);
+                        }
+                    }, 5000);
+
+                }
+
+
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                if (this.clicked) ds.setColor(Color.RED);
+            }
+        };
+        spannableString.setSpan(clickableSpan, 140, 141, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());

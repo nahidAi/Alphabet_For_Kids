@@ -25,13 +25,13 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnRenew, btnOption3, btnResult3, btnResult4, btnOption4,
             btnResult5, btnOption5, btnOption6, btnResult6;
     private LinearLayout lnrResult, lnrResult2, lnrResult3, lnrResult4, lnrResult5, lnrResult6;
-    private MediaPlayer mediaPlayer;
     private ImageView imgBack, imgHome, imgGoRight, imgGoLeft;
     private int myId;
     private Handler handler;
     private View view;
     int myRow;
     int newId;
+    MediaPlayer mediaPlayer;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -193,6 +193,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption4.setText("زیـ  زی");
         } else if (myId == 13) {
             btnSign.setText("سـ س ");
+            btnSign.setTextSize(20);
             btnOption.setText("سا");
             btnOption2.setText("سـَ");
             btnOption3.setText("سو");
@@ -317,7 +318,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption6.setText("بـُ");
         } else if (myId == 70) {
             btnSign.setText("هـ ـهـ ـه ه");
-            btnSign.setTextSize(25);
+            btnSign.setTextSize(20);
             btnOption.setText("ها");
             btnOption2.setText("هـَ");
             btnOption3.setText("هو");
@@ -381,7 +382,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption6.setText("ذُ");
         } else if (myId == 77) {
             btnSign.setText("عـ ـعـ ـع ع");
-            btnSign.setTextSize(25);
+            btnSign.setTextSize(20);
             btnOption.setText("عا");
             btnOption2.setText("عـَ");
             btnOption3.setText("عو");
@@ -502,8 +503,18 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         imgGoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
                 if (myId == 67) {
-                    myId = myId - 44;
+                    myId = myId - 43;
                 }
                 if (myId == 70) {
                     myId = myId - 2;
@@ -551,8 +562,17 @@ public class ActivitySoundAndSign extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
                 if (myId == 23) {
-                    myId = myId + 44;
+                    myId = myId + 43;
                 }
                 if (myId == 68) {
                     myId = myId + 2;
@@ -587,9 +607,8 @@ public class ActivitySoundAndSign extends AppCompatActivity {
                         | myId == 75 | myId == 76 | myId == 77 | myId == 78
                         | myId == 79 | myId == 80 | myId == 81 | myId == 82 | myId == 83) {
                     setContentView(R.layout.activity_sound_and_sign_6);
-                    settingFornewId();
+                    settingFornewId(); }
 
-                }
 
 
             }
@@ -599,8 +618,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaOk(R.raw.practic);
-               // recreate();
-               // findView();
                 if (myId == 3 | myId == 4 | myId == 5 | myId == 6) {
                     setContentView(R.layout.activity_sound_and_sign_2);
                     settingFornewId();
@@ -635,12 +652,28 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 finish();
             }
         });
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(ActivitySoundAndSign.this, ActivityAllAlphabet.class);
                 startActivity(intent);
             }
@@ -719,7 +752,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
 
             } else {
                 mediaWrong();
-                mediaBarikalla(R.raw.barikala);
+
             }
 
         } else if (myId == 6) {
@@ -2097,7 +2130,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
     }
 
     private void wordPronunciation(int p) {
-        mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, p);
+        MediaPlayer mediaPlayer = MediaPlayer.create(ActivitySoundAndSign.this, p);
         mediaPlayer.start();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
