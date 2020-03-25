@@ -36,7 +36,7 @@
                 android:background="@drawable/click7"
                 android:padding="8dp"
                 android:text="بـ ب"
-                android:textSize="20dp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
             <LinearLayout
