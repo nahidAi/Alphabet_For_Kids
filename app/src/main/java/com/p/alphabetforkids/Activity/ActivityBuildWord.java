@@ -4753,4 +4753,12 @@ public class ActivityBuildWord extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+    public void setvoiceForWords(){
+        switch (myId){
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
 }
