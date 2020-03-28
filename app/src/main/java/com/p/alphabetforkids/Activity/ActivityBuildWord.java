@@ -16,6 +16,9 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,20 +34,22 @@ public class ActivityBuildWord extends AppCompatActivity {
     private int myId;
     private Button option1, option2, option3, option4, option5, btnReNew,
             btnResult1, btnResult2, btnResult3, btnResult4, btnResult5,
-            btnResult6, btnResult7, btnResult8, btnResult9, btnResult10, option10, option7, option8, option9, option6;
+            btnResult6, btnResult7, btnResult8, btnResult9, btnResult10, option10,
+            option7, option8, option9, option6, btnGoNextActivity;
     private LinearLayout lnr1, lnr2, lnr3, lnr4, lnr5, lnr6, lnr7, lnr8, lnr9, lnr10;
     private TextView txtMainWord, txtLevelOne, txtLevelTwo;
-    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft;
+    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft, audioLevelOne, audioLevelTwo, imgBack, imgHome;
     MediaPlayer mediaPlayer;
     SharedPreferences sharedPreferences;
     int intValue;
     GifImageView gifImageView;
-    ImageView imgBack, imgHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_word);
+
         //گرفتن آیدی
         Bundle bundle = getIntent().getExtras();
         myId = Integer.parseInt(bundle.getString("id"));
@@ -69,7 +74,37 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
     public void changeWordsInTable() {
-        if (myId == 2) {
+        if (myId == 1) {
+            txtMainWord.setText("آ ا");
+
+            option1.setText("ا");
+            option2.setText("آ");
+            option3.setText("ا");
+
+
+            lnr3.setVisibility(View.GONE);
+            lnr4.setVisibility(View.GONE);
+            lnr5.setVisibility(View.GONE);
+            lnr10.setVisibility(View.GONE);
+            btnResult2.setText("ب");
+            btnResult6.setText("بـ");
+            btnResult8.setText("بـ");
+
+
+            txtLevelOne.setText(" = آب");
+            txtLevelTwo.setText(" = بابا");
+
+            Picasso
+                    .with(getApplicationContext())
+                    .load(R.drawable.water)
+                    .into(imgLevelOne);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(R.drawable.father)
+                    .into(imgLevelTwo);
+
+
+        } else if (myId == 2) {
             txtMainWord.setText("بـ ب");
 
             option1.setText("ا");
@@ -96,8 +131,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .load(R.drawable.father)
                     .into(imgLevelTwo);
 
-        }
-        else if (myId == 3) {
+        } else if (myId == 3) {
             txtMainWord.setText(" اَ    َ");
 
             option1.setText("بـ");
@@ -127,8 +161,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .load(R.drawable.tiger)
                     .into(imgLevelTwo);
 
-        }
-        else if (myId == 4) {
+        } else if (myId == 4) {
             txtMainWord.setText("د");
 
             option1.setText("د");
@@ -157,8 +190,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .load(R.drawable.leader)
                     .into(imgLevelTwo);
 
-        }
-        else if (myId == 5) {
+        } else if (myId == 5) {
             txtMainWord.setText("مـ م");
 
             option1.setText("ا");
@@ -187,8 +219,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .load(R.drawable.almond)
                     .into(imgLevelTwo);
 
-        }
-        else if (myId == 6) {
+        } else if (myId == 6) {
             txtMainWord.setText("سـ س");
 
             option1.setText("ا");
@@ -217,8 +248,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .load(R.drawable.farming_and_gardening)
                     .into(imgLevelTwo);
 
-        }
-        else if (myId == 7) {
+        } else if (myId == 7) {
             txtMainWord.setText("او  و");
 
             option1.setText("س");
@@ -247,8 +277,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.kiss)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 8) {
+        } else if (myId == 8) {
             txtMainWord.setText("تـ ت");
 
             option1.setText("ب");
@@ -277,8 +306,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.playground)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 9) {
+        } else if (myId == 9) {
             txtMainWord.setText("ر");
 
             option1.setText(" َ  ");
@@ -303,8 +331,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.mother)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 10) {
+        } else if (myId == 10) {
             txtMainWord.setText("نـ ن");
 
             option1.setText("ر");
@@ -330,8 +357,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.tanoor)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 11) {
+        } else if (myId == 11) {
             txtMainWord.setText("ایـ یـ ی ای");
             txtMainWord.setTextSize(15);
 
@@ -358,8 +384,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.girl)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 12) {
+        } else if (myId == 12) {
             txtMainWord.setText("ز");
 
             option1.setText("بـ");
@@ -387,8 +412,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.green_color)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 13) {
+        } else if (myId == 13) {
             txtMainWord.setText("اِ ِ ـه ه ");
             txtMainWord.setTextSize(20);
 
@@ -414,8 +438,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.pencil)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 14) {
+        } else if (myId == 14) {
             txtMainWord.setText("شـ ش");
 
             option1.setText("آ");
@@ -441,8 +464,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.soup)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 15) {
+        } else if (myId == 15) {
             txtMainWord.setText("یـ ی");
 
             option1.setText("ا");
@@ -469,8 +491,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.tea)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 16) {
+        } else if (myId == 16) {
             txtMainWord.setText("اُ  ُ ");
 
             option1.setText("یـ");
@@ -497,8 +518,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.sos)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 17) {
+        } else if (myId == 17) {
             txtMainWord.setText("کـ ک");
 
             option1.setText(" َ  ");
@@ -523,8 +543,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.duckling)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 18) {
+        } else if (myId == 18) {
             txtMainWord.setText("و");
 
             option1.setText("ا");
@@ -551,8 +570,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.baby_bath_tub)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 19) {
+        } else if (myId == 19) {
             txtMainWord.setText("پـ پ");
 
             option1.setText("پ");
@@ -578,8 +596,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.ball)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 20) {
+        } else if (myId == 20) {
             txtMainWord.setText("گـ گ");
 
             option1.setText("ل");
@@ -606,8 +623,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.wolf)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 21) {
+        } else if (myId == 21) {
             txtMainWord.setText("فـ ف");
 
             option1.setText("فـ");
@@ -633,8 +649,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.bag)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 22) {
+        } else if (myId == 22) {
             txtMainWord.setText("خـ خ");
 
             option1.setText("ـه");
@@ -660,8 +675,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.insect)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 23) {
+        } else if (myId == 23) {
             txtMainWord.setText("قـ ق");
 
             option1.setText("شـ");
@@ -687,8 +701,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.gori)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 67) {
+        } else if (myId == 67) {
             txtMainWord.setText("لـ ل");
 
             option1.setText("نـ");
@@ -715,8 +728,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.flower)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 68) {
+        } else if (myId == 68) {
             txtMainWord.setText("جـ ج");
 
             option1.setText("ج");
@@ -743,8 +755,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.woodland)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 69) {
+        } else if (myId == 69) {
             txtMainWord.setText("و-> ُ");
 
             option1.setText("و");
@@ -770,8 +781,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.do_2)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 70) {
+        } else if (myId == 70) {
             txtMainWord.setText("هـ ـهـ ـه ه");
             txtMainWord.setTextSize(15);
 
@@ -799,8 +809,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.moonlight)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 71) {
+        } else if (myId == 71) {
             txtMainWord.setText("چـ چ");
 
             option1.setText("ُ ");
@@ -826,8 +835,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.mushroom)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 72) {
+        } else if (myId == 72) {
             txtMainWord.setText("ژ");
 
             option1.setText("لـ");
@@ -854,8 +862,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.jelly)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 73) {
+        } else if (myId == 73) {
             txtMainWord.setText("خوا");
 
             option1.setText("ر");
@@ -882,8 +889,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.khob)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 74) {
+        } else if (myId == 74) {
             txtMainWord.setText(" ّ  ");
 
             option1.setText(" ّ  ");
@@ -909,8 +915,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.bache)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 75) {
+        } else if (myId == 75) {
             txtMainWord.setText("صـ ص");
 
             option1.setText(" َ  ");
@@ -936,8 +941,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.gors)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 76) {
+        } else if (myId == 76) {
             txtMainWord.setText("ذ");
 
             option1.setText("ذ");
@@ -962,8 +966,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.laziz)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 77) {
+        } else if (myId == 77) {
             txtMainWord.setText("عـ ـعـ ـع ع");
             txtMainWord.setTextSize(15);
 
@@ -989,8 +992,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.human)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 78) {
+        } else if (myId == 78) {
             txtMainWord.setText("ثـ ث");
 
             option1.setText("ثـ");
@@ -1016,8 +1018,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.mosalas)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 79) {
+        } else if (myId == 79) {
             txtMainWord.setText("حـ ح");
 
             option1.setText("ـه");
@@ -1043,8 +1044,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.wild_life)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 80) {
+        } else if (myId == 80) {
             txtMainWord.setText("ضـ ض");
 
             option1.setText("و");
@@ -1071,8 +1071,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.pool)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 81) {
+        } else if (myId == 81) {
             txtMainWord.setText("ط");
 
             option1.setText("ل");
@@ -1098,8 +1097,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.tabl)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 82) {
+        } else if (myId == 82) {
             txtMainWord.setText("غـ ـغـ ـغ غ");
             txtMainWord.setTextSize(15);
 
@@ -1127,8 +1125,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .with(getApplicationContext())
                     .load(R.drawable.owl)
                     .into(imgLevelTwo);
-        }
-        else if (myId == 83) {
+        } else if (myId == 83) {
             txtMainWord.setText("ظ");
 
             option1.setText("ف");
@@ -1186,6 +1183,18 @@ public class ActivityBuildWord extends AppCompatActivity {
     }
 
     public void findView() {
+        btnGoNextActivity = findViewById(R.id.btn_go_next_activity);
+        Animation animation = new AlphaAnimation(1, 0); // بین 1 و 0 یعنی بصورت کاملا پیدا و کاملا ناپیدا
+        animation.setDuration(500); // مدت زمان انجام یک بار فرآیند
+        animation.setInterpolator(new LinearInterpolator()); // جلوگیری از تغییرات اتوماتیک انیمیشن
+        animation.setRepeatCount(Animation.INFINITE); // انجام دادن انیمیشن به اندازه بینهایت
+        animation.setRepeatMode(Animation.REVERSE); // برعکس انجام دادن انیمیشن وقتی یکبار انجام شد
+        btnGoNextActivity.setAnimation(animation);
+
+        goLeft = findViewById(R.id.go_left);
+        goRight = findViewById(R.id.go_right);
+        audioLevelOne = findViewById(R.id.audio_level_1);
+        audioLevelTwo = findViewById(R.id.audio_level_2);
         imgBack = findViewById(R.id.imgBack);
         imgHome = findViewById(R.id.imgMyHome);
         option1 = findViewById(R.id.option1);
@@ -1237,24 +1246,383 @@ public class ActivityBuildWord extends AppCompatActivity {
     }
 
     public void onClickMethod() {
+        btnGoNextActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myId == 82) {
+                    Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordSix.class);
+                    startActivity(intent);
+                } else if (myId == 77) {
+                    Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordFive.class);
+                    startActivity(intent);
+                } else if (myId == 70) {
+                    Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordFour.class);
+                    startActivity(intent);
+                } else if (myId == 13) {
+                    Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordThree.class);
+                    startActivity(intent);
+                } else if (myId == 11) {
+                    Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordTwo.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
+        goLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityBuildWord.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
+                sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("intValue", 0);
+                editor.apply();
+
+                if (myId == 23) {
+                    myId = myId + 43;
+                }
+                if (myId == 68) {
+                    myId = myId + 2;
+                } else if (myId == 72) {
+                    myId = myId + 3;
+                } else if (myId == 83) {
+                    myId = 83;
+                } else {
+                    myId = myId + 1;
+                }
+
+                setContentView(R.layout.activity_build_word);
+                findView();
+                onClickMethod();
+                changeWordsInTable();
+                settingTouchAndDragListenerForButtons();
+
+
+            }
+        });
+        goRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityBuildWord.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("intValue", 0);
+                editor.apply();
+
+                if (myId == 67) {
+                    myId = myId - 43;
+                }
+                if (myId == 70) {
+                    myId = myId - 2;
+                } else if (myId == 75) {
+                    myId = myId - 3;
+                } else if (myId == 1) {
+                    myId = 1;
+                } else {
+                    myId = myId - 1;
+                }
+                setContentView(R.layout.activity_build_word);
+                findView();
+                onClickMethod();
+                changeWordsInTable();
+                settingTouchAndDragListenerForButtons();
+
+
+            }
+        });
+        audioLevelOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myId == 1) {
+                    mediaVoice(R.raw.abb);
+                }
+                if (myId == 2) {
+                    mediaVoice(R.raw.abb);
+                }
+                if (myId == 3) {
+                    mediaVoice(R.raw.abr);
+                }
+                if (myId == 4) {
+                    mediaVoice(R.raw.bad);
+                }
+                if (myId == 5) {
+                    mediaVoice(R.raw.amad);
+                }
+                if (myId == 6) {
+                    mediaVoice(R.raw.sabad);
+                }
+                if (myId == 7) {
+                    mediaVoice(R.raw.ooa);
+                }
+                if (myId == 8) {
+                    mediaVoice(R.raw.tot);
+                }
+                if (myId == 9) {
+                    mediaVoice(R.raw.tabar);
+                }
+                if (myId == 10) {
+                    mediaVoice(R.raw.nan);
+                }
+                if (myId == 11) {
+                    mediaVoice(R.raw.iran);
+                }
+                if (myId == 12) {
+                    mediaVoice(R.raw.zard);
+                }
+                if (myId == 13) {
+                    mediaVoice(R.raw.ensan);
+                }
+                if (myId == 14) {
+                    mediaVoice(R.raw.shir);
+                }
+                if (myId == 15) {
+                    mediaVoice(R.raw.darya);
+                }
+                if (myId == 16) {
+                    mediaVoice(R.raw.omid);
+                }
+                if (myId == 17) {
+                    mediaVoice(R.raw.kando);
+                }
+                if (myId == 18) {
+                    mediaVoice(R.raw.davar);
+                }
+                if (myId == 19) {
+                    mediaVoice(R.raw.pa);
+                }
+                if (myId == 20) {
+                    mediaVoice(R.raw.janghal);
+                }
+                if (myId == 21) {
+                    mediaVoice(R.raw.kafsh);
+                }
+                if (myId == 22) {
+                    mediaVoice(R.raw.shakhe);
+                }
+                if (myId == 23) {
+                    mediaVoice(R.raw.ghashogh);
+                }
+                if (myId == 67) {
+                    mediaVoice(R.raw.lane);
+                }
+                if (myId == 68) {
+                    mediaVoice(R.raw.joje);
+                }
+                if (myId == 69) {
+                    mediaVoice(R.raw.nok);
+                }
+                if (myId == 70) {
+                    mediaVoice(R.raw.aho);
+                }
+                if (myId == 71) {
+                    mediaVoice(R.raw.chador);
+                }
+                if (myId == 72) {
+                    mediaVoice(R.raw.zhale);
+                }
+                if (myId == 73) {
+                    mediaVoice(R.raw.khahar);
+                }
+                if (myId == 74) {
+                    mediaVoice(R.raw.arre);
+                }
+                if (myId == 75) {
+                    mediaVoice(R.raw.sadaf);
+                }
+                if (myId == 76) {
+                    mediaVoice(R.raw.zorrat);
+                }
+                if (myId == 77) {
+                    mediaVoice(R.raw.arous);
+                }
+                if (myId == 78) {
+                    mediaVoice(R.raw.lase);
+                }
+                if (myId == 79) {
+                    mediaVoice(R.raw.hole);
+                }
+                if (myId == 80) {
+                    mediaVoice(R.raw.reza);
+                }
+                if (myId == 81) {
+                    mediaVoice(R.raw.toti);
+                }
+                if (myId == 82) {
+                    mediaVoice(R.raw.ghaz);
+                }
+                if (myId == 83) {
+                    mediaVoice(R.raw.zarf);
+                }
+
+            }
+        });
+        audioLevelTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myId == 1) {
+                    mediaVoice(R.raw.baba);
+                }
+                if (myId == 2) {
+                    mediaVoice(R.raw.baba);
+                }
+                if (myId == 3) {
+                    mediaVoice(R.raw.babr);
+                }
+                if (myId == 4) {
+                    mediaVoice(R.raw.adab);
+                }
+                if (myId == 5) {
+                    mediaVoice(R.raw.badam);
+                }
+                if (myId == 6) {
+                    mediaVoice(R.raw.das);
+                }
+                if (myId == 7) {
+                    mediaVoice(R.raw.boss);
+                }
+                if (myId == 8) {
+                    mediaVoice(R.raw.tab);
+                }
+                if (myId == 9) {
+                    mediaVoice(R.raw.madar);
+                }
+                if (myId == 10) {
+                    mediaVoice(R.raw.tanoor);
+                }
+                if (myId == 11) {
+                    mediaVoice(R.raw.mina);
+                }
+                if (myId == 12) {
+                    mediaVoice(R.raw.sabz);
+                }
+                if (myId == 13) {
+                    mediaVoice(R.raw.medad);
+                }
+                if (myId == 14) {
+                    mediaVoice(R.raw.ash);
+                }
+                if (myId == 15) {
+                    mediaVoice(R.raw.chaii);
+                }
+                if (myId == 16) {
+                    mediaVoice(R.raw.sos);
+                }
+                if (myId == 17) {
+                    mediaVoice(R.raw.ordak);
+                }
+                if (myId == 18) {
+                    mediaVoice(R.raw.van);
+                }
+                if (myId == 19) {
+                    mediaVoice(R.raw.top);
+                }
+                if (myId == 20) {
+                    mediaVoice(R.raw.ghorgh);
+                }
+                if (myId == 21) {
+                    mediaVoice(R.raw.kif);
+                }
+                if (myId == 22) {
+                    mediaVoice(R.raw.malakh);
+                }
+                if (myId == 23) {
+                    mediaVoice(R.raw.ghori);
+                }
+                if (myId == 67) {
+                    mediaVoice(R.raw.ghol);
+                }
+                if (myId == 68) {
+                    mediaVoice(R.raw.kaj);
+                }
+                if (myId == 69) {
+                    mediaVoice(R.raw.doo);
+                }
+                if (myId == 70) {
+                    mediaVoice(R.raw.mahtab);
+                }
+                if (myId == 71) {
+                    mediaVoice(R.raw.gharch);
+                }
+                if (myId == 72) {
+                    mediaVoice(R.raw.zhele);
+                }
+                if (myId == 73) {
+                    mediaVoice(R.raw.khab);
+                }
+                if (myId == 74) {
+                    mediaVoice(R.raw.bachee);
+                }
+                if (myId == 75) {
+                    mediaVoice(R.raw.ghors);
+                }
+                if (myId == 76) {
+                    mediaVoice(R.raw.laziz);
+                }
+                if (myId == 77) {
+                    mediaVoice(R.raw.saeed);
+                }
+                if (myId == 78) {
+                    mediaVoice(R.raw.mosallas);
+                }
+                if (myId == 79) {
+                    mediaVoice(R.raw.temsah);
+                }
+                if (myId == 80) {
+                    mediaVoice(R.raw.hoz);
+                }
+                if (myId == 81) {
+                    mediaVoice(R.raw.tabl);
+                }
+                if (myId == 82) {
+                    mediaVoice(R.raw.joghd);
+                }
+                if (myId == 83) {
+                    mediaVoice(R.raw.zohr);
+                }
+
+            }
+        });
         btnReNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaOk(R.raw.practic);
-                recreate();
+                sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("intValue", 0);
+                editor.apply();
+                mediaVoice(R.raw.practic);
+                setContentView(R.layout.activity_build_word);
+                findView();
+                onClickMethod();
+                changeWordsInTable();
+                settingTouchAndDragListenerForButtons();
             }
         });
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaOk(R.raw.click);
+                mediaVoice(R.raw.click);
                 finish();
             }
         });
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaOk(R.raw.click);
+                mediaVoice(R.raw.click);
                 Intent intent = new Intent(ActivityBuildWord.this, ActivityAllAlphabet.class);
                 startActivity(intent);
             }
@@ -1301,56 +1669,45 @@ public class ActivityBuildWord extends AppCompatActivity {
     };
 
     private void settingForDropAndDrags(View v, View view) {
-        if (myId == 2) {
-            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+        if (myId == 1) {
+            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                intValueMethod();
-
-
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                intValueMethod();
-
-
-            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                intValueMethod();
-
-            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
+                if (intValue == 2) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                }
+            } else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                intValueMethod();
+                if (intValue == 2) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                }
 
-            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr9) {
+
+            } else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                intValueMethod();
-
-            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                intValueMethod();
+                if (intValue == 2) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                }
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 3) {
             if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1359,10 +1716,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1371,10 +1728,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1383,10 +1740,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1395,10 +1752,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1406,17 +1763,17 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
 
         } else if (myId == 4) {
             if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1425,10 +1782,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1437,10 +1794,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1449,10 +1806,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1461,10 +1818,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1473,10 +1830,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1485,10 +1842,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1496,17 +1853,17 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
 
         } else if (myId == 5) {
             if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1515,10 +1872,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1527,10 +1884,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1539,10 +1896,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option9 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1551,10 +1908,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1563,10 +1920,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1575,10 +1932,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option9 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1587,10 +1944,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1599,10 +1956,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr10) {
                 oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1610,17 +1967,17 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
 
         } else if (myId == 6) {
             if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1629,10 +1986,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option6 | view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1641,10 +1998,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1653,10 +2010,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option6 | view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1665,10 +2022,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1677,20 +2034,20 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
 
 
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1699,10 +2056,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1710,17 +2067,17 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
 
         } else if (myId == 7) {
             if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 3) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1729,10 +2086,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 3) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1741,10 +2098,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 3) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1753,10 +2110,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 3) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1764,16 +2121,16 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 8) {
             if (view.getId() == R.id.option4 | view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1782,10 +2139,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1794,10 +2151,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1806,10 +2163,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option4 | view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1818,10 +2175,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1830,10 +2187,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1841,16 +2198,16 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 9) {
             if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1859,10 +2216,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option7 | view.getId() == R.id.option10 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1871,10 +2228,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1883,10 +2240,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option7 | view.getId() == R.id.option10 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1895,10 +2252,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option9 | view.getId() == R.id.option3 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1907,10 +2264,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1919,10 +2276,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1931,10 +2288,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1943,10 +2300,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option1 | view.getId() == R.id.option7 | view.getId() == R.id.option10 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1955,10 +2312,10 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option9 && v.getId() == R.id.lnr10) {
                 oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
@@ -1966,2675 +2323,2600 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 10) {
             if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr10) {
                 oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 11) {
             if (view.getId() == R.id.option1 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
 
                 }
             } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option2 | view.getId() == R.id.option6 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else if (view.getId() == R.id.option2 | view.getId() == R.id.option6 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog1();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 12) {
             if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
         } else if (myId == 13) {
             if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
 
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr4) {
+            } else if (view.getId() == R.id.option4 | view.getId() == R.id.option8 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option10 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option6 | view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option4 | view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
 
                 }
             } else if (view.getId() == R.id.option6 | view.getId() == R.id.option7 && v.getId() == R.id.lnr10) {
                 oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog2();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 14) {
+        } else if (myId == 14) {
             if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 15) {
+        } else if (myId == 15) {
             if (view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option6 && v.getId() == R.id.lnr5) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 16) {
-            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option5&& v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 17) {
-            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7|view.getId() == R.id.option8 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3&& v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option7|view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option10 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 18) {
-            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3|view.getId() == R.id.option4&& v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3|view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 19) {
-            if (view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 20) {
-            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1&& v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }  else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 21) {
-            if (view.getId() == R.id.option4|view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 16) {
+            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option4|view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 22) {
+        } else if (myId == 17) {
             if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+            } else if (view.getId() == R.id.option7 | view.getId() == R.id.option8 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2|view.getId() == R.id.option9 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 23) {
-            if (view.getId() == R.id.option5|view.getId() == R.id.option7 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option5|view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 67) {
-            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 68) {
-            if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 69) {
-            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 4) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 | view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option10 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 70) {
-            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
+        } else if (myId == 18) {
+            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog3();
 
 
                 }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
-                    setDialog3();
 
 
                 }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            }else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog3();
-
-
-                }
-            }  else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 71) {
-            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option5|view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option5|view.getId() == R.id.option8 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 72) {
-            if (view.getId() == R.id.option5 |view.getId() == R.id.option6&& v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
                 if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5|view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }  else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 73) {
-            if (view.getId() == R.id.option3|view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3|view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 5) {
-                    mediaOk(R.raw.horaa);
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 74) {
-            if (view.getId() == R.id.option9&& v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option5 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2&& v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 75) {
-            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option6&& v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 76) {
-            if (view.getId() == R.id.option1|view.getId() == R.id.option6|view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option8&& v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5|view.getId() == R.id.option4 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option10|view.getId() == R.id.option6 && v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                }
-            }else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option4|view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option3|view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option3|view.getId() == R.id.option6 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 77) {
-            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            } else if (view.getId() == R.id.option10 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr5) {
-                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            }else if (view.getId() == R.id.option4&& v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            }else if (view.getId() == R.id.option2|view.getId() == R.id.option9 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            }else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 9) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog4();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 78) {
-            if (view.getId() == R.id.option3|view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option6 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1|view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 |view.getId() == R.id.option5&& v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2&& v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option4&& v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 79) {
+        } else if (myId == 19) {
             if (view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr10) {
-                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 8) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }  else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 80) {
-            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else {
-                mediaOk(R.raw.wrong);
+                mediaVoice(R.raw.wrong);
             }
 
-        }
-        else if (myId == 81) {
-            if (view.getId() == R.id.option5| view.getId() == R.id.option6|view.getId() == R.id.option8&& v.getId() == R.id.lnr1) {
+        } else if (myId == 20) {
+            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5| view.getId() == R.id.option6|view.getId() == R.id.option8 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue ==7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
-                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option5| view.getId() == R.id.option6|view.getId() == R.id.option8 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            }else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 82) {
-            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
-                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
-                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr6) {
-                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
-                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            }else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
-                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            }else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr9) {
-                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 6) {
-                    mediaOk(R.raw.horaa);
-                    showGif();
-                    setDialog5();
-
-
-                }
-            } else {
-                mediaOk(R.raw.wrong);
-            }
-
-        }
-        else if (myId == 83) {
-            if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
-                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
-                mediaOk(R.raw.ok);
-                sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option3 |view.getId() == R.id.option8&& v.getId() == R.id.lnr3) {
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
                 oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 21) {
+            if (view.getId() == R.id.option4 | view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 | view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 22) {
+            if (view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
             } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
                 oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option6&& v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option9 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            } else if (view.getId() == R.id.option3| view.getId() == R.id.option8&& v.getId() == R.id.lnr9) {
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
-                mediaOk(R.raw.ok);
+                mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue == 7) {
-                    mediaOk(R.raw.horaa);
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
                     showGif();
 
 
                 }
-            }else {
-                mediaOk(R.raw.wrong);
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 23) {
+            if (view.getId() == R.id.option5 | view.getId() == R.id.option7 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 67) {
+            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 68) {
+            if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 69) {
+            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 4) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 70) {
+            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 71) {
+            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option8 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 72) {
+            if (view.getId() == R.id.option5 | view.getId() == R.id.option6 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 73) {
+            if (view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 74) {
+            if (view.getId() == R.id.option9 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 75) {
+            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 76) {
+            if (view.getId() == R.id.option1 | view.getId() == R.id.option6 | view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option4 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option10 | view.getId() == R.id.option6 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 | view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 77) {
+            if (view.getId() == R.id.option3 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option10 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr5) {
+                oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option9 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 9) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 78) {
+            if (view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option5 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 79) {
+            if (view.getId() == R.id.option5 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option8 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr10) {
+                oldAndNewParent((LinearLayout) v, view, btnResult10, lnr10);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 8) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 80) {
+            if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 81) {
+            if (view.getId() == R.id.option5 | view.getId() == R.id.option6 | view.getId() == R.id.option8 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option4 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option6 | view.getId() == R.id.option8 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 | view.getId() == R.id.option6 | view.getId() == R.id.option8 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 82) {
+            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 6) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+                    btnGoNextActivity.setVisibility(View.VISIBLE);
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
+        } else if (myId == 83) {
+            if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr3) {
+                oldAndNewParent((LinearLayout) v, view, btnResult3, lnr3);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option1 && v.getId() == R.id.lnr4) {
+                oldAndNewParent((LinearLayout) v, view, btnResult4, lnr4);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option4 && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option6 && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option8 && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 7) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+            } else {
+                mediaVoice(R.raw.wrong);
             }
 
         }
 
 
-
     }
 
-    private void setDialog5() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityBuildWord.this);
-        builder.setMessage("گلم، ادامه تمرین این حرف رو انجام بده ");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordSix.class);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("نه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                builder.setCancelable(true);
-
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-    }
-
-    private void setDialog4() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityBuildWord.this);
-        builder.setMessage("گلم، ادامه تمرین این حرف رو انجام بده ");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordFive.class);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("نه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                builder.setCancelable(true);
-
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-    }
 
     private void showGif() {
         gifImageView.setVisibility(View.VISIBLE);
@@ -4649,28 +4931,6 @@ public class ActivityBuildWord extends AppCompatActivity {
         }, 5000);
     }
 
-    private void setDialog1() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityBuildWord.this);
-        builder.setMessage("گلم، ادامه تمرین این حرف رو انجام بده ");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordTwo.class);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("نه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                builder.setCancelable(true);
-
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
 
     private void oldAndNewParent(LinearLayout v, View view, Button btnResult1, LinearLayout lnr1) {
         LinearLayout oldParent = (LinearLayout) view.getParent();
@@ -4683,7 +4943,7 @@ public class ActivityBuildWord extends AppCompatActivity {
 
     private void intValueMethod() {
         if (intValue == 5) {
-            mediaOk(R.raw.horaa);
+            mediaVoice(R.raw.horaa);
             showGif();
 
 
@@ -4698,7 +4958,7 @@ public class ActivityBuildWord extends AppCompatActivity {
         editor.apply();
     }
 
-    private void mediaOk(int p) {
+    private void mediaVoice(int p) {
         mediaPlayer = MediaPlayer.create(ActivityBuildWord.this, p);
         mediaPlayer.start();
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -4709,56 +4969,8 @@ public class ActivityBuildWord extends AppCompatActivity {
         });
     }
 
-    private void setDialog2() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityBuildWord.this);
-        builder.setMessage("گلم، ادامه تمرین این حرف رو انجام بده ");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
 
-                Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordThree.class);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("نه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                builder.setCancelable(true);
 
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-    private void setDialog3() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityBuildWord.this);
-        builder.setMessage("گلم، ادامه تمرین این حرف رو انجام بده ");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
 
-                Intent intent = new Intent(ActivityBuildWord.this, ActivityBuildWordFour.class);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("نه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                builder.setCancelable(true);
 
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-    public void setvoiceForWords(){
-        switch (myId){
-            case 1:
-                break;
-            case 2:
-                break;
-        }
-    }
 }

@@ -204,6 +204,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:padding="10dp"
+                    android:background="@drawable/click_music_button"
                     android:src="@drawable/audio" />
 
                 <TextView
@@ -342,6 +343,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:padding="10dp"
+                    android:background="@drawable/click_music_button"
                     android:src="@drawable/audio" />
 
                 <TextView
@@ -482,28 +484,13 @@
 
 
     <RelativeLayout
+        android:padding="8dp"
         android:id="@+id/lnr_renew"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:background="@color/brown_light">
+        android:background="#BDBDBD">
 
-        <ImageView
-            android:id="@+id/go_left"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/back_leftt" />
-
-        <ImageView
-            android:id="@+id/go_right"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/back_right" />
 
         <Button
             android:id="@+id/btnReNew"

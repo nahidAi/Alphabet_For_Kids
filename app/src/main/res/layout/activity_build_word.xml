@@ -43,6 +43,7 @@
                 android:layout_toLeftOf="@+id/txt_mainWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="right"
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
@@ -204,6 +205,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:padding="10dp"
+                    android:background="@drawable/click_music_button"
                     android:src="@drawable/audio" />
 
                 <TextView
@@ -342,6 +344,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8dp"
                     android:padding="10dp"
+                    android:background="@drawable/click_music_button"
                     android:src="@drawable/audio" />
 
                 <TextView
@@ -486,8 +489,8 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:background="@color/brown_light">
+        android:padding="8dp"
+        android:background="#BDBDBD">
 
         <ImageView
             android:id="@+id/go_left"
@@ -496,6 +499,19 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:src="@drawable/back_leftt" />
+        <Button
+            android:id="@+id/btn_go_next_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/click10"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/go_left"
+            android:layout_marginLeft="40dp"
+            android:text="ادامه تمرین"
+            android:textColor="@color/White"
+            android:visibility="gone"
+            android:textSize="15dp" />
 
         <ImageView
             android:id="@+id/go_right"

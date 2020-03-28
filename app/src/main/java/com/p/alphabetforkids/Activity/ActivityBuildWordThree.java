@@ -25,12 +25,12 @@ import com.squareup.picasso.Picasso;
 public class ActivityBuildWordThree extends AppCompatActivity {
     View view;
     private int myId;
-    private Button option1, option2, option3, option4, option5, btnReNew,
+    private Button btnGoNextActivity,option1, option2, option3, option4, option5, btnReNew,
             btnResult1, btnResult2, btnResult3, btnResult4, btnResult5,
             btnResult6, btnResult7, btnResult8, btnResult9, btnResult10, option10, option7, option8, option9, option6;
     private LinearLayout lnr1, lnr2, lnr3, lnr4, lnr5, lnr6, lnr7, lnr8, lnr9, lnr10;
     private TextView txtMainWord, txtLevelOne, txtLevelTwo;
-    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft;
+    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft,audioLevelOne,audioLevelTwo;
     MediaPlayer mediaPlayer;
     SharedPreferences sharedPreferences;
     int intValue;
@@ -85,6 +85,8 @@ public class ActivityBuildWordThree extends AppCompatActivity {
                 .into(imgLevelTwo);
     }
     public void findView() {
+        audioLevelOne = findViewById(R.id.audio_level_1);
+        audioLevelTwo = findViewById(R.id.audio_level_2);
         imgBack = findViewById(R.id.imgBack);
         imgHome = findViewById(R.id.imgMyHome);
         option1 = findViewById(R.id.option1);
@@ -136,6 +138,33 @@ public class ActivityBuildWordThree extends AppCompatActivity {
     }
 
     public void onClickMethod() {
+        audioLevelOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityBuildWordThree.this,R.raw.tabe);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+            }
+        });
+        audioLevelTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityBuildWordThree.this,R.raw.narde);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+            }
+        });
         btnReNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
