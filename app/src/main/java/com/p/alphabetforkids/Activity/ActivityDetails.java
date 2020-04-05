@@ -25,7 +25,7 @@ public class ActivityDetails extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     ImageView imgBackRight, imgBackLeft, imgMusic, imgHome, imgPractice, img_one_example, img_two_example,
-            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd, imgReNew, imgMute;
+            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd, imgReNew, imgMute,imgHomeToolbar,imgBack;
 
     TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecond_word, txtThird_word;
 
@@ -473,6 +473,7 @@ public class ActivityDetails extends AppCompatActivity {
     }
 
     private void getIntentMethod() {
+
         Bundle bundle = getIntent().getExtras();
         myId = Integer.parseInt(bundle.getString("id"));
         id_word_count = Integer.parseInt(bundle.getString("id_word_count"));
@@ -518,6 +519,9 @@ public class ActivityDetails extends AppCompatActivity {
     }
 
     public void findView() {
+        imgBack = findViewById(R.id.imgBack);
+        imgHomeToolbar = findViewById(R.id.imgMyHome);
+        imgHomeToolbar.setVisibility(View.GONE);
         imgBackLeft = findViewById(R.id.back_left);
         imgBackRight = findViewById(R.id.back_rightt);
         imgMusic = findViewById(R.id.music);
@@ -545,6 +549,21 @@ public class ActivityDetails extends AppCompatActivity {
     }
 
     public void onClick() {
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                finish();
+            }
+        });
         imgBackLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1694,6 +1713,21 @@ public class ActivityDetails extends AppCompatActivity {
     }
 
     public void onClickForNewId() {
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+                finish();
+            }
+        });
         imgBackLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

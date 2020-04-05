@@ -6,6 +6,7 @@
     <color name="red">#f44336</color>
     <color name="White">#ffffff</color>
     <color name="light_red">#ff8a80</color>
+    <color name="light_red_1">#F6A7A0</color>
     <color name="Orange_light">#ff9a0c</color>
     <color name="Orange_dark">#ff7906</color>
     <color name="brown">#be650d</color>
@@ -18,7 +19,9 @@
     <color name="violet">#7C4DFF</color>
     <color name="green_light">#689F38</color>
     <color name="green_light_2">#90de18</color>
+    <color name="green_light_3">#BAE675</color>
     <color name="brown_light">#f2ecd2</color>
+    <color name="violet_light">#DBA3F3</color>
     <color name="orange_light">#fdd576</color>
     <color name="blue_light">#86e9ff</color>
     <color name="red_light">#ff5252</color>

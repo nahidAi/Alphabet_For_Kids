@@ -22,6 +22,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="3dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="0.7"
@@ -102,18 +103,40 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/gif_tashvigh"
         android:visibility="gone" />
-
-    <Button
-        android:id="@+id/txtReNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/click_music_button"
-        android:padding="12dp"
-        android:text="دوباره تمرین کن "
-        android:textColor="@color/White"
-        android:textSize="20dp" />
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="#1550B3">
+        <ImageView
+            android:id="@+id/go_left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/back_leftt" />
+        <Button
+            android:id="@+id/txtReNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/click_music_button"
+            android:padding="12dp"
+            android:text="دوباره تمرین کن "
+            android:textColor="@color/White"
+            android:textSize="15dp" />
+        <ImageView
+            android:id="@+id/go_right"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/back_right" />
+
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

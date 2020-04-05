@@ -12,10 +12,12 @@
     <include layout="@layout/toolbar_5" />
 
     <LinearLayout
+        android:layout_above="@+id/lnr_renew"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
 
         <LinearLayout
@@ -24,9 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
             android:layout_weight="1"
-            android:orientation="vertical"
-
-            >
+            android:orientation="vertical">
 
 
             <LinearLayout
@@ -47,9 +47,11 @@
 
                 <ImageView
                     android:id="@+id/imgWords"
-                    android:layout_width="90dp"
-                    android:layout_height="60dp"
-                    android:layout_margin="4dp"
+                    android:layout_width="87dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
                     android:src="@drawable/ww" />
 
             </LinearLayout>
@@ -89,17 +91,16 @@
                     android:layout_margin="4dp"
                     android:background="@drawable/click2"
                     android:text="بـ  ب "
-                    android:textSize="30dp" />
+                    android:textSize="25dp" />
 
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="25dp"
             android:id="@+id/lnr_all_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lnr_top"
-            android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:gravity="center_horizontal"
@@ -127,42 +128,44 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/lnr_renew"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/go_left"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/back_leftt" />
-
-            <ImageView
-                android:id="@+id/go_right"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/back_right" />
-
-            <Button
-                android:id="@+id/btnReNew"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/click_music_button"
-                android:padding="10dp"
-                android:text="دوباره تمرین کن "
-                android:textColor="@color/White"
-                android:textSize="15dp" />
-        </RelativeLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:padding="6dp"
+        android:background="#1550B3"
+        android:id="@+id/lnr_renew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/go_left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back_leftt" />
+
+        <ImageView
+            android:id="@+id/go_right"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/back_right" />
+
+        <Button
+            android:id="@+id/btnReNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/click_music_button"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="دوباره تمرین کن "
+            android:textColor="@color/White"
+            android:textSize="15dp" />
+    </RelativeLayout>
 </RelativeLayout>

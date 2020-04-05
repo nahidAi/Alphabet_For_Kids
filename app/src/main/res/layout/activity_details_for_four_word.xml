@@ -9,12 +9,14 @@
     tools:context=".Activity.ActivityDetails">
 
 
+    <include layout="@layout/toolbar_6"/>
     <FrameLayout
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_above="@id/lnr_avatar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="-100dp">
 
         <com.zyp.cardview.YcCardView

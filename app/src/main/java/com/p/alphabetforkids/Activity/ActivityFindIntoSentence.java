@@ -34,13 +34,13 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     GifImageView gifImageView;
     Button reNew;
-    ImageView imgback,imgMyHome;
+    ImageView imgback, imgMyHome, imggoLeft, imggoRight;
 
 
     private int id;
     private TextView textview;
     int progressValue;
-    boolean a, b, c, d,e, f, j, h, i, g, k,l = false;
+    boolean a, b, c, d, e, f, j, h, i, g, k, l = false;
 
 
     @Override
@@ -50,17 +50,14 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
         findViewMethod();
 
-
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
         //   گرفتن ایدی
         Bundle bundle = getIntent().getExtras();
-         id = Integer.parseInt(bundle.getString("newId"));
+        id = Integer.parseInt(bundle.getString("newId"));
         //id = 80;
-
 
         // مقدار پیش فرض شیردپرفرنسز
         sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
@@ -70,18 +67,138 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
         findWordInSentecce();
-
         onClickMethod();
 
 
     }
 
     private void onClickMethod() {
+        imggoLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (id == 23) {
+                    id = id + 43;
+                }
+                if (id == 68) {
+                    id = id + 2;
+                } else if (id == 72) {
+                    id = id + 3;
+                } else if (id == 83) {
+                    id = 83;
+                } else {
+                    id = id + 1;
+                }
+                setContentView(R.layout.activity_find_into_sentence);
+                if (a == true | k == true | b == true | c == true | d == true | e == true | f == true | j == true | h == true | i == true | g == true | l == true) {
+                    a = false;
+                    b = false;
+                    c = false;
+                    d = false;
+                    e = false;
+                    f = false;
+                    j = false;
+                    h = false;
+                    i = false;
+                    g = false;
+                    l = false;
+                    k = false;
+                }
+
+
+                // مقدار پیش فرض شیردپرفرنسز
+                sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("progress_value", 0);
+                editor.apply();
+
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
+                findViewMethod();
+                findWordInSentecce();
+                onClickMethod();
+
+
+            }
+        });
+        imggoRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (id == 67) {
+                    id = id - 43;
+                }
+                if (id == 70) {
+                    id = id - 2;
+                } else if (id == 75) {
+                    id = id - 3;
+                } else if (id == 1) {
+                    id = 1;
+                } else {
+                    id = id - 1;
+                }
+                setContentView(R.layout.activity_find_into_sentence);
+                if (a == true | k == true | b == true | c == true | d == true | e == true | f == true | j == true | h == true | i == true | g == true | l == true) {
+                    a = false;
+                    b = false;
+                    c = false;
+                    d = false;
+                    e = false;
+                    f = false;
+                    j = false;
+                    h = false;
+                    i = false;
+                    g = false;
+                    l = false;
+                    k = false;
+                }
+
+
+                // مقدار پیش فرض شیردپرفرنسز
+                sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("progress_value", 0);
+                editor.apply();
+
+                mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
+
+                findViewMethod();
+                findWordInSentecce();
+                onClickMethod();
+            }
+        });
         reNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recreate();
-                //-------------
+                if (a == true | k == true | b == true | c == true | d == true | e == true | f == true | j == true | h == true | i == true | g == true | l == true) {
+                    a = false;
+                    b = false;
+                    c = false;
+                    d = false;
+                    e = false;
+                    f = false;
+                    j = false;
+                    h = false;
+                    i = false;
+                    g = false;
+                    l = false;
+                    k = false;
+                }
+
                 sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("progress_value", 0);
@@ -90,9 +207,9 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 a = false;
                 seekBar.setProgress(0);
 
-                changeWordsFor_a();
+                findWordInSentecce();
 
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this,R.raw.practic);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.practic);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -121,17 +238,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         imgMyHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaPlayer!=null){
-                    if (mediaPlayer.isPlaying()){
-                        mediaPlayer.stop();
-                        Intent intent = new Intent(ActivityFindIntoSentence.this, ActivityAllAlphabet.class);
-                        startActivity(intent);
-                    }
 
-                }else if (mediaPlayer==null){
-                    Intent intent = new Intent(ActivityFindIntoSentence.this, ActivityAllAlphabet.class);
-                    startActivity(intent);
-                }
 
                 mediaPlayer = MediaPlayer.create(ActivityFindIntoSentence.this, R.raw.click);
                 mediaPlayer.start();
@@ -141,6 +248,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                         mp.release();
                     }
                 });
+                Intent intent = new Intent(ActivityFindIntoSentence.this, ActivityAllAlphabet.class);
+                startActivity(intent);
 
 
             }
@@ -148,6 +257,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     }
 
     private void findViewMethod() {
+        imggoLeft = findViewById(R.id.go_left);
+        imggoRight = findViewById(R.id.go_right);
         seekBar = findViewById(R.id.seekBar);
         textview = (TextView) findViewById(R.id.txtData);
         headerText = findViewById(R.id.header_txt);
@@ -279,9 +390,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                 changeWordsFor_ghein();
                 break;
             case 83:
-               changeWordsFor_za();
+                changeWordsFor_za();
                 break;
-
 
 
         }
@@ -12250,6 +12360,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_ta() {
         headerText.setText("ط ");
         text = "طوطی پرنده ی باهوشی اَست.\n" +
@@ -12965,6 +13076,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_za() {
         headerText.setText("ظ ");
         text = "حافِظ شاعِر بُزُرگی بود.\n" +
@@ -13047,8 +13159,6 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
-
-
 
 
         //------------------------------------------------------------------------------------------
@@ -13620,8 +13730,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
     }
+
     public void changeWordsFor_ein() {
         headerText.setText("عـ ـعـ ـع ع ");
         text = "گوسفَند بَع بَع می\u200Cکُنَد.\n" +
@@ -14337,6 +14447,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_ghein() {
         headerText.setText("غـ ـغـ ـغ غ ");
         text = "غُنچه یک باغچه ی کوچک دارَد.\n" +
@@ -15053,6 +15164,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_f() {
         headerText.setText("فـ ف ");
         text = "فیل حیوان بُزُرگی اَست.\n" +
@@ -15703,9 +15815,6 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
 
@@ -15768,6 +15877,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_gh() {
         headerText.setText("قـ ق ");
         text = "قَند داخل قَندان اَست.\n" +
@@ -16418,9 +16528,6 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
 
@@ -16483,12 +16590,13 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
 
     }
+
     public void changeWordsFor_k() {
         headerText.setText("کـ ک  ");
         text = "کامران و کیوان با هم برادَر هَستَند.\n" +
                 "کریم به کاوه  کتابی هِدیه داد.\n" +
                 "کاوه کمرو بود.\n" +
-                "کاوه بَعد اَز خواندن کِتاب دانا بود .\n"+
+                "کاوه بَعد اَز خواندن کِتاب دانا بود .\n" +
                 "اُردک در آب در حال شنا است .\n";
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
@@ -17132,13 +17240,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_ghaf() {
         headerText.setText("گـ گ  ");
         text = "گُل\u200Cهای رنگارنگ و گیاهان هوا را تمیز می کنند.\n" +
@@ -17787,13 +17890,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_lam() {
         headerText.setText("لـ ل  ");
         text = "بُلبُل صدای خوبی دارد.\n" +
@@ -18442,13 +18540,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_m() {
         headerText.setText("مـ م  ");
         text = "اَمین بادام خرید.\n" +
@@ -19096,13 +19189,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_n() {
         headerText.setText("نـ ن  ");
         text = "نِدا وَ آینوش  دَر گُلدان دانه می\u200Cکارند.\n" +
@@ -19750,13 +19838,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_v() {
         headerText.setText("و");
         text = "وَحید دَر وان نشسته اَست.\n" +
@@ -20404,13 +20487,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_ha() {
         headerText.setText("هـ ـهـ ـه ه");
         text = "آهو دَر مَهتاب می\u200Cدَوَد.\n" +
@@ -21059,16 +21137,11 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_i() {
         headerText.setText("یـ ی");
-        text ="یـ  غیرآخردو تا نقطه دارد.\n" +
+        text = "یـ  غیرآخردو تا نقطه دارد.\n" +
                 "ی آخر نقطه ندارد.\n" +
                 "یخ ، چای ،یَلدا ، کیک ، سُهیل همگی صدای  ی دارند.\n";
         spannableString = new SpannableString(text);
@@ -21713,16 +21786,11 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_ei() {
         headerText.setText("ایـ یـ ی ای");
-        text ="عَلی رویِ میز شیرینی گذاشته اَست.\n" +
+        text = "عَلی رویِ میز شیرینی گذاشته اَست.\n" +
                 "کیف عَلی قَهوه\u200Cای است.\n" +
                 "ایران زیبا اَست.\n";
         spannableString = new SpannableString(text);
@@ -22367,16 +22435,11 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_aa() {
         headerText.setText("اَ   َ");
-        text ="آن مَرد اَسب آمَد.\n" +
+        text = "آن مَرد اَسب آمَد.\n" +
                 "اَمین اَسباب بازی دارَد.\n" +
                 "مَن اَنگور وَ اَنار دوست دارم.\n";
         spannableString = new SpannableString(text);
@@ -23021,17 +23084,12 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_ea() {
         headerText.setText("اِ  ِ ه ـه");
-        text ="اِمسال مَن کِتاب های زیادی هِدیه گِرِفتَم.\n" +
-                "سَمانه ژِله وَ میوه دوست دارَد.\n" ;
+        text = "اِمسال مَن کِتاب های زیادی هِدیه گِرِفتَم.\n" +
+                "سَمانه ژِله وَ میوه دوست دارَد.\n";
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
@@ -23674,19 +23732,14 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_o() {
         headerText.setText("اُ  ُ");
-        text ="\n" +
+        text = "\n" +
                 "اُردَک(اُ)اول دارد.\n" +
                 "کُلـاه( ُ)غیراول دارَد.\n" +
-                "اُرگ ، گُل ، گُلدان ، لُپ  همگی صدای( اُ  ُ )دارند.\n" ;
+                "اُرگ ، گُل ، گُلدان ، لُپ  همگی صدای( اُ  ُ )دارند.\n";
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
@@ -24329,19 +24382,14 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_tashdid() {
         headerText.setText("  ّ  ");
-        text ="مُحَمّد نَقّاش اَست.\n" +
+        text = "مُحَمّد نَقّاش اَست.\n" +
                 "نجّار و نقّاش  و بَنّا  و کفّاش همه علامت   ّ   دارند.\n" +
                 "بچّه\u200Cها نَقّاشی  دوست دارند.\n" +
-                "طَنّاز کلـاس اولی هست \n" ;
+                "طَنّاز کلـاس اولی هست \n";
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
@@ -24984,21 +25032,16 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_kha() {
         headerText.setText(" خوا");
-        text ="مَن تخت خواب دارم.\n" +
+        text = "مَن تخت خواب دارم.\n" +
                 "مَن از خواهرم خواهش کردم برایم کِتاب بخواند.\n" +
                 "ببر گوشت خوار است.\n" +
                 "شیر برای استخوان ها خیلی مفید اَست.\n" +
                 "خواهرم از من خواست تا درسم را خوب بخوانم.\n" +
-                "ما باید شب ها زود بخوابیم.\n" ;
+                "ما باید شب ها زود بخوابیم.\n";
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
             boolean clicked = false;
@@ -25641,18 +25684,13 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_ooo() {
         headerText.setText(" او و");
-        text ="مَن آلو وَ زردآلو وَ گِردو،توت وَ چوب شور دوست دارَم.\n" +
+        text = "مَن آلو وَ زردآلو وَ گِردو،توت وَ چوب شور دوست دارَم.\n" +
                 "آهو زیبا اَست.\n" +
-                "او توپ بازی می کند.\n" ;
+                "او توپ بازی می کند.\n";
 
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
@@ -26296,20 +26334,15 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         textview.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-
-
-
-
-
-
     }
+
     public void changeWordsFor_oo() {
         headerText.setText("و -->  ُ");
-        text ="خورشید در آسمان می درخشد.\n" +
+        text = "خورشید در آسمان می درخشد.\n" +
                 "من جشن عید نوروز را دوست دارم.\n" +
                 "خودکار من آبی است.\n" +
                 "من هر روز صبحانه می خورم.\n" +
-                "مانتو،موج،خورشید،خودکار،نوزاد   صدای \"و\" دارند.\n" ;
+                "مانتو،موج،خورشید،خودکار،نوزاد   صدای \"و\" دارند.\n";
 
         spannableString = new SpannableString(text);
         clickableSpan = new ClickableSpan() {
@@ -26951,12 +26984,6 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
         textview.setText(spannableString);
         textview.setMovementMethod(LinkMovementMethod.getInstance());
-
-
-
-
-
-
 
 
     }

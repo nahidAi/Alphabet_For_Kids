@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#1550B3">
+        android:background="@color/White">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
                 android:padding="8dp"
                 android:src="@drawable/back" />
 
@@ -28,14 +27,11 @@
                 android:id="@+id/imgMyHome"
                 android:layout_width="56dp"
                 android:layout_height="wrap_content"
-               android:layout_centerInParent="true"
-                android:layout_marginRight="10dp"
+                android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:padding="6dp"
                 android:src="@drawable/home_yellow_toolbar" />
-
-
         </RelativeLayout>
 
 

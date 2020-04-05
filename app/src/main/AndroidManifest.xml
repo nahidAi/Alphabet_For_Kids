@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     package="com.p.alphabetforkids">
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -15,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".Activity.ActivityBuildWordSix"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
@@ -34,7 +36,7 @@
             android:name=".Activity.ActivityBuildWordTwo"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".Activity.ActivityReadHistory" />
+        <activity android:name=".Activity.ActivityReadStoreis" />
         <activity
             android:name=".Activity.ActivityBuildWord"
             android:screenOrientation="landscape"
@@ -75,6 +77,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.pushpole.sdk.token" android:value="PUSHPOLE_987011499894"/>
     </application>
 
 </manifest>

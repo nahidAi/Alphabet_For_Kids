@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="ltr"
-    android:id="@+id/toolbar">
+    android:layoutDirection="ltr">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/brown_light">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_alignParentLeft="true"
-        android:id="@+id/imgBack"
-        android:layout_centerHorizontal="true"
-        android:layout_width="56dp"
-        android:padding="8dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back" />
-    <ImageView
-        android:id="@+id/imgMyHome"
-        android:layout_width="56dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="6dp"
-        android:src="@drawable/home_yellow_toolbar" />
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:src="@drawable/back" />
+
+            <ImageView
+                android:id="@+id/imgMyHome"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="6dp"
+                android:src="@drawable/home_yellow_toolbar" />
+        </RelativeLayout>
 
 
     </androidx.appcompat.widget.Toolbar>

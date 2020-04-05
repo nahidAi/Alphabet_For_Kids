@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.p.alphabetforkids.R;
 
 public class ActivityPractice extends AppCompatActivity {
-    ImageView imgPaint_2, homeWork, imgback, findInSentence, soundAndSign,readHistory,buildWord;
+    ImageView imgPaint_2, homeWork, imgback, findInSentence, soundAndSign,readHistory,buildWord,imgHome;
     private int myId;
     private int myRow;
     MediaPlayer mediaPlayer;
@@ -39,6 +39,21 @@ public class ActivityPractice extends AppCompatActivity {
     }
 
     private void onClickMeThod() {
+        imgHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(ActivityPractice.this, R.raw.click);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+                Intent intent = new Intent(ActivityPractice.this, ActivityAllAlphabet.class);
+                startActivity(intent);
+            }
+        });
         readHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +65,8 @@ public class ActivityPractice extends AppCompatActivity {
                         mp.release();
                     }
                 });
-                Intent intent = new Intent(ActivityPractice.this, ActivityReadHistory.class);
+                Intent intent = new Intent(ActivityPractice.this, ActivityReadStoreis.class);
+                intent.putExtra("id",myId+"");
                 startActivity(intent);
 
             }
@@ -169,6 +185,7 @@ public class ActivityPractice extends AppCompatActivity {
     }
 
     private void findViewMethod() {
+        imgHome = findViewById(R.id.imgMyHome);
         imgPaint_2 = findViewById(R.id.paint_2);
         homeWork = findViewById(R.id.homeWork);
         imgback = findViewById(R.id.imgBack);

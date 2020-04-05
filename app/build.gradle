@@ -41,6 +41,9 @@ dependencies {
     //برای دادن انیمیشن به تکست ویو و ....
     implementation 'com.github.hujiaweibujidao:wava:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.pushpole.android:pushsdk:1.7.0'
+    implementation 'com.wajahatkarim3.easyflipviewpager:easyflipviewpager:1.0.0'
 
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

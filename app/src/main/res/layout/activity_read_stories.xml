@@ -1,0 +1,45 @@
+<LinearLayout
+    android:id="@+id/main_layout"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:context=".Activity.ActivityReadStoreis">
+
+    <!-- our toolbar -->
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:gravity="center|center_vertical"
+       android:background="@color/White"
+       android:layout_height="?attr/actionBarSize">
+       <TextView
+           android:id="@+id/txtstoryname"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:text=" نام داستان"
+           android:textSize="20dp"
+           android:textColor="@color/grey"/>
+
+   </RelativeLayout>
+
+    <!-- our tablayout to display tabs  -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:minHeight="?attr/actionBarSize"
+        app:tabMode="scrollable"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <!-- View pager to swipe views -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
+
+</LinearLayout>

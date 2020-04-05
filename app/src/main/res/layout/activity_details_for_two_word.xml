@@ -3,18 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layoutDirection="ltr"
     android:layout_height="match_parent"
     android:background="#f47da3"
+    android:layoutDirection="ltr"
     tools:context=".Activity.ActivityDetails">
+
+    <include layout="@layout/toolbar_6" />
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_above="@id/lnr_avatar"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="-100dp">
 
         <com.zyp.cardview.YcCardView
@@ -184,11 +187,11 @@
                 android:src="@drawable/smile" />
 
             <ImageView
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:id="@+id/renew"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/renew" />
@@ -209,57 +212,57 @@
         android:padding="8dp">
 
         <ImageView
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/back_left"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="6dp"
             android:src="@drawable/back_leftt" />
 
         <ImageView
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/img_practice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="6dp"
             android:src="@drawable/edit" />
 
         <ImageView
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/music"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="6dp"
             android:src="@drawable/music" />
 
         <ImageView
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="6dp"
             android:src="@drawable/home" />
 
         <ImageView
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/back_rightt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="6dp"
             android:src="@drawable/back_right" />
 

@@ -811,7 +811,6 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .into(imgLevelTwo);
         } else if (myId == 71) {
             txtMainWord.setText("چـ چ");
-
             option1.setText("ُ ");
             option2.setText("ر");
             option3.setText("چـ");
@@ -1678,7 +1677,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     mediaVoice(R.raw.horaa);
                     showGif();
                 }
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -1688,7 +1687,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            } else if (view.getId() == R.id.option1|view.getId() == R.id.option3 && v.getId() == R.id.lnr9) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option3 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -4968,9 +4967,6 @@ public class ActivityBuildWord extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
 }
