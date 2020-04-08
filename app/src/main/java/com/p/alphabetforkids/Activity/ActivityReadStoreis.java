@@ -2,11 +2,17 @@ package com.p.alphabetforkids.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import pl.droidsonroids.gif.GifImageView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -20,7 +26,10 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
     private ViewPager viewPager;
     MediaPlayer mediaPlayer;
     int myId;
-    TextView storyName;
+    public static TextView storyName;
+    public static GifImageView gifImageView;
+    ImageView imgBack;
+    public static SharedPreferences sharedPreferences;
 
 
     @Override
@@ -28,9 +37,27 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_stories);
 
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityReadStoreis.this);
+        builder.setMessage("گلم از بزرگترها خواهش کن برات داستان الفبارو بخونن. یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه بکشی");
+        builder.setCancelable(false);
+        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                builder.setCancelable(true);
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
         //گرفتن آیدی
         Bundle bundle = getIntent().getExtras();
         myId = Integer.parseInt(bundle.getString("id"));
+
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("idForFragment", myId);
+        editor.apply();
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -112,151 +139,141 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
     }
 
     public void findViewMethod() {
+        gifImageView = findViewById(R.id.tashvigh_soti);
         storyName = findViewById(R.id.txtstoryname);
+        imgBack = findViewById(R.id.imgBack);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+
+            }
+        });
+
 
     }
 
     public void setStories() {
         if (myId == 1) {
-            storyName.setText("پروانه ها");
-           /* Bundle bundle1 = new Bundle();
-            bundle1.putString("id", myId + "");
-            Tab6 tab6 = new Tab6();
-            tab6.setArguments(bundle1);*/
-
-            /*Tab5 tab5 = new Tab5();
-            tab5.setArguments(bundle1);
-
-            Tab4 tab4 = new Tab4();
-            tab4.setArguments(bundle1);
-
-            Tab3 tab3 = new Tab3();
-            tab3.setArguments(bundle1);
-
-            Tab2 tab2 = new Tab2();
-            tab2.setArguments(bundle1);
-
-            Tab1 tab1 = new Tab1();
-            tab1.setArguments(bundle1);*/
+            storyName.setText("داستان نشانه آ ");
         }
-
-
         if (myId == 2) {
-            storyName.setText("گربه پشمالو");
+            storyName.setText("داستان نشانه ب ");
         }
         if (myId == 3) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه اَ   َ ");
         }
         if (myId == 4) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه د ");
         }
         if (myId == 5) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه مـ م ");
         }
         if (myId == 6) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه سـ س");
         }
         if (myId == 7) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه او و ");
         }
         if (myId == 8) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه تـ ت");
         }
         if (myId == 9) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ر");
         }
         if (myId == 10) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه نـ ن");
         }
         if (myId == 11) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText(" داستان نشانه ایـ یـ ی ای ");
         }
         if (myId == 12) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ز");
         }
         if (myId == 13) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه اِ  ِ  ـه ه");
         }
         if (myId == 14) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه شـ ش");
         }
         if (myId == 15) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه یـ ی");
         }
         if (myId == 16) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText(" داستان نشانه اُ ُ");
         }
         if (myId == 17) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه کـ ک");
         }
         if (myId == 18) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه و");
         }
         if (myId == 19) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه پـ پ");
         }
         if (myId == 20) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه گـ گ");
         }
         if (myId == 21) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه فـ ف");
         }
         if (myId == 22) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه خـ خ");
         }
         if (myId == 23) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه قـ ق");
         }
         if (myId == 67) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه لـ ل");
         }
         if (myId == 68) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه جـ ج");
         }
         if (myId == 69) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه و --> ُ");
         }
         if (myId == 70) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه هـ ـهـ ـه ه");
         }
         if (myId == 71) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه چـ چ");
         }
         if (myId == 72) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ژ");
         }
         if (myId == 73) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه خوا");
         }
         if (myId == 74) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه  ّ");
         }
         if (myId == 75) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه صـ ص");
         }
         if (myId == 76) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ذ");
         }
         if (myId == 77) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه عـ ـعـ ـع ع");
         }
         if (myId == 78) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ثـ ث");
         }
         if (myId == 79) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه حـ ح");
         }
         if (myId == 80) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ضـ ض");
         }
         if (myId == 81) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ط");
         }
         if (myId == 82) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه غـ ـغـ ـغ غ");
         }
         if (myId == 83) {
-            storyName.setText("لاک پشت و خرگوش");
+            storyName.setText("داستان نشانه ظ");
+
         }
 
 

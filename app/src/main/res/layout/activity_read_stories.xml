@@ -9,22 +9,37 @@
     android:layoutDirection="ltr"
     tools:context=".Activity.ActivityReadStoreis">
 
+
+
+
+
     <!-- our toolbar -->
    <RelativeLayout
        android:layout_width="match_parent"
-       android:gravity="center|center_vertical"
+       android:gravity="center_vertical"
        android:background="@color/White"
        android:layout_height="?attr/actionBarSize">
+       <ImageView
+           android:id="@+id/imgBack"
+           android:layout_width="56dp"
+           android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+           android:layout_alignParentLeft="true"
+           android:padding="8dp"
+           android:src="@drawable/back" />
        <TextView
            android:id="@+id/txtstoryname"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
            android:gravity="center"
            android:text=" نام داستان"
-           android:textSize="20dp"
-           android:textColor="@color/grey"/>
+           android:textSize="25dp"
+           android:textStyle="bold"
+           android:textColor="@color/violet"/>
 
    </RelativeLayout>
+
 
     <!-- our tablayout to display tabs  -->
     <com.google.android.material.tabs.TabLayout
@@ -36,10 +51,28 @@
         app:tabMode="scrollable"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+
     <!-- View pager to swipe views -->
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"/>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/tashvigh_soti"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/gif_tashvigh"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+
+
+
+
 
 </LinearLayout>

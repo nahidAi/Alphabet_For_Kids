@@ -69,6 +69,10 @@ public class ActivityPractice extends AppCompatActivity {
                 intent.putExtra("id",myId+"");
                 startActivity(intent);
 
+
+
+
+
             }
         });
         buildWord.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +116,6 @@ public class ActivityPractice extends AppCompatActivity {
                     });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                    // Toast.makeText(ActivityPractice.this, "این تمرین برای سایر حروف طراحی شده است", Toast.LENGTH_SHORT).show();
                 } else {
                     intent.putExtra("id", myId + "");
                     intent.putExtra("row", myRow + "");

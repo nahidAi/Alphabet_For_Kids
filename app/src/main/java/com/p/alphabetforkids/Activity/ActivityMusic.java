@@ -667,7 +667,7 @@ public class ActivityMusic extends AppCompatActivity {
                 break;
             case 11:
               txtMusic.setText("\n" +
-                      "ما همگی (ایـ یـ ای ای) هستیم\n" +
+                      "ما همگی (ایـ یـ ی ای) هستیم\n" +
                       "(ایـ) اولم (ایـ) اول اول ایران هستم\n" +
                       "(یـ) وسطم خوب میدونم در وسط میز هستم\n" +
                       "(ی) چسبان آخرم آخر سینی هستم\n" +

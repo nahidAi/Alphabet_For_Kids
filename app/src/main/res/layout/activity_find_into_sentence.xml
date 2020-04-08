@@ -97,12 +97,12 @@
     </LinearLayout>
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/tashvigh_soti"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/gif_tashvigh"
-        android:visibility="gone" />
+    android:id="@+id/tashvigh_soti"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:src="@drawable/gif_tashvigh"
+    android:visibility="gone" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
