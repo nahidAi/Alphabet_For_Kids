@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import pl.droidsonroids.gif.GifImageView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,6 +49,20 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_into_sentence);
+
+        final Dialog dialog = new Dialog(ActivityFindIntoSentence.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        TextView txt = (TextView) dialog.findViewById(R.id.textView);
+        txt.setText("فرزند گلم حرف مشخص شده را داخل متن پیداش کن روش ضربه بزن تا انتخاب بشه.هر موقع استیکر به آخر رسید یعنی تمام حروف پیدا شده و تو برنده ای");
+        Button dismissButton = (Button) dialog.findViewById(R.id.button);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
         findViewMethod();
 

@@ -137,6 +137,13 @@ public class Fragment3 extends Fragment {
                     .load(R.drawable.story_i)
                     .into(img4);
 
+        }if (myId == 16) {
+            txt4.setText(R.string.o_page4);
+            Picasso
+                    .with(getContext())
+                    .load(R.drawable.h_o)
+                    .into(img4);
+
         }if (myId == 17) {
             txt4.setText(R.string.k_page4);
             Picasso

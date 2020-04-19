@@ -16,34 +16,7 @@
         android:layout_below="@+id/toolbar" />
 
 
-    <!--<carbon.widget.LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recyclerview"
-        android:orientation="vertical">
 
-        <carbon.widget.LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:layout_margin="@dimen/carbon_margin"
-            android:background="#ffffff"
-            app:carbon_cornerRadius="2dp"
-            app:carbon_elevation="8dp"
-            app:carbon_elevationShadowColor="@color/carbon_red_700">
-
-            <carbon.widget.ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:tint="@color/Orange_dark"
-                android:src="@drawable/ic_settings_black_24dp"/>
-
-            <carbon.widget.TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="test text"/>
-        </carbon.widget.LinearLayout>
-
-    </carbon.widget.LinearLayout>-->
 
 
 </RelativeLayout>

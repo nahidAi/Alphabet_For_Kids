@@ -29,6 +29,8 @@ public class ActivityMusic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -334,7 +336,7 @@ public class ActivityMusic extends AppCompatActivity {
                 }else  if (!isVisible){
                     txtMusic.setVisibility(View.GONE);
                     isVisible=true;
-                    btnMusicText.setText("متن شعر رو ببین");
+                    btnMusicText.setText(" متن  شعر");
                 }
 
 

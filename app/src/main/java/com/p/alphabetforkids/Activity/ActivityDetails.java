@@ -1089,11 +1089,11 @@ public class ActivityDetails extends AppCompatActivity {
                     .into(img_one_example);
         }
         if (myId == 13) {
-            setTextForTitle("اِ  ِ ه ـه");
+            setTextForTitle("اِ  ِ ـه ه");
             txtFirstAlphabet.setText("اِ");
             txtSecond_word.setText("ِ ");
-            txtThird_word.setText("ه");
-            txtEndAlphabetWords.setText("ـه");
+            txtThird_word.setText("ـه");
+            txtEndAlphabetWords.setText("ه");
             Picasso
                     .with(getApplicationContext())
                     .load(R.drawable.food_and_restaurant)

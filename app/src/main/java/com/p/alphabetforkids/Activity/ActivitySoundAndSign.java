@@ -3,6 +3,7 @@ package com.p.alphabetforkids.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,10 +13,12 @@ import android.os.Handler;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.p.alphabetforkids.R;
@@ -46,6 +49,19 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         //---------------------------------------------------------------- ست کردن لایه مناسب هر ایدی
 
         settingLayoutForDifferentId();
+        final Dialog dialog = new Dialog(ActivitySoundAndSign.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        TextView txt = (TextView) dialog.findViewById(R.id.textView);
+        txt.setText(" دانشجو کوچولوی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو با انگشت بکش و در جای مناسب رها کن  ");
+        Button dismissButton = (Button) dialog.findViewById(R.id.button);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
 
         // فول اسکرین کردن صفحه

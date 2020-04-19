@@ -8,10 +8,13 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.p.alphabetforkids.DrawingView;
 import com.p.alphabetforkids.R;
@@ -27,6 +30,20 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_work);
+
+        final Dialog dialog = new Dialog(ActivityHomeWork.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        TextView txt = (TextView) dialog.findViewById(R.id.textView);
+        txt.setText("گلم در این بخش میتونی قلم مناسب و رنگ دلخواه رو انتخاب کنی و روش نوشتن حروف الفبا رو تمرین کنی");
+        Button dismissButton = (Button) dialog.findViewById(R.id.button);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

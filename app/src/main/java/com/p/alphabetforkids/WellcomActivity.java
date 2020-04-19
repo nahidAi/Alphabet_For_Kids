@@ -1,8 +1,10 @@
 package com.p.alphabetforkids;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import pl.droidsonroids.gif.GifImageView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,9 +12,18 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.p.alphabetforkids.util.IabHelper;
+import com.p.alphabetforkids.util.IabResult;
+import com.p.alphabetforkids.util.Inventory;
+import com.p.alphabetforkids.util.Purchase;
 import com.pushpole.sdk.PushPole;
 
 import com.p.alphabetforkids.Activity.ActivityAllAlphabet;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WellcomActivity extends AppCompatActivity {
     GifImageView gifImageView;
@@ -20,12 +31,17 @@ public class WellcomActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wellcom);
+
+
+
+
         //  سرویس پوشه
-        PushPole.initialize(this,true);
+        PushPole.initialize(this, true);
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -56,6 +72,7 @@ public class WellcomActivity extends AppCompatActivity {
 
     }
 
+
     // برای اینکه دکمه بک خود گوشی کار نکنه
     @Override
     public void onBackPressed() {
@@ -69,7 +86,7 @@ public class WellcomActivity extends AppCompatActivity {
         super.onPause();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-           // System.exit(0);
+            // System.exit(0);
         } else
             return;
     }
@@ -79,7 +96,7 @@ public class WellcomActivity extends AppCompatActivity {
         super.onStop();
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
-          //  System.exit(0);
+            //  System.exit(0);
         } else
             return;
     }
@@ -91,4 +108,10 @@ public class WellcomActivity extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
+
+
+
+
+
 }

@@ -5,11 +5,13 @@ import androidx.viewpager.widget.ViewPager;
 import pl.droidsonroids.gif.GifImageView;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +40,8 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
         setContentView(R.layout.activity_read_stories);
 
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityReadStoreis.this);
+       /* final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityReadStoreis.this);
+
         builder.setMessage("گلم از بزرگترها خواهش کن برات داستان الفبارو بخونن. یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه بکشی");
         builder.setCancelable(false);
         builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
@@ -48,7 +51,24 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
             }
         });
         AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        alertDialog.show();*/
+
+        final Dialog dialog = new Dialog(ActivityReadStoreis.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        TextView txt = (TextView) dialog.findViewById(R.id.textView);
+        txt.setText("عزیزم از بزرگترها خواهش کن داستان الفبا را برات بخونن یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه از چپ به راست یا راست به چپ بکشی و کتاب رو ورق بزنی ");
+        Button dismissButton = (Button) dialog.findViewById(R.id.button);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
+
+
 
         //گرفتن آیدی
         Bundle bundle = getIntent().getExtras();
@@ -200,7 +220,7 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
             storyName.setText("داستان نشانه یـ ی");
         }
         if (myId == 16) {
-            storyName.setText(" داستان نشانه اُ ُ");
+            storyName.setText(" داستان نشانه اُ   ُ");
         }
         if (myId == 17) {
             storyName.setText("داستان نشانه کـ ک");

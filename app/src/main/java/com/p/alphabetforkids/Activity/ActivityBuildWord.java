@@ -5,6 +5,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -49,6 +51,20 @@ public class ActivityBuildWord extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_word);
+
+        final Dialog dialog = new Dialog(ActivityBuildWord.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        TextView txt = (TextView) dialog.findViewById(R.id.textView);
+        txt.setText("گلم توی این بخش میتونی با طریقه املا نوشتن اشنا بشی.ابتدا به تلفظ کلمه گوش کن بعد حروف مناسب همون کلمه رو از بین حروف رنگ بنفش انتخاب کن .حروف رو بکش و در جای خودش قرار بده");
+        Button dismissButton = (Button) dialog.findViewById(R.id.button);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
         //گرفتن آیدی
         Bundle bundle = getIntent().getExtras();
@@ -1699,6 +1715,84 @@ public class ActivityBuildWord extends AppCompatActivity {
             } else {
                 mediaVoice(R.raw.wrong);
             }
+
+        }else if (myId == 2) {
+            if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
+                oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            } else if (view.getId() == R.id.option2| view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
+                oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue ==5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6  && v.getId() == R.id.lnr6) {
+                oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5  && v.getId() == R.id.lnr7) {
+                oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            } else if (view.getId() == R.id.option3| view.getId() == R.id.option6  && v.getId() == R.id.lnr8) {
+                oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            }else if (view.getId() == R.id.option1| view.getId() == R.id.option5  && v.getId() == R.id.lnr9) {
+                oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
+                mediaVoice(R.raw.ok);
+                sharedPref();
+                if (intValue == 5) {
+                    mediaVoice(R.raw.horaa);
+                    showGif();
+
+
+                }
+
+
+            } else {
+                mediaVoice(R.raw.wrong);
+            }
+
 
         } else if (myId == 3) {
             if (view.getId() == R.id.option2 && v.getId() == R.id.lnr1) {
@@ -3782,7 +3876,7 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
                 }
-            } else if (view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
+            } else if (view.getId() == R.id.option2|view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
                 mediaVoice(R.raw.ok);
                 sharedPref();

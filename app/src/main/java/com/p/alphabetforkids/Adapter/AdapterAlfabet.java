@@ -1,7 +1,9 @@
 package com.p.alphabetforkids.Adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +12,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.p.alphabetforkids.Activity.ActivityAllAlphabet;
 import com.p.alphabetforkids.Activity.ActivityDetails;
+import com.p.alphabetforkids.Activity.ActivityPurchase;
 import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
 import com.squareup.picasso.Picasso;
@@ -22,7 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHolder> {
+public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHolder>{
     Context context;
     private List<ItemModel> itemModelList;
 
@@ -59,26 +63,64 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
             @Override
             public void onClick(View v) {
                 int position = model.getId();
-                Intent intent = new Intent(context, ActivityDetails.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("id", position + "");
-                intent.putExtra("id_word_count", model.getId_word_count() + "");
-                intent.putExtra("row",model.getRow()+"");
-                intent.putExtra("title", model.getTitle());
-                intent.putExtra("first_alphabet_word", model.getFirst_alphabet_word());
-                intent.putExtra("end_alphabet_words", model.getEnd_alphabet_word());
-                intent.putExtra("second_alphabet_words", model.getSecond_alphabet_words());
-                intent.putExtra("third_alphabet_words", model.getThird_alphabet_words());
-                intent.putExtra("one_example",model.getExampleOne());
-                intent.putExtra("two_example",model.getExampleTwo());
-                intent.putExtra("three_example",model.getExampleThree());
-                intent.putExtra("four_example",model.getExampleEnd());
-                intent.putExtra("img_one",model.getImg_one());
-                intent.putExtra("img_two",model.getImg_two());
-                intent.putExtra("img_three",model.getImg_three());
-                intent.putExtra("img_end",model.getImg_four());
-                intent.putExtra("Poetry",model.getPoetry());
-                context.startActivity(intent);
+                if (position == 1 | position == 2 | position == 3 | position == 4 | position == 5 | position == 6 | position == 7 | position == 8 | position == 9 | position == 10 | position == 11) {
+                    Intent intent = new Intent(context, ActivityDetails.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("id", position + "");
+                    intent.putExtra("id_word_count", model.getId_word_count() + "");
+                    intent.putExtra("row", model.getRow() + "");
+                    intent.putExtra("title", model.getTitle());
+                    intent.putExtra("first_alphabet_word", model.getFirst_alphabet_word());
+                    intent.putExtra("end_alphabet_words", model.getEnd_alphabet_word());
+                    intent.putExtra("second_alphabet_words", model.getSecond_alphabet_words());
+                    intent.putExtra("third_alphabet_words", model.getThird_alphabet_words());
+                    intent.putExtra("one_example", model.getExampleOne());
+                    intent.putExtra("two_example", model.getExampleTwo());
+                    intent.putExtra("three_example", model.getExampleThree());
+                    intent.putExtra("four_example", model.getExampleEnd());
+                    intent.putExtra("img_one", model.getImg_one());
+                    intent.putExtra("img_two", model.getImg_two());
+                    intent.putExtra("img_three", model.getImg_three());
+                    intent.putExtra("img_end", model.getImg_four());
+                    intent.putExtra("Poetry", model.getPoetry());
+                    context.startActivity(intent);
+                } else {
+                    //boolean isPremium = ((ActivityAllAlphabet) context).getIsPremiumAccount();
+                    SharedPreferences sharedPreferences=context.getSharedPreferences("myPreference",Context.MODE_PRIVATE);
+                    sharedPreferences.getBoolean("buy_is_ok",false);
+                    boolean isBuy = sharedPreferences.getBoolean("buy_is_ok",false);
+
+                    if (isBuy == false) {
+                        Intent intent = new Intent(context, ActivityPurchase.class);
+                        context.startActivity(intent);
+                    } else if (isBuy==true){
+                        Intent intent = new Intent(context, ActivityDetails.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("id", position + "");
+                        intent.putExtra("id_word_count", model.getId_word_count() + "");
+                        intent.putExtra("row", model.getRow() + "");
+                        intent.putExtra("title", model.getTitle());
+                        intent.putExtra("first_alphabet_word", model.getFirst_alphabet_word());
+                        intent.putExtra("end_alphabet_words", model.getEnd_alphabet_word());
+                        intent.putExtra("second_alphabet_words", model.getSecond_alphabet_words());
+                        intent.putExtra("third_alphabet_words", model.getThird_alphabet_words());
+                        intent.putExtra("one_example", model.getExampleOne());
+                        intent.putExtra("two_example", model.getExampleTwo());
+                        intent.putExtra("three_example", model.getExampleThree());
+                        intent.putExtra("four_example", model.getExampleEnd());
+                        intent.putExtra("img_one", model.getImg_one());
+                        intent.putExtra("img_two", model.getImg_two());
+                        intent.putExtra("img_three", model.getImg_three());
+                        intent.putExtra("img_end", model.getImg_four());
+                        intent.putExtra("Poetry", model.getPoetry());
+                        context.startActivity(intent);
+
+                    }
+
+
+                }
+
+
             }
 
 

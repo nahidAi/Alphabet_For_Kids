@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/click_music_button"
-                android:text="متن شعر رو ببین"
+                android:text=" متن  شعر"
                 android:textColor="#0A548F"
                 android:textSize="15dp" />
         </RelativeLayout>

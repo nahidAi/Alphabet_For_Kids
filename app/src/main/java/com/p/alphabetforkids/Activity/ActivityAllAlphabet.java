@@ -1,34 +1,65 @@
 package com.p.alphabetforkids.Activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.p.alphabetforkids.Adapter.AdapterAlfabet;
 import com.p.alphabetforkids.Model.ItemModel;
 import com.p.alphabetforkids.R;
+import com.p.alphabetforkids.WellcomActivity;
 import com.p.alphabetforkids.database.MyDatabase;
+import com.p.alphabetforkids.util.IabHelper;
+import com.p.alphabetforkids.util.IabResult;
+import com.p.alphabetforkids.util.Inventory;
+import com.p.alphabetforkids.util.Purchase;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityAllAlphabet extends AppCompatActivity {
-    //ImageView imgback;
+public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener {
+
     MyDatabase database;
     RecyclerView recyclerView;
     AdapterAlfabet adapterAlfabet;
     List<ItemModel> itemModelList = new ArrayList<>();
+    ProgressDialog progressDialog;
+    private IabHelper iabHelper;
+    private static final String PRODUCT_PREMIUM_ACCOUNT = "alphabet_for_kids";
+    private boolean isPremiumAccount = false;
+    public  Button btnBuy,btnContactUs;
+    SharedPreferences sharedPreferences;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_alphabet);
+
+        checkAccount();
+
+        btnContactUs = findViewById(R.id.btnContactUs);
+        btnContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAllAlphabet.this,ActivityContactUs.class);
+                startActivity(intent);
+            }
+        });
 
 
         // فول اسکرین کردن صفحه
@@ -43,8 +74,22 @@ public class ActivityAllAlphabet extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         recyclerView.setAdapter(adapterAlfabet);
 
+        btnBuy = findViewById(R.id.btnBuy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                purchasePremiumAccount();
+            }
+        });
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        sharedPreferences.getBoolean("buy_is_ok",false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok",false);
+        if (isBuy==true){
+            btnBuy.setVisibility(View.GONE);
+        }
 
     }
+
 
     // برای اینکه دکمه بک گوشی کار نکنه
     @Override
@@ -65,62 +110,87 @@ public class ActivityAllAlphabet extends AppCompatActivity {
     }
 
 
-}
+    @Override
+    public void onIabSetupFinished(IabResult result) {
+        if (result.isSuccess()) {
+            List<String> products = new ArrayList<>();
+            products.add(PRODUCT_PREMIUM_ACCOUNT);
+            iabHelper.queryInventoryAsync(true, products, this);
+        } else {
+            Toast.makeText(this, "خطایی بوجود آمده است", Toast.LENGTH_SHORT).show();
+        }
 
-// imgback = findViewById(R.id.imageBack);
-        /*imgback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityAllAlphabet.this, WellcomActivity.class);
-                startActivity(intent);
-                finish();
+    }
 
-            }
-        });*/
+    @Override
+    public void onQueryInventoryFinished(IabResult result, Inventory inv) {
+        if (result.isSuccess()) {
+            Purchase purchase = inv.getPurchase(PRODUCT_PREMIUM_ACCOUNT);
 
+            if (purchase != null) {
+                isPremiumAccount = true;
 
 
-
-         /*private void readFromDB() {
-        SQLiteDatabase db = databaseOpenHelper.openDatabase();
-
-        String sql = "select * from alfabet";
-        Cursor cursor = db.rawQuery(sql, null);
-        int counter = 0;
-        if (cursor.moveToFirst()) {
-            int id = -1;
-            String title = "";
-            String image = "";
-            try {
-                do {
-                    counter++;
-                    //if (counter == 3)
-                    //continue;
-                    id = -1;
-                    title = "";
-                    image = "";
-
-                    id = cursor.getInt(cursor.getColumnIndex("Id"));
-                    title = cursor.getString(cursor.getColumnIndex("title"));
-                    image = cursor.getString(cursor.getColumnIndex("image"));
-
-                    ItemModel movie = new ItemModel();
-                    movie.setId(id);
-                    movie.setTitle(title);
-                    movie.setImage(image);
-
-                    itemModelList.add(movie);
-                }
-                while (cursor.moveToNext());
-            } catch (Exception e) {
-                final String TAG = "sdfsqqqqqq";
-                Log.w(TAG, id + "");
-                Log.w(TAG, title + "");
-                Log.w(TAG, image + "");
-                Log.e(TAG, counter + "");
-                Log.e(TAG, e.toString());
             }
         }
 
-    }*/
+    }
+
+    public void checkAccount() {
+        iabHelper = new IabHelper(this, "MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDGIMXT/RKS03RPQ+yBErGENa968ocMSV6xwWUlabGBal2fLnuvSfK52N1LB3QQrp+rHsqIF4kRzYgqZFKFEToxC7i21XgIg6f7JigwD4X/zpnznvJhYh1+OOfH7oLQ6EUG9UnPONVSnzhWwXY1oF5K0njZfUIZu0QXCt8W/bTUVlPqzhpcsupltRpvInTtrGpYQ94yj4b2vCnCpB26ZlU9mb3jrXgxZMnRCbPUFOkCAwEAAQ==");
+        iabHelper.startSetup(this);
+    }
+
+    public void purchasePremiumAccount() {
+        iabHelper.launchPurchaseFlow(this, PRODUCT_PREMIUM_ACCOUNT, 1001, new IabHelper.OnIabPurchaseFinishedListener() {
+            @Override
+            public void onIabPurchaseFinished(IabResult result, Purchase info) {
+                if (result.isSuccess()) {
+                    if (info != null) {
+                        // صفحه جزییات رو برای کاربد بازش کن
+                        isPremiumAccount = true;
+                        btnBuy.setVisibility(View.GONE);
+
+                        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("buy_is_ok", isPremiumAccount);
+                        editor.apply();
+
+
+                    } else {
+                        Toast.makeText(ActivityAllAlphabet.this, "متاسفانه خرید انجام نشد", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1001) {
+            iabHelper.handleActivityResult(requestCode, resultCode, data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (iabHelper != null) {
+            iabHelper = null;
+            iabHelper.dispose();
+        }
+    }
+
+
+    public boolean getIsPremiumAccount() {
+        return isPremiumAccount;
+    }
+
+}
+
+
 
