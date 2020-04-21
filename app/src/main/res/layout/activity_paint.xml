@@ -121,11 +121,11 @@
                 tools:ignore="OnClick"
                 android:src="@drawable/paint"/>
             <ImageButton
-                android:tag="#FF009999"
+                android:tag="#51CCDC"
                 android:layout_width="@dimen/large_brush"
                 android:layout_height="@dimen/large_brush"
                 android:layout_margin="2dp"
-                android:background="#FF009999"
+                android:background="#51CCDC"
                 android:onClick="paintClicked"
                 android:contentDescription="@string/paint"
                 tools:ignore="OnClick"
@@ -140,11 +140,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
-                android:tag="#FF0000FF"
+                android:tag="#159FD5"
                 android:layout_width="@dimen/large_brush"
                 android:layout_height="@dimen/large_brush"
                 android:layout_margin="2dp"
-                android:background="#FF0000FF"
+                android:background="#159FD5"
                 android:onClick="paintClicked"
                 android:contentDescription="@string/paint"
                 tools:ignore="OnClick"

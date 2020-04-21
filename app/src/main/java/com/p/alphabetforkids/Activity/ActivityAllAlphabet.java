@@ -9,10 +9,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -40,9 +42,9 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
     private IabHelper iabHelper;
     private static final String PRODUCT_PREMIUM_ACCOUNT = "alphabet_for_kids";
     private boolean isPremiumAccount = false;
-    public  Button btnBuy,btnContactUs;
+    public Button btnBuy;
+    ImageView img_contact_us;
     SharedPreferences sharedPreferences;
-
 
 
     @Override
@@ -50,13 +52,17 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_alphabet);
 
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
+
         checkAccount();
 
-        btnContactUs = findViewById(R.id.btnContactUs);
-        btnContactUs.setOnClickListener(new View.OnClickListener() {
+        img_contact_us = findViewById(R.id.contact_us);
+        img_contact_us.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityAllAlphabet.this,ActivityContactUs.class);
+                Intent intent = new Intent(ActivityAllAlphabet.this, ActivityContactUs.class);
                 startActivity(intent);
             }
         });
@@ -82,9 +88,9 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
             }
         });
         sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
-        sharedPreferences.getBoolean("buy_is_ok",false);
-        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok",false);
-        if (isBuy==true){
+        sharedPreferences.getBoolean("buy_is_ok", false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok", false);
+        if (isBuy == true) {
             btnBuy.setVisibility(View.GONE);
         }
 
@@ -94,6 +100,14 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
     // برای اینکه دکمه بک گوشی کار نکنه
     @Override
     public void onBackPressed() {
+        iabHelper = null;
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+
 
     }
 
@@ -189,6 +203,7 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
     public boolean getIsPremiumAccount() {
         return isPremiumAccount;
     }
+
 
 }
 

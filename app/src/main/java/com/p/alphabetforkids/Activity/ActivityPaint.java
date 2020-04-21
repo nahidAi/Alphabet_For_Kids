@@ -1,12 +1,16 @@
 package com.p.alphabetforkids.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -28,6 +32,7 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     private float smallBrush, mediumBrush, largeBrush;
     private ImageView imgback,imgMyHome;
     MediaPlayer mediaPlayer;
+    int re;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,6 +220,14 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
             newDialog.setPositiveButton("آره", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    if (re!=1){
+                        ActivityCompat.requestPermissions(ActivityPaint.this,
+                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                1);
+                        re = 1;
+                    }
+
+
                     drawView.setDrawingCacheEnabled(true);
                     String imgSaved = MediaStore.Images.Media.insertImage(getContentResolver(),drawView.getDrawingCache(), UUID.randomUUID().toString()
                     +" .png", "drawing");
@@ -238,5 +251,30 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
 
         }
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(ActivityPaint.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }

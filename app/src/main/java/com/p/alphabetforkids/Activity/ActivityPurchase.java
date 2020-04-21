@@ -18,12 +18,8 @@ public class ActivityPurchase extends AppCompatActivity {
         setContentView(R.layout.activity_purchase);
 
         imageToolbarBack = findViewById(R.id.imageToolbarBack);
-        imageToolbarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        imageToolbarBack.setVisibility(View.GONE);
+
         btnBuy = findViewById(R.id.btnBuy);
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override

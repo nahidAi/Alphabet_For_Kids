@@ -5,6 +5,9 @@ import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -16,34 +19,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.p.alphabetforkids.DrawingView;
 import com.p.alphabetforkids.R;
 
 public class ActivityHomeWork extends AppCompatActivity implements View.OnClickListener {
     private DrawingView drawView;
     private ImageButton currPaint, drawBtn, eraseBtn, undoBtn;
+    SharedPreferences sharedPreferences;
     private float smallBrush, mediumBrush;
     private int id;
-    ImageView imgback, imgMyHome;
-
+    ImageView imgback, imgMyHome,imghelp;
+    boolean isShowTapTargetView = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_work);
 
-        final Dialog dialog = new Dialog(ActivityHomeWork.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        TextView txt = (TextView) dialog.findViewById(R.id.textView);
-        txt.setText("گلم در این بخش میتونی قلم مناسب و رنگ دلخواه رو انتخاب کنی و روش نوشتن حروف الفبا رو تمرین کنی");
-        Button dismissButton = (Button) dialog.findViewById(R.id.button);
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+
+
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -106,7 +101,60 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
 
 
         switchMethodForHomeWork();
+        imghelp = findViewById(R.id.imgHelp);
+        imghelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivityHomeWork.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                txt.setText("گلم در این بخش میتونی قلم مناسب و رنگ دلخواه رو انتخاب کنی و روش نوشتن حروف الفبا رو تمرین کنی");
+                Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
 
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        boolean showHelp = sharedPreferences.getBoolean("TapTargetView_home_work", false);
+        if (showHelp == false) {
+            final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "گلم در این بخش میتونی قلم مناسب و رنگ دلخواه رو انتخاب کنی و روش نوشتن حروف الفبا رو تمرین کنی")
+                            .outerCircleColor(R.color.yellow_dark)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.White)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.White)
+                            .descriptionTextSize(20)
+                            .descriptionTextColor(R.color.red)
+                            .textColor(R.color.black)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.black)
+                            .drawShadow(true)
+                            .cancelable(true)
+                            .transparentTarget(false)
+                            .icon(drawable)
+                            .targetRadius(60),
+                    new TapTargetView.Listener() {
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);
+
+                        }
+                    });
+            isShowTapTargetView = true;
+            sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("TapTargetView_home_work", isShowTapTargetView);
+            editor1.apply();
+        }
 
     }
 
@@ -321,5 +369,7 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
+
 }
 

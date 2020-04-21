@@ -63,7 +63,7 @@ public class AdapterAlfabet extends RecyclerView.Adapter<AdapterAlfabet.viewHold
             @Override
             public void onClick(View v) {
                 int position = model.getId();
-                if (position == 1 | position == 2 | position == 3 | position == 4 | position == 5 | position == 6 | position == 7 | position == 8 | position == 9 | position == 10 | position == 11) {
+                if (position == 1 | position == 2 | position == 3 | position == 4 | position == 5 | position == 6 | position == 7 | position == 8 | position == 9) {
                     Intent intent = new Intent(context, ActivityDetails.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("id", position + "");

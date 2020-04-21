@@ -22,7 +22,7 @@ public class ActivityContactUs extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(true)
-                .setImage(R.drawable.web_hi_res_512)
+                .setImage(R.drawable.ic_launcher_us)
                 .setDescription(" تیم برنامه نویسی 'wia developers' ")
                 .addGroup("ارتباط با ما")
                 .addEmail("na.mehr20@gmail.com")

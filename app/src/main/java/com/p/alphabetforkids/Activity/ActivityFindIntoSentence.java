@@ -2,12 +2,15 @@ package com.p.alphabetforkids.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import pl.droidsonroids.gif.GifImageView;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.p.alphabetforkids.R;
 
 public class ActivityFindIntoSentence extends AppCompatActivity {
@@ -36,7 +41,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     GifImageView gifImageView;
     Button reNew;
-    ImageView imgback, imgMyHome, imggoLeft, imggoRight;
+    ImageView imgback, imgMyHome, imggoLeft, imggoRight, imgHelp;
 
 
     private int id;
@@ -44,25 +49,14 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     int progressValue;
     boolean a, b, c, d, e, f, j, h, i, g, k, l = false;
 
+    boolean isShowTapTargetView = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_into_sentence);
 
-        final Dialog dialog = new Dialog(ActivityFindIntoSentence.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        TextView txt = (TextView) dialog.findViewById(R.id.textView);
-        txt.setText("فرزند گلم حرف مشخص شده را داخل متن پیداش کن روش ضربه بزن تا انتخاب بشه.هر موقع استیکر به آخر رسید یعنی تمام حروف پیدا شده و تو برنده ای");
-        Button dismissButton = (Button) dialog.findViewById(R.id.button);
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
 
         findViewMethod();
 
@@ -81,14 +75,68 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
         editor.putInt("progress_value", 0);
         editor.apply();
 
+        boolean showHelp = sharedPreferences.getBoolean("saveTapTargetView", false);
+
 
         findWordInSentecce();
         onClickMethod();
+
+        if (showHelp == false) {
+            final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "فرزند گلم حرف مشخص شده را داخل متن پیداش کن روش ضربه بزن تا انتخاب بشه.هر موقع استیکر به آخر رسید یعنی تمام حروف پیدا شده و تو برنده ای")
+                            .outerCircleColor(R.color.yellow_dark)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.White)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.White)
+                            .descriptionTextSize(20)
+                            .descriptionTextColor(R.color.red)
+                            .textColor(R.color.black)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.black)
+                            .drawShadow(true)
+                            .cancelable(true)
+                            .transparentTarget(false)
+                            .icon(drawable)
+                            .targetRadius(60),
+                    new TapTargetView.Listener() {
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);
+
+                        }
+                    });
+            isShowTapTargetView = true;
+            sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("saveTapTargetView", isShowTapTargetView);
+            editor1.apply();
+        }
 
 
     }
 
     private void onClickMethod() {
+        imgHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivityFindIntoSentence.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                txt.setText("فرزند گلم حرف مشخص شده را داخل متن پیداش کن روش ضربه بزن تا انتخاب بشه.هر موقع استیکر به آخر رسید یعنی تمام حروف پیدا شده و تو برنده ای");
+                Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
         imggoLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,6 +321,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
     }
 
     private void findViewMethod() {
+        imgHelp = findViewById(R.id.imgHelp);
         imggoLeft = findViewById(R.id.go_left);
         imggoRight = findViewById(R.id.go_right);
         seekBar = findViewById(R.id.seekBar);

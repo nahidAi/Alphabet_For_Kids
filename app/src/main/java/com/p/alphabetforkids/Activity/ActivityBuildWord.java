@@ -1,6 +1,7 @@
 package com.p.alphabetforkids.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import pl.droidsonroids.gif.GifImageView;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,8 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +30,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.p.alphabetforkids.R;
 import com.squareup.picasso.Picasso;
 
@@ -40,11 +45,12 @@ public class ActivityBuildWord extends AppCompatActivity {
             option7, option8, option9, option6, btnGoNextActivity;
     private LinearLayout lnr1, lnr2, lnr3, lnr4, lnr5, lnr6, lnr7, lnr8, lnr9, lnr10;
     private TextView txtMainWord, txtLevelOne, txtLevelTwo;
-    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft, audioLevelOne, audioLevelTwo, imgBack, imgHome;
+    private ImageView imgLevelOne, imgLevelTwo, goRight, goLeft, audioLevelOne, audioLevelTwo, imgBack, imgHome, imgHelp;
     MediaPlayer mediaPlayer;
     SharedPreferences sharedPreferences;
     int intValue;
     GifImageView gifImageView;
+    boolean isShowTapTargetView = false;
 
 
     @Override
@@ -52,19 +58,7 @@ public class ActivityBuildWord extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_word);
 
-        final Dialog dialog = new Dialog(ActivityBuildWord.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        TextView txt = (TextView) dialog.findViewById(R.id.textView);
-        txt.setText("گلم توی این بخش میتونی با طریقه املا نوشتن اشنا بشی.ابتدا به تلفظ کلمه گوش کن بعد حروف مناسب همون کلمه رو از بین حروف رنگ بنفش انتخاب کن .حروف رو بکش و در جای خودش قرار بده");
-        Button dismissButton = (Button) dialog.findViewById(R.id.button);
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+
 
         //گرفتن آیدی
         Bundle bundle = getIntent().getExtras();
@@ -79,6 +73,40 @@ public class ActivityBuildWord extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("intValue", 0);
         editor.apply();
+
+        boolean showHelp = sharedPreferences.getBoolean("TapTargetView_build_word", false);
+        if (showHelp == false) {
+            final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "گلم اینجا میتونی با طریقه املا نوشتن آشنا بشی.ابتدا به تلفظ کلمه گوش کن بعد حروف مناسب همون کلمه رو بکش و در جای خودش قرار بده")
+                            .outerCircleColor(R.color.yellow_dark)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.White)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.White)
+                            .descriptionTextSize(20)
+                            .descriptionTextColor(R.color.red)
+                            .textColor(R.color.black)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.black)
+                            .drawShadow(true)
+                            .cancelable(true)
+                            .transparentTarget(false)
+                            .icon(drawable)
+                            .targetRadius(60),
+                    new TapTargetView.Listener() {
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);
+
+                        }
+                    });
+            isShowTapTargetView = true;
+            sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("TapTargetView_build_word", isShowTapTargetView);
+            editor1.apply();
+        }
 
 
         findView();
@@ -148,7 +176,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                     .into(imgLevelTwo);
 
         } else if (myId == 3) {
-            txtMainWord.setText(" اَ    َ");
+            txtMainWord.setText("اَ    َ ");
 
             option1.setText("بـ");
             option2.setText("اَ ");
@@ -1198,6 +1226,7 @@ public class ActivityBuildWord extends AppCompatActivity {
     }
 
     public void findView() {
+        imgHelp = findViewById(R.id.imgHelp);
         btnGoNextActivity = findViewById(R.id.btn_go_next_activity);
         Animation animation = new AlphaAnimation(1, 0); // بین 1 و 0 یعنی بصورت کاملا پیدا و کاملا ناپیدا
         animation.setDuration(500); // مدت زمان انجام یک بار فرآیند
@@ -1261,6 +1290,25 @@ public class ActivityBuildWord extends AppCompatActivity {
     }
 
     public void onClickMethod() {
+        imgHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivityBuildWord.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                txt.setText("گلم اینجا میتونی با طریقه املا نوشتن آشنا بشی.ابتدا به تلفظ کلمه گوش کن بعد حروف مناسب همون کلمه رو بکش و در جای خودش قرار بده");
+                Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
         btnGoNextActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1716,7 +1764,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 mediaVoice(R.raw.wrong);
             }
 
-        }else if (myId == 2) {
+        } else if (myId == 2) {
             if (view.getId() == R.id.option4 && v.getId() == R.id.lnr1) {
                 oldAndNewParent((LinearLayout) v, view, btnResult1, lnr1);
                 mediaVoice(R.raw.ok);
@@ -1729,11 +1777,11 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            } else if (view.getId() == R.id.option2| view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option5 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
                 mediaVoice(R.raw.ok);
                 sharedPref();
-                if (intValue ==5) {
+                if (intValue == 5) {
                     mediaVoice(R.raw.horaa);
                     showGif();
 
@@ -1741,7 +1789,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6  && v.getId() == R.id.lnr6) {
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr6) {
                 oldAndNewParent((LinearLayout) v, view, btnResult6, lnr6);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -1753,7 +1801,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5  && v.getId() == R.id.lnr7) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr7) {
                 oldAndNewParent((LinearLayout) v, view, btnResult7, lnr7);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -1765,7 +1813,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            } else if (view.getId() == R.id.option3| view.getId() == R.id.option6  && v.getId() == R.id.lnr8) {
+            } else if (view.getId() == R.id.option3 | view.getId() == R.id.option6 && v.getId() == R.id.lnr8) {
                 oldAndNewParent((LinearLayout) v, view, btnResult8, lnr8);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -1777,7 +1825,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 }
 
 
-            }else if (view.getId() == R.id.option1| view.getId() == R.id.option5  && v.getId() == R.id.lnr9) {
+            } else if (view.getId() == R.id.option1 | view.getId() == R.id.option5 && v.getId() == R.id.lnr9) {
                 oldAndNewParent((LinearLayout) v, view, btnResult9, lnr9);
                 mediaVoice(R.raw.ok);
                 sharedPref();
@@ -3876,7 +3924,7 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
                 }
-            } else if (view.getId() == R.id.option2|view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
+            } else if (view.getId() == R.id.option2 | view.getId() == R.id.option7 && v.getId() == R.id.lnr5) {
                 oldAndNewParent((LinearLayout) v, view, btnResult5, lnr5);
                 mediaVoice(R.raw.ok);
                 sharedPref();

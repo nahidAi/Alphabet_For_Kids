@@ -118,7 +118,7 @@ public class Fragment2 extends Fragment {
                     .load(R.drawable.h_z)
                     .into(img5);
 
-        }if (myId == 12) {
+        }if (myId == 13) {
             txt5.setText(R.string.ea_page5);
             Picasso
                     .with(getContext())

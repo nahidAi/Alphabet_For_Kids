@@ -1,12 +1,15 @@
 package com.p.alphabetforkids.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.p.alphabetforkids.R;
 
 public class ActivitySoundAndSign extends AppCompatActivity {
@@ -28,13 +33,15 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnRenew, btnOption3, btnResult3, btnResult4, btnOption4,
             btnResult5, btnOption5, btnOption6, btnResult6;
     private LinearLayout lnrResult, lnrResult2, lnrResult3, lnrResult4, lnrResult5, lnrResult6;
-    private ImageView imgBack, imgHome, imgGoRight, imgGoLeft;
+    private ImageView imgBack, imgHome, imgGoRight, imgGoLeft,imgHelp;
     private int myId;
     private Handler handler;
     private View view;
     int myRow;
     int newId;
     MediaPlayer mediaPlayer;
+    boolean isShowTapTargetView = false;
+    SharedPreferences sharedPreferences;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -49,19 +56,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         //---------------------------------------------------------------- ست کردن لایه مناسب هر ایدی
 
         settingLayoutForDifferentId();
-        final Dialog dialog = new Dialog(ActivitySoundAndSign.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        TextView txt = (TextView) dialog.findViewById(R.id.textView);
-        txt.setText(" دانشجو کوچولوی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو با انگشت بکش و در جای مناسب رها کن  ");
-        Button dismissButton = (Button) dialog.findViewById(R.id.button);
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+
 
 
         // فول اسکرین کردن صفحه
@@ -73,6 +68,40 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         setOnClick();
         changeWordsInTable();
         settingTouchAndDragListenerForButtons();
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        boolean showHelp = sharedPreferences.getBoolean("TapTargetView_sound_sign", false);
+        if (showHelp == false) {
+            final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "دانشجوی کوچولی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو بکش و در جای مناسب رها کن")
+                            .outerCircleColor(R.color.yellow_dark)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.White)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.White)
+                            .descriptionTextSize(20)
+                            .descriptionTextColor(R.color.red)
+                            .textColor(R.color.black)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.black)
+                            .drawShadow(true)
+                            .cancelable(true)
+                            .transparentTarget(false)
+                            .icon(drawable)
+                            .targetRadius(60),
+                    new TapTargetView.Listener() {
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);
+
+                        }
+                    });
+            isShowTapTargetView = true;
+            sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("TapTargetView_sound_sign", isShowTapTargetView);
+            editor1.apply();
+        }
 
 
     }
@@ -205,7 +234,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption.setText("زا");
             btnOption2.setText("زَ");
             btnOption3.setText("زو");
-            btnOption4.setTextSize(25);
             btnOption4.setText("زیـ  زی");
         } else if (myId == 13) {
             btnSign.setText("سـ س ");
@@ -213,8 +241,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption.setText("سا");
             btnOption2.setText("سـَ");
             btnOption3.setText("سو");
-            btnOption4.setTextSize(25);
-            btnOption5.setTextSize(25);
             btnOption4.setText("سیـ سی");
             btnOption5.setText("سـِ سه");
         } else if (myId == 14) {
@@ -223,7 +249,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("شـَ");
             btnOption3.setText("شو");
             btnOption4.setText("شیـ شی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("شـِ شه");
         } else if (myId == 15) {
             btnSign.setText("یـ ی");
@@ -231,7 +256,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("یـَ");
             btnOption3.setText("یو");
             btnOption4.setText("ییـ یی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("یـِ یه");
         } else if (myId == 16) {
             btnSign.setText("بـ ب");
@@ -239,7 +263,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("بـَ");
             btnOption3.setText("بو");
             btnOption4.setText("بیـ بی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("بـِ به");
             btnOption6.setText("بـُ");
         } else if (myId == 17) {
@@ -248,7 +271,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("کـَ");
             btnOption3.setText("کو");
             btnOption4.setText("کیـ کی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("کـِ که");
             btnOption6.setText("کـُ");
         } else if (myId == 18) {
@@ -257,7 +279,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("وَ");
             btnOption3.setText("وو");
             btnOption4.setText("ویـ وی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("وِ وه");
             btnOption6.setText("وُ");
         } else if (myId == 19) {
@@ -266,7 +287,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("پـَ");
             btnOption3.setText("پو");
             btnOption4.setText("پیـ پی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("پـِ په");
             btnOption6.setText("پـُ");
         } else if (myId == 20) {
@@ -275,7 +295,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("گـَ");
             btnOption3.setText("گو");
             btnOption4.setText("گیـ گی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("گـِ گه");
             btnOption6.setText("گـُ");
         } else if (myId == 21) {
@@ -284,7 +303,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("فـَ");
             btnOption3.setText("فو");
             btnOption4.setText("فیـ فی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("فـِ فه");
             btnOption6.setText("فـُ");
         } else if (myId == 22) {
@@ -293,7 +311,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("خـَ");
             btnOption3.setText("خو");
             btnOption4.setText("خیـ خی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("خـِ خه");
             btnOption6.setText("خـُ");
         } else if (myId == 23) {
@@ -302,7 +319,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("قـَ");
             btnOption3.setText("قو");
             btnOption4.setText("قیـ قی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("قـِ قه");
             btnOption6.setText("قـُ");
         } else if (myId == 67) {
@@ -311,7 +327,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("لـَ");
             btnOption3.setText("لو");
             btnOption4.setText("لیـ لی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("لـِ له");
             btnOption6.setText("لـُ");
         } else if (myId == 68) {
@@ -320,7 +335,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("جـَ");
             btnOption3.setText("جو");
             btnOption4.setText("جیـ جی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("جـِ جه");
             btnOption6.setText("جـُ");
         } else if (myId == 69) {
@@ -329,7 +343,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("بـَ");
             btnOption3.setText("بو");
             btnOption4.setText("بیـ بی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("بـِ به");
             btnOption6.setText("بـُ");
         } else if (myId == 70) {
@@ -339,7 +352,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("هـَ");
             btnOption3.setText("هو");
             btnOption4.setText("هیـ هی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("هـِ هه");
             btnOption6.setText("هـُ");
         } else if (myId == 71) {
@@ -348,7 +360,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("چـَ");
             btnOption3.setText("چو");
             btnOption4.setText("چیـ چی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("چـِ چه");
             btnOption6.setText("چـُ");
         } else if (myId == 72) {
@@ -357,7 +368,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("ژَ");
             btnOption3.setText("ژو");
             btnOption4.setText("ژیـ ژی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("ژِ ژه");
             btnOption6.setText("ژُ");
         } else if (myId == 73) {
@@ -366,7 +376,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("بـَ");
             btnOption3.setText("بو");
             btnOption4.setText("بیـ بی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("بـِ به");
             btnOption6.setText("بـُ");
         } else if (myId == 74) {
@@ -375,7 +384,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("بـَ");
             btnOption3.setText("بو");
             btnOption4.setText("بیـ بی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("بـِ به");
             btnOption6.setText("بـُ");
         } else if (myId == 75) {
@@ -384,7 +392,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("صـَ");
             btnOption3.setText("صو");
             btnOption4.setText("صیـ صی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("صـِ صه");
             btnOption6.setText("صـُ");
         } else if (myId == 76) {
@@ -393,7 +400,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("ذَ");
             btnOption3.setText("ذو");
             btnOption4.setText("ذیـ ذی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("ذِ ذه");
             btnOption6.setText("ذُ");
         } else if (myId == 77) {
@@ -403,7 +409,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("عـَ");
             btnOption3.setText("عو");
             btnOption4.setText("عیـ عی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("عـِ عه");
             btnOption6.setText("عـُ");
         } else if (myId == 78) {
@@ -412,7 +417,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("ثـَ");
             btnOption3.setText("ثو");
             btnOption4.setText("ثیـ ثی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("ثـِ ثه");
             btnOption6.setText("ثـُ");
         } else if (myId == 79) {
@@ -421,7 +425,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("حـَ");
             btnOption3.setText("حو");
             btnOption4.setText("حیـ حی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("حـِ حه");
             btnOption6.setText("حـُ");
         } else if (myId == 80) {
@@ -430,7 +433,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("ضـَ");
             btnOption3.setText("ضو");
             btnOption4.setText("ضیـ ضی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("ضـِ ضه");
             btnOption6.setText("ضـُ");
         } else if (myId == 81) {
@@ -439,7 +441,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("طَ");
             btnOption3.setText("طو");
             btnOption4.setText("طیـ طی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("طِ طه");
             btnOption6.setText("طُُ");
         } else if (myId == 82) {
@@ -449,7 +450,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("غـَ");
             btnOption3.setText("غو");
             btnOption4.setText("غیـ غی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("غـِ غه");
             btnOption6.setText("غـُ");
         } else if (myId == 83) {
@@ -458,7 +458,6 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption2.setText("ظَ");
             btnOption3.setText("ظو");
             btnOption4.setText("ظیـ ظی");
-            btnOption4.setTextSize(25);
             btnOption5.setText("ظِ ظه");
             btnOption6.setText("ظُ");
         }
@@ -487,6 +486,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
     }
 
     public void findView() {
+        imgHelp = findViewById(R.id.imgHelp);
         imgGoLeft = findViewById(R.id.go_left);
         imgGoRight = findViewById(R.id.go_right);
         btnSign = findViewById(R.id.btn_sign);
@@ -516,6 +516,25 @@ public class ActivitySoundAndSign extends AppCompatActivity {
     }
 
     public void setOnClick() {
+        imgHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivitySoundAndSign.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                txt.setText("دانشجوی کوچولوی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو بکش و در جای مناسب رها کن");
+                Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
         imgGoRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,6 +40,10 @@ public class WellcomActivity extends AppCompatActivity {
 
 
 
+
+
+
+
         //  سرویس پوشه
         PushPole.initialize(this, true);
 

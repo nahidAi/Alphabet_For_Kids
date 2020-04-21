@@ -34,9 +34,20 @@
            android:layout_centerInParent="true"
            android:gravity="center"
            android:text=" نام داستان"
-           android:textSize="25dp"
+           android:textSize="20dp"
            android:textStyle="bold"
-           android:textColor="@color/violet"/>
+           android:paddingTop="5dp"
+           android:textColor="@color/grey"/>
+       <ImageView
+           android:id="@+id/imgHelp"
+           android:layout_width="56dp"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:padding="8dp"
+           android:layout_marginRight="8dp"
+           android:src="@drawable/question" />
 
    </RelativeLayout>
 

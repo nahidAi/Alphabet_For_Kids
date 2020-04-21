@@ -3,13 +3,17 @@ package com.p.alphabetforkids.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.p.alphabetforkids.R;
 
@@ -105,17 +109,20 @@ public class ActivityPractice extends AppCompatActivity {
                 });
                 Intent intent = new Intent(ActivityPractice.this, ActivitySoundAndSign.class);
                 if (myId == 1 | myId == 69 | myId == 73 | myId == 74) {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityPractice.this);
-                    builder.setMessage("عزیزم این تمرین برای این حرف فعال نیست ");
-                    builder.setCancelable(true);
-                    builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
+                    final Dialog dialog = new Dialog(ActivityPractice.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.custom_dialog);
+                    TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                    txt.setText("دانشجو کوچولوی عزیزم انجام این تمرین برای این حرف نیاز نیست");
+                    Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                    dismissButton.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            builder.setCancelable(true);
+                        public void onClick(View v) {
+                            dialog.dismiss();
                         }
                     });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
+                    dialog.show();
+
                 } else {
                     intent.putExtra("id", myId + "");
                     intent.putExtra("row", myRow + "");

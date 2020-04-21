@@ -24,26 +24,20 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/click12"
                 android:padding="10dp"
-                android:text="خرید نسخه نهایی"
-                android:textColor="@color/green_light"
+                android:text="خرید و فعال سازی"
+                android:textColor="#CA2418"
                 android:textStyle="bold" />
 
 
 
-            <Button
-                android:id="@+id/btnContactUs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/click12"
-                android:layout_alignParentRight="true"
-                android:padding="10dp"
-                android:text="ارتباط با ما"
-                android:layout_marginRight="16dp"
-                android:textColor="@color/green_light"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/contact_us"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:src="@drawable/contact_us"/>
 
 
         </RelativeLayout>

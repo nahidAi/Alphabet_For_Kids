@@ -25,7 +25,7 @@ public class ActivityDetails extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     ImageView imgBackRight, imgBackLeft, imgMusic, imgHome, imgPractice, img_one_example, img_two_example,
-            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd, imgReNew, imgMute,imgHomeToolbar,imgBack;
+            img_three_example, img_end_example, imgOne, imgTwo, imgThree, imgEnd, imgReNew, imgMute, imgHomeToolbar, imgBack;
 
     TextView txtTop, txtFirstAlphabet, txtEndAlphabetWords, txtSecond_word, txtThird_word;
 
@@ -552,7 +552,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -577,7 +577,7 @@ public class ActivityDetails extends AppCompatActivity {
                 }
 
                 if (myId == 1 | myId == 2 | myId == 3 | myId == 5 | myId == 6 | myId == 7 | myId == 8 | myId == 10
-                         | myId == 14 | myId == 15 | myId == 16 | myId == 17 | myId == 19
+                        | myId == 14 | myId == 15 | myId == 16 | myId == 17 | myId == 19
                         | myId == 20 | myId == 21 | myId == 22 | myId == 23 | myId == 67 | myId == 68 | myId == 71
                         | myId == 75 | myId == 78 | myId == 79 | myId == 80) {
                     id_word_count = 2;
@@ -598,7 +598,7 @@ public class ActivityDetails extends AppCompatActivity {
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
                 }
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -621,10 +621,9 @@ public class ActivityDetails extends AppCompatActivity {
 
                 if (myId == 67) {
                     myId = myId - 44;
-                }
-                 else if (myId == 1) {
-                    myId =1;
-                }else {
+                } else if (myId == 1) {
+                    myId = 1;
+                } else {
                     myId = myId - 1;
                 }
 
@@ -650,7 +649,7 @@ public class ActivityDetails extends AppCompatActivity {
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
                 }
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -664,7 +663,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -681,7 +680,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -696,7 +695,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -721,8 +720,11 @@ public class ActivityDetails extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("isMuteSound", isMute);
                     editor.apply();
-                    Toast.makeText(ActivityDetails.this, "صدا قطع شد", Toast.LENGTH_SHORT).show();
-
+                    Toast toast = Toast.makeText(getApplicationContext(), "صدا رو قطع کردی :)", Toast.LENGTH_LONG);
+                    View view = toast.getView();
+                    view.setBackgroundResource(R.drawable.custom_toast);
+                    toast.setView(view);
+                    toast.show();
 
                 } else if (isMute == true) {
                     int myImgMute = getResources().getIdentifier("smile", "drawable", getPackageName());
@@ -733,7 +735,7 @@ public class ActivityDetails extends AppCompatActivity {
                     editor.apply();
                     switchMethod();
                     setTextMethod();
-                    Toast.makeText(ActivityDetails.this, "در حال اجرا", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(ActivityDetails.this, "در حال اجرا", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -820,7 +822,7 @@ public class ActivityDetails extends AppCompatActivity {
         onClickForNewId();
         if (soundTF == true) {
             mediaPlayer.stop();
-        }else {
+        } else {
             switchMethod();
         }
 
@@ -1716,7 +1718,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1741,7 +1743,7 @@ public class ActivityDetails extends AppCompatActivity {
                 }
 
                 if (myId == 1 | myId == 2 | myId == 3 | myId == 5 | myId == 6 | myId == 7 | myId == 8 | myId == 10
-                         | myId == 14 | myId == 15 | myId == 16 | myId == 17 | myId == 19
+                        | myId == 14 | myId == 15 | myId == 16 | myId == 17 | myId == 19
                         | myId == 20 | myId == 21 | myId == 22 | myId == 23 | myId == 67 | myId == 68 | myId == 71
                         | myId == 75 | myId == 78 | myId == 79 | myId == 80) {
                     id_word_count = 2;
@@ -1762,7 +1764,7 @@ public class ActivityDetails extends AppCompatActivity {
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
                 }
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1785,10 +1787,9 @@ public class ActivityDetails extends AppCompatActivity {
 
                 if (myId == 67) {
                     myId = myId - 44;
-                }
-                else if (myId == 1) {
-                    myId =1;
-                }else {
+                } else if (myId == 1) {
+                    myId = 1;
+                } else {
                     myId = myId - 1;
                 }
 
@@ -1814,7 +1815,7 @@ public class ActivityDetails extends AppCompatActivity {
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
                 }
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1828,7 +1829,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1845,7 +1846,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1860,7 +1861,7 @@ public class ActivityDetails extends AppCompatActivity {
         imgMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this,R.raw.click);
+                MediaPlayer mediaPlayer = MediaPlayer.create(ActivityDetails.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -1885,7 +1886,11 @@ public class ActivityDetails extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("isMuteSound", isMute);
                     editor.apply();
-                    Toast.makeText(ActivityDetails.this, "صدا قطع شد", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(getApplicationContext(), "صدا رو قطع کردی :)", Toast.LENGTH_LONG);
+                    View view = toast.getView();
+                    view.setBackgroundResource(R.drawable.custom_toast);
+                    toast.setView(view);
+                    toast.show();
 
 
                 } else if (isMute == true) {
@@ -1897,7 +1902,7 @@ public class ActivityDetails extends AppCompatActivity {
                     editor.apply();
                     switchMethod();
                     setTextForNewIdGoLeft();
-                    Toast.makeText(ActivityDetails.this, "در حال اجرا", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ActivityDetails.this, "در حال اجرا", Toast.LENGTH_SHORT).show();
 
 
                 }

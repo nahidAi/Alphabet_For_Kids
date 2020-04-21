@@ -1,6 +1,7 @@
 package com.p.alphabetforkids.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -8,6 +9,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.tabs.TabLayout;
 import com.p.alphabetforkids.Adapter.Pager;
 import com.p.alphabetforkids.R;
@@ -30,44 +35,15 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
     int myId;
     public static TextView storyName;
     public static GifImageView gifImageView;
-    ImageView imgBack;
+    ImageView imgBack,imgHelp;
     public static SharedPreferences sharedPreferences;
+    boolean isShowTapTargetView = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_stories);
-
-
-       /* final AlertDialog.Builder builder = new AlertDialog.Builder(ActivityReadStoreis.this);
-
-        builder.setMessage("گلم از بزرگترها خواهش کن برات داستان الفبارو بخونن. یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه بکشی");
-        builder.setCancelable(false);
-        builder.setPositiveButton("باشه", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                builder.setCancelable(true);
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();*/
-
-        final Dialog dialog = new Dialog(ActivityReadStoreis.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        TextView txt = (TextView) dialog.findViewById(R.id.textView);
-        txt.setText("عزیزم از بزرگترها خواهش کن داستان الفبا را برات بخونن یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه از چپ به راست یا راست به چپ بکشی و کتاب رو ورق بزنی ");
-        Button dismissButton = (Button) dialog.findViewById(R.id.button);
-        dismissButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-
-
 
 
         //گرفتن آیدی
@@ -141,6 +117,46 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
         tabLayout.setOnTabSelectedListener(this);
 
         setStories();
+
+        boolean showHelp = sharedPreferences.getBoolean("TapTargetView_readStoreis", false);
+        if (showHelp == false) {
+            final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            TapTargetView.showFor(this,
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "عزیزم از بزرگترها خواهش کن داستان الفبا را برات بخونن یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه از چپ به راست یا راست به چپ بکشی و کتاب رو ورق بزنی ")
+                            .outerCircleColor(R.color.yellow_dark)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.White)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.White)
+                            .descriptionTextSize(20)
+                            .descriptionTextColor(R.color.red)
+                            .textColor(R.color.black)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.black)
+                            .drawShadow(true)
+                            .cancelable(true)
+                            .transparentTarget(false)
+                            .icon(drawable)
+                            .targetRadius(60),
+                    new TapTargetView.Listener() {
+                        @Override
+                        public void onTargetClick(TapTargetView view) {
+                            super.onTargetClick(view);
+
+                        }
+                    });
+            isShowTapTargetView = true;
+            sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences.edit();
+            editor1.putBoolean("TapTargetView_readStoreis", isShowTapTargetView);
+            editor1.apply();
+        }
+
+
+
+
+
+
     }
 
     @Override
@@ -159,6 +175,26 @@ public class ActivityReadStoreis extends AppCompatActivity implements TabLayout.
     }
 
     public void findViewMethod() {
+        imgHelp = findViewById(R.id.imgHelp);
+        imgHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivityReadStoreis.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog);
+                TextView txt = (TextView) dialog.findViewById(R.id.textView);
+                txt.setText("عزیزم از بزرگترها خواهش کن داستان الفبا را برات بخونن یادت باشه برای ورق زدن صفحه انگشتت رو روی صفحه از چپ به راست یا راست به چپ بکشی و کتاب رو ورق بزنی ");
+                Button dismissButton = (Button) dialog.findViewById(R.id.button);
+                dismissButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+            }
+        });
         gifImageView = findViewById(R.id.tashvigh_soti);
         storyName = findViewById(R.id.txtstoryname);
         imgBack = findViewById(R.id.imgBack);

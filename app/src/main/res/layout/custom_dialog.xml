@@ -23,9 +23,10 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/click10"
+        android:background="@drawable/click11"
         android:text="باشه"
-        android:textColor="@color/White"
+        android:textSize="20dp"
+        android:textColor="@color/green_light"
         android:textStyle="bold" />
 
 </LinearLayout>
