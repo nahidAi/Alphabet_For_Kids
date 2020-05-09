@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/Orange_dark">
+        android:background="#F35042">
 
         <RelativeLayout
             android:layout_width="match_parent"

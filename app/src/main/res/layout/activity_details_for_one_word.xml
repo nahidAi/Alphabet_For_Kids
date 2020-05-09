@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f39166"
+    android:background="@drawable/yoopy_app"
     android:layoutDirection="ltr"
     tools:context=".Activity.ActivityDetails">
 
@@ -28,7 +28,7 @@
             android:layout_marginRight="20dp"
             android:clickable="true"
             android:focusable="true"
-            app:ycCardCornerRadius="5dp"
+            app:ycCardCornerRadius="30dp"
             app:ycCardElevation="4dp"
             app:ycCardMaxElevation="8dp"
             app:ycCardPreventCornerOverlap="true"
@@ -50,14 +50,20 @@
                 android:padding="10dp"
                 android:text="د"
                 android:textColor="@color/grey"
-                android:textSize="80dp"
+                android:textSize="60dp"
                 android:textStyle="bold" />
-
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#FFEB3B"
+                android:layout_weight="1">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/yellow"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -88,9 +94,11 @@
                     android:textSize="40dp"
                     android:textStyle="bold" />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>
+
     </FrameLayout>
 
 
@@ -149,13 +157,18 @@
 
     </RelativeLayout>
 
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/lnr_icons"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        app:cardCornerRadius="9dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_height="60dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:padding="8dp">
 
@@ -216,6 +229,6 @@
 
 
     </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

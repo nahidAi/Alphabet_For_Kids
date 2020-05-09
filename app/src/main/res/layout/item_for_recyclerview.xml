@@ -7,11 +7,11 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    app:ycCardCornerRadius="5dp"
-    app:ycCardElevation="10dp"
+    app:ycCardCornerRadius="10dp"
+    app:ycCardElevation="8dp"
     app:ycCardMaxElevation="15dp"
     app:ycCardPreventCornerOverlap="true"
-    app:ycStartShadowColor="@color/Orange_dark">
+    app:ycStartShadowColor="#f7ad24">
 
     <RelativeLayout
         android:id="@+id/rl_item_for_recycler"
@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/imageItem"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="125dp"
             android:padding="16dp"
             android:src="@drawable/apple" />
 
@@ -32,13 +32,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/imageItem"
             android:layout_alignParentBottom="true"
-            android:layout_margin="3dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="#fbe186"
             android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
             android:text="Hello World!"
-            android:textColor="@color/blue"
-            android:textSize="25dp"
+            android:textColor="#1e97d8"
+            android:textSize="23dp"
             android:textStyle="bold" />
 
     </RelativeLayout>

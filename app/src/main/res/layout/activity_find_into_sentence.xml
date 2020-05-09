@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2979FF"
+    android:background="@drawable/yoopy_app"
     android:layoutDirection="ltr"
     tools:context=".Activity.ActivityFindIntoSentence">
 
@@ -22,13 +22,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="3dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="3dp"
             android:layout_marginRight="30dp"
             android:layout_weight="0.7"
             android:elevation="4dp"
             app:cardBackgroundColor="@color/White"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="15dp">
 
 
             <TextView
@@ -41,7 +41,7 @@
                 android:text="آ ا"
                 android:textAlignment="gravity"
                 android:textColor="@color/grey"
-                android:textSize="50dp"
+                android:textSize="40dp"
                 android:textStyle="bold" />
 
 
@@ -75,7 +75,7 @@
             android:layout_marginBottom="80dp"
             android:layout_weight="2"
             android:elevation="10dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="15dp">
 
             <TextView
                 android:id="@+id/txtData"
@@ -83,13 +83,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
                 android:fadeScrollbars="false"
-                android:padding="20dp"
+                android:padding="25dp"
                 android:scrollbarSize="4dp"
                 android:scrollbarStyle="outsideOverlay"
-                android:scrollbarThumbVertical="@color/light_red"
+                android:scrollbarThumbVertical="@color/blue"
                 android:scrollbars="vertical"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="35dp" />
+                android:textSize="30dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -97,45 +97,51 @@
     </LinearLayout>
 
     <pl.droidsonroids.gif.GifImageView
-    android:id="@+id/tashvigh_soti"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:src="@drawable/gif_tashvigh"
-    android:visibility="gone" />
-    <RelativeLayout
+        android:id="@+id/tashvigh_soti"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:padding="8dp"
-        android:background="#1550B3">
-        <ImageView
-            android:id="@+id/go_left"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/back_leftt" />
-        <Button
-            android:id="@+id/txtReNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/click_music_button"
-            android:padding="12dp"
-            android:text="دوباره تمرین کن "
-            android:textColor="@color/White"
-            android:textSize="15dp" />
-        <ImageView
-            android:id="@+id/go_right"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/back_right" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/gif_tashvigh"
+        android:visibility="gone" />
 
-    </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/go_left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/back_leftt" />
+
+            <Button
+                android:id="@+id/txtReNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/click_music_button"
+                android:padding="10dp"
+                android:text="دوباره تمرین کن "
+                android:textColor="@color/White"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/go_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/back_right" />
+
+        </RelativeLayout>
 
 
 

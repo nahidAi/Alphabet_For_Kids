@@ -1331,6 +1331,11 @@ public class ActivityBuildWord extends AppCompatActivity {
 
             }
         });
+
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        sharedPreferences.getBoolean("buy_is_ok", false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok", false);
+
         goLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1349,7 +1354,7 @@ public class ActivityBuildWord extends AppCompatActivity {
                 editor.putInt("intValue", 0);
                 editor.apply();
 
-                if (myId == 23) {
+               /* if (myId == 23) {
                     myId = myId + 43;
                 }
                 if (myId == 68) {
@@ -1360,6 +1365,41 @@ public class ActivityBuildWord extends AppCompatActivity {
                     myId = 83;
                 } else {
                     myId = myId + 1;
+                }*/
+
+                if (myId==9) {
+                    if (isBuy == false) {
+                        Intent intent = new Intent(ActivityBuildWord.this, ActivityPurchase.class);
+                        startActivity(intent);
+                    }else if (isBuy==true){
+                        if (myId == 23) {
+                            myId = myId + 43;
+                        } if (myId == 68) {
+                            myId = myId + 2;
+                        } else if (myId == 72) {
+                            myId = myId + 3;
+                        } else if (myId == 83) {
+                            myId = 83;
+                        } else {
+
+                            myId = myId + 1;
+                        }
+                    }
+                }else if (myId==1|myId==2|myId==3|myId==4|myId==5|myId==6|myId==7|myId==8){
+                    myId = myId + 1;
+                }else if (isBuy==true){
+                    if (myId == 23) {
+                        myId = myId + 43;
+                    } if (myId == 68) {
+                        myId = myId + 2;
+                    } else if (myId == 72) {
+                        myId = myId + 3;
+                    } else if (myId == 83) {
+                        myId = 83;
+                    } else {
+
+                        myId = myId + 1;
+                    }
                 }
 
                 setContentView(R.layout.activity_build_word);
@@ -4433,7 +4473,7 @@ public class ActivityBuildWord extends AppCompatActivity {
 
 
                 }
-            } else if (view.getId() == R.id.option2 && v.getId() == R.id.lnr2) {
+            } else if (view.getId() == R.id.option2 |view.getId() == R.id.option9 && v.getId() == R.id.lnr2) {
                 oldAndNewParent((LinearLayout) v, view, btnResult2, lnr2);
                 mediaVoice(R.raw.ok);
                 sharedPref();

@@ -73,7 +73,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
         if (showHelp == false) {
             final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
             TapTargetView.showFor(this,
-                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "دانشجوی کوچولی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو بکش و در جای مناسب رها کن")
+                    TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "دانشجوی کوچولوی من حرف مشخص شده در ردیف دوم را با صداهای ردیف اول ترکیب کن و جواب درست رو بکش و در جای مناسب رها کن")
                             .outerCircleColor(R.color.yellow_dark)
                             .outerCircleAlpha(0.96f)
                             .targetCircleColor(R.color.White)
@@ -245,6 +245,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption5.setText("سـِ سه");
         } else if (myId == 14) {
             btnSign.setText("شـ ش ");
+            btnSign.setTextSize(20);
             btnOption.setText("شا");
             btnOption2.setText("شـَ");
             btnOption3.setText("شو");
@@ -347,7 +348,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption6.setText("بـُ");
         } else if (myId == 70) {
             btnSign.setText("هـ ـهـ ـه ه");
-            btnSign.setTextSize(20);
+            btnSign.setTextSize(17);
             btnOption.setText("ها");
             btnOption2.setText("هـَ");
             btnOption3.setText("هو");
@@ -404,7 +405,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption6.setText("ذُ");
         } else if (myId == 77) {
             btnSign.setText("عـ ـعـ ـع ع");
-            btnSign.setTextSize(20);
+            btnSign.setTextSize(17);
             btnOption.setText("عا");
             btnOption2.setText("عـَ");
             btnOption3.setText("عو");
@@ -445,7 +446,7 @@ public class ActivitySoundAndSign extends AppCompatActivity {
             btnOption6.setText("طُُ");
         } else if (myId == 82) {
             btnSign.setText("غـ ـغـ ـغ غ");
-            btnSign.setTextSize(20);
+            btnSign.setTextSize(17);
             btnOption.setText("غا");
             btnOption2.setText("غـَ");
             btnOption3.setText("غو");
@@ -593,6 +594,11 @@ public class ActivitySoundAndSign extends AppCompatActivity {
 
             }
         });
+
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        sharedPreferences.getBoolean("buy_is_ok", false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok", false);
+
         imgGoLeft.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -606,7 +612,8 @@ public class ActivitySoundAndSign extends AppCompatActivity {
                     }
                 });
 
-                if (myId == 23) {
+
+               /* if (myId == 23) {
                     myId = myId + 43;
                 }
                 if (myId == 68) {
@@ -617,6 +624,40 @@ public class ActivitySoundAndSign extends AppCompatActivity {
                     myId = 83;
                 } else {
                     myId = myId + 1;
+                }*/
+                if (myId==9) {
+                    if (isBuy == false) {
+                        Intent intent = new Intent(ActivitySoundAndSign.this, ActivityPurchase.class);
+                        startActivity(intent);
+                    }else if (isBuy==true){
+                        if (myId == 23) {
+                            myId = myId + 43;
+                        } if (myId == 68) {
+                            myId = myId + 2;
+                        } else if (myId == 72) {
+                            myId = myId + 3;
+                        } else if (myId == 83) {
+                            myId = 83;
+                        } else {
+
+                            myId = myId + 1;
+                        }
+                    }
+                }else if (myId==1|myId==2|myId==3|myId==4|myId==5|myId==6|myId==7|myId==8){
+                    myId = myId + 1;
+                }else if (isBuy==true){
+                    if (myId == 23) {
+                        myId = myId + 43;
+                    } if (myId == 68) {
+                        myId = myId + 2;
+                    } else if (myId == 72) {
+                        myId = myId + 3;
+                    } else if (myId == 83) {
+                        myId = 83;
+                    } else {
+
+                        myId = myId + 1;
+                    }
                 }
 
 

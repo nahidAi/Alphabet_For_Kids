@@ -106,21 +106,21 @@ public class Fragment3 extends Fragment {
             txt4.setText(R.string.ei_page4);
             Picasso
                     .with(getContext())
-                    .load(R.drawable.h_ei)
+                    .load(R.drawable.h_ei_story)
                     .into(img4);
 
         }if (myId == 12) {
             txt4.setText(R.string.z_page4);
             Picasso
                     .with(getContext())
-                    .load(R.drawable.h_z)
+                    .load(R.drawable.h_z_story)
                     .into(img4);
 
         }if (myId == 13) {
             txt4.setText(R.string.ea_page4);
             Picasso
                     .with(getContext())
-                    .load(R.drawable.h_ea)
+                    .load(R.drawable.h_ea_story)
                     .into(img4);
 
         }if (myId == 14) {
@@ -141,7 +141,7 @@ public class Fragment3 extends Fragment {
             txt4.setText(R.string.o_page4);
             Picasso
                     .with(getContext())
-                    .load(R.drawable.h_o)
+                    .load(R.drawable.h_o_story)
                     .into(img4);
 
         }if (myId == 17) {
@@ -239,7 +239,7 @@ public class Fragment3 extends Fragment {
             txt4.setText(R.string.kha_page4);
             Picasso
                     .with(getContext())
-                    .load(R.drawable.h_kha)
+                    .load(R.drawable.h_kha_story)
                     .into(img4);
 
         }

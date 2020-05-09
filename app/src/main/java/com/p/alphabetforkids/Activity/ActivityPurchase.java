@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -17,6 +18,10 @@ public class ActivityPurchase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
 
+        //فول اسکرین کردن صفحه
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         imageToolbarBack = findViewById(R.id.imageToolbarBack);
         imageToolbarBack.setVisibility(View.GONE);
 
@@ -28,6 +33,9 @@ public class ActivityPurchase extends AppCompatActivity {
 
             }
         });
+
+
+
     }
 
 

@@ -266,7 +266,7 @@ public class ActivityHomeWork extends AppCompatActivity implements View.OnClickL
                 drawView.setBackgroundResource(R.drawable.h_cin);
                 break;
             case 7:
-                drawView.setBackgroundResource(R.drawable.h_ooo);
+                drawView.setBackgroundResource(R.drawable.h_ooo_story);
                 break;
             case 8:
                 drawView.setBackgroundResource(R.drawable.h_t);

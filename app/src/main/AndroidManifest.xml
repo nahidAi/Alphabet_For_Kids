@@ -18,8 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.ActivityContactUs"/>
-        <activity android:name=".Activity.ActivityPurchase" />
+        <activity android:name=".Activity.ActivityContactUs"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Activity.ActivityPurchase"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Activity.ActivityBuildWordSix"
             android:screenOrientation="landscape"
@@ -40,7 +44,10 @@
             android:name=".Activity.ActivityBuildWordTwo"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".Activity.ActivityReadStoreis" />
+        <activity
+            android:name=".Activity.ActivityReadStoreis"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Activity.ActivityBuildWord"
             android:screenOrientation="landscape"
@@ -49,8 +56,14 @@
             android:name=".Activity.ActivitySoundAndSign"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".Activity.ActivityFindIntoSentence" />
-        <activity android:name=".Activity.ActivityHomeWork" />
+        <activity
+            android:name=".Activity.ActivityFindIntoSentence"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Activity.ActivityHomeWork"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Activity.ActivityPaint"
             android:screenOrientation="portrait"

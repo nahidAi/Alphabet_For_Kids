@@ -3,6 +3,7 @@ package com.p.alphabetforkids.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import pl.droidsonroids.gif.GifImageView;
 
 import android.app.Dialog;
@@ -83,6 +84,8 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
         if (showHelp == false) {
             final Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_help_black_24dp);
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.irsans_font);
+            assert typeface != null;
             TapTargetView.showFor(this,
                     TapTarget.forView(findViewById(R.id.imgHelp), "راهنمای تمرین", "فرزند گلم حرف مشخص شده را داخل متن پیداش کن روش ضربه بزن تا انتخاب بشه.هر موقع استیکر به آخر رسید یعنی تمام حروف پیدا شده و تو برنده ای")
                             .outerCircleColor(R.color.yellow_dark)
@@ -93,7 +96,7 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                             .descriptionTextSize(20)
                             .descriptionTextColor(R.color.red)
                             .textColor(R.color.black)
-                            .textTypeface(Typeface.SANS_SERIF)
+                            .textTypeface(typeface)
                             .dimColor(R.color.black)
                             .drawShadow(true)
                             .cancelable(true)
@@ -137,10 +140,14 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
 
             }
         });
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        sharedPreferences.getBoolean("buy_is_ok", false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok", false);
+
         imggoLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (id == 23) {
+               /* if (id == 23) {
                     id = id + 43;
                 }
                 if (id == 68) {
@@ -151,7 +158,48 @@ public class ActivityFindIntoSentence extends AppCompatActivity {
                     id = 83;
                 } else {
                     id = id + 1;
+                }*/
+
+
+                if (id==9) {
+                    if (isBuy == false) {
+                        Intent intent = new Intent(ActivityFindIntoSentence.this, ActivityPurchase.class);
+                        startActivity(intent);
+                    }else if (isBuy==true){
+                        if (id == 23) {
+                            id = id + 43;
+                        } if (id == 68) {
+                            id = id + 2;
+                        } else if (id == 72) {
+                            id = id + 3;
+                        } else if (id == 83) {
+                            id = 83;
+                        } else {
+
+                            id = id + 1;
+                        }
+                    }
+                }else if (id==1|id==2|id==3|id==4|id==5|id==6|id==7|id==8){
+                    id = id + 1;
+                }else if (isBuy==true){
+                    if (id == 23) {
+                        id = id + 43;
+                    } if (id == 68) {
+                        id = id + 2;
+                    } else if (id == 72) {
+                        id = id + 3;
+                    } else if (id == 83) {
+                        id = 83;
+                    } else {
+
+                        id = id + 1;
+                    }
                 }
+
+
+
+
+
                 setContentView(R.layout.activity_find_into_sentence);
                 if (a == true | k == true | b == true | c == true | d == true | e == true | f == true | j == true | h == true | i == true | g == true | l == true) {
                     a = false;

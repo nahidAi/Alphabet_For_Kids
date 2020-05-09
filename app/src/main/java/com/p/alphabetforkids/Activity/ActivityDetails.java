@@ -7,7 +7,10 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,6 +51,10 @@ public class ActivityDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         getIntentMethod();
+
+
+
+
         findView();
         onClick();
 
@@ -64,6 +71,10 @@ public class ActivityDetails extends AppCompatActivity {
             int myImgMuteZip = getResources().getIdentifier("muted", "drawable", getPackageName());
             imgMute.setImageResource(myImgMuteZip);
         }
+
+
+
+
 
 
         //فول اسکرین کردن صفحه
@@ -564,10 +575,14 @@ public class ActivityDetails extends AppCompatActivity {
                 finish();
             }
         });
+
+
         imgBackLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mediaPlayer.stop();
+
+
                 if (myId == 23) {
                     myId = myId + 44;
                 } else if (myId == 83) {
@@ -720,11 +735,15 @@ public class ActivityDetails extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("isMuteSound", isMute);
                     editor.apply();
-                    Toast toast = Toast.makeText(getApplicationContext(), "صدا رو قطع کردی :)", Toast.LENGTH_LONG);
-                    View view = toast.getView();
-                    view.setBackgroundResource(R.drawable.custom_toast);
-                    toast.setView(view);
+
+                    LayoutInflater layoutInflater = getLayoutInflater();
+                    View v2 = layoutInflater.inflate(R.layout.toastcustom,(ViewGroup)findViewById(R.id.lnr));
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.NO_GRAVITY,0,160);
+                    toast.setView(v2);
                     toast.show();
+
 
                 } else if (isMute == true) {
                     int myImgMute = getResources().getIdentifier("smile", "drawable", getPackageName());
@@ -1213,7 +1232,7 @@ public class ActivityDetails extends AppCompatActivity {
 
             Picasso
                     .with(getApplicationContext())
-                    .load(R.drawable.books)
+                    .load(R.drawable.duckling)
                     .into(imgEnd);
             Picasso
                     .with(getApplicationContext())
@@ -1247,7 +1266,7 @@ public class ActivityDetails extends AppCompatActivity {
 
             Picasso
                     .with(getApplicationContext())
-                    .load(R.drawable.books)
+                    .load(R.drawable.ball)
                     .into(imgEnd);
             Picasso
                     .with(getApplicationContext())
@@ -1730,17 +1749,46 @@ public class ActivityDetails extends AppCompatActivity {
                 finish();
             }
         });
+
+        sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
+        sharedPreferences.getBoolean("buy_is_ok", false);
+        boolean isBuy = sharedPreferences.getBoolean("buy_is_ok", false);
+
         imgBackLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mediaPlayer.stop();
-                if (myId == 23) {
-                    myId = myId + 44;
-                } else if (myId == 83) {
-                    myId = 83;
-                } else {
+
+                if (myId==9) {
+                    if (isBuy == false) {
+                        Intent intent = new Intent(ActivityDetails.this, ActivityPurchase.class);
+                        startActivity(intent);
+                    }else if (isBuy==true){
+                        if (myId == 23) {
+                            myId = myId + 44;
+                        } else if (myId == 83) {
+                            myId = 83;
+                        } else {
+
+                            myId = myId + 1;
+                        }
+                    }
+                }else if (myId==1|myId==2|myId==3|myId==4|myId==5|myId==6|myId==7|myId==8){
                     myId = myId + 1;
+                }else if (isBuy==true){
+                    if (myId == 23) {
+                        myId = myId + 44;
+                    } else if (myId == 83) {
+                        myId = 83;
+                    } else {
+
+                        myId = myId + 1;
+                    }
                 }
+
+
+
+
 
                 if (myId == 1 | myId == 2 | myId == 3 | myId == 5 | myId == 6 | myId == 7 | myId == 8 | myId == 10
                         | myId == 14 | myId == 15 | myId == 16 | myId == 17 | myId == 19
@@ -1886,10 +1934,14 @@ public class ActivityDetails extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("isMuteSound", isMute);
                     editor.apply();
-                    Toast toast = Toast.makeText(getApplicationContext(), "صدا رو قطع کردی :)", Toast.LENGTH_LONG);
-                    View view = toast.getView();
-                    view.setBackgroundResource(R.drawable.custom_toast);
-                    toast.setView(view);
+
+
+                    LayoutInflater layoutInflater = getLayoutInflater();
+                    View v2 = layoutInflater.inflate(R.layout.toastcustom,(ViewGroup)findViewById(R.id.lnr));
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.NO_GRAVITY,0,160);
+                    toast.setView(v2);
                     toast.show();
 
 

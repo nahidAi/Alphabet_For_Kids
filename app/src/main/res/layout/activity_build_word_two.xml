@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
+
     tools:context=".Activity.ActivityBuildWord">
 
-    <include layout="@layout/toolbar_3" />
+    <include layout="@layout/toolbar_5" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/lnr_renew"
         android:layout_below="@+id/toolbar"
-        android:background="@color/brown_light"
+        android:background="@drawable/yoopy_app"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -70,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -79,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -88,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -97,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -106,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -134,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -143,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -152,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -161,7 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -170,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:background="@drawable/click2"
+                        android:background="@drawable/click9"
                         android:textColor="@color/grey"
 
                         android:textSize="@dimen/large_size" />
@@ -195,7 +196,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="#4600BCD4"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
@@ -234,7 +234,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/click9"
+                        android:background="@drawable/click4"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -254,7 +254,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/click9"
+                        android:background="@drawable/click4"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -274,7 +274,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/click9"
+                        android:background="@drawable/click4"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -294,7 +294,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/click9"
+                        android:background="@drawable/click4"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -314,7 +314,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/click9"
+                        android:background="@drawable/click4"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/large_size" />
 
@@ -334,7 +334,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#548BC34A"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
@@ -490,7 +489,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:background="#BDBDBD"
+        android:background="#fff"
         android:padding="8dp">
 
 

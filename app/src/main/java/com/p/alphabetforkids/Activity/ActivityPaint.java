@@ -30,7 +30,7 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     private DrawingView drawView;
     private ImageButton currPaint, drawBtn,eraseBtn,newBtn,saveBtn;
     private float smallBrush, mediumBrush, largeBrush;
-    private ImageView imgback,imgMyHome;
+    private ImageView imgback,imgMyHome,imgHelp;
     MediaPlayer mediaPlayer;
     int re;
 
@@ -38,6 +38,9 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint);
+
+        imgHelp = findViewById(R.id.imgHelp);
+        imgHelp.setVisibility(View.GONE);
 
         //فول اسکرین کردن صفحه
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -63,6 +66,7 @@ public class ActivityPaint extends AppCompatActivity implements View.OnClickList
         imgMyHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mediaPlayer = MediaPlayer.create(ActivityPaint.this, R.raw.click);
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

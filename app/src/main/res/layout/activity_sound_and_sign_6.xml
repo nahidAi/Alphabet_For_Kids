@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/yoopy_app"
     android:orientation="vertical"
     android:layoutDirection="ltr"
     tools:context=".Activity.ActivitySoundAndSign">
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:padding="2dp"
                     android:text="اُ    ُ "
                     android:textSize="18dp"
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:padding="2dp"
                     android:text="اِ   ِ ـه ه"
                     android:textSize="18dp"
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:padding="2dp"
                     android:text="ایـ یـ ی ای ‍"
                     android:textSize="15dp"
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:text="او  و‍‍"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:text="اَ   َ"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:text="آ  ا"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -256,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@drawable/click2"
+                    android:background="@drawable/click9"
                     android:padding="1dp"
                     android:text="بـ  ب "
                     android:textSize="25dp" />
@@ -351,7 +351,7 @@
     </LinearLayout>
     <RelativeLayout
         android:padding="6dp"
-        android:background="#1550B3"
+        android:background="#fff"
         android:id="@+id/lnr_renew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

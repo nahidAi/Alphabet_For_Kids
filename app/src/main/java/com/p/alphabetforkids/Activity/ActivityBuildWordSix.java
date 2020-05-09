@@ -35,7 +35,7 @@ public class ActivityBuildWordSix extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     int intValue;
     GifImageView gifImageView;
-    ImageView imgBack, imgHome;
+    ImageView imgBack, imgHome,imgHelp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,8 @@ public class ActivityBuildWordSix extends AppCompatActivity {
                 .into(imgLevelTwo);
     }
     public void findView() {
+        imgHelp = findViewById(R.id.imgHelp);
+        imgHelp.setVisibility(View.GONE);
         audioLevelOne = findViewById(R.id.audio_level_1);
         audioLevelTwo = findViewById(R.id.audio_level_2);
         imgBack = findViewById(R.id.imgBack);

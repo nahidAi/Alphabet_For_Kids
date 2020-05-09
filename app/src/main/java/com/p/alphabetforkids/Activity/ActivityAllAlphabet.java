@@ -84,7 +84,12 @@ public class ActivityAllAlphabet extends AppCompatActivity implements IabHelper.
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                purchasePremiumAccount();
+                try {
+                    purchasePremiumAccount();
+                }catch (Exception e){
+                    Toast.makeText(ActivityAllAlphabet.this, "از نصب برنامه بازار روی گوشی خودتون اطمینان دارید؟ دسترسی به اینترنت دارید؟دوباره امتحان کنید", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
         sharedPreferences = getSharedPreferences("myPreference", MODE_PRIVATE);
